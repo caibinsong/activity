@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>志愿队活动删除</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 100%;position: absolute; height: 96%;top: 2%;overflow: auto;}
+		.box{width: 94%;height:270px;background: #fff;margin-bottom: 20px;padding: 20px 30px;}
+		.box .line{font-size: 36px;margin-bottom: 10px;}
+		.box .del{color:red;text-align: right}
+		.delbtn{width: 50px;}
+		.h100{height:100px;}
+		.h300{height:300px;}
+		.addbtn{width: 100%;height: 270px;background: url(/img/add.png) no-repeat center center;}
+		.inputtext{width: 100%;height: 100px;font-size: 36px;border: 0px;}
+		.textarea{width: 100%;font-size: 36px;height: 300px;border: 0px;}
+		.inputbtn{width: 90%;height: 100px;font-size: 36px; background: #f95307;border: 0px;color: #fff;}
+		.select{width: 50%;
+    height: 90px;
+    font-size: 36px;
+    border: 1px solid #d8d8d8;}
+	</style>
+</head>
+<body>		
+	<div id="bg">
+		<div class="box h100">
+			<input class="inputtext" type="text" value="确定要修改 {{.title}}？" readonly />
+		</div>
+		{{if isEqual .title "政治面貌"}}
+			<div class="box h100">
+				<select  id="pwd" class="select">
+	                <option value="">请选择政治面貌</option>
+	                <option value="群众" {{if isEqual .c "群众"}}selected="selected"{{end}}>群众</option>
+	                <option value="团员" {{if isEqual .c "团员"}}selected="selected"{{end}}>团员</option>
+	                <option value="预备党员" {{if isEqual .c "预备党员"}}selected="selected"{{end}}>预备党员</option>
+	                <option value="中共党员" {{if isEqual .c "中共党员"}}selected="selected"{{end}}>中共党员</option>
+	                <option value="民主党派" {{if isEqual .c "民主党派"}}selected="selected"{{end}}>民主党派</option>
+	            </select>
+        	</div>
+		{{else}}
+			{{if isEqual .title "特长"}}
+				<div class="box h100">
+					<select  id="pwd" class="select">
+                        <option value="">请选择特长</option>
+                        <option value="理发" {{if isEqual .c "理发"}}selected="selected"{{end}}>理发</option>
+                        <option value="水电" {{if isEqual .c "水电"}}selected="selected"{{end}}>水电</option>
+                        <option value="木匠" {{if isEqual .c "木匠"}}selected="selected"{{end}}>木匠</option>
+                        <option value="房屋建造" {{if isEqual .c "房屋建造"}}selected="selected"{{end}}>房屋建造</option>
+                        <option value="家电维修" {{if isEqual .c "家电维修"}}selected="selected"{{end}}>家电维修</option>
+                        <option value="医疗护理" {{if isEqual .c "医疗护理"}}selected="selected"{{end}}>医疗护理</option>
+                        <option value="法律咨询" {{if isEqual .c "法律咨询"}}selected="selected"{{end}}>法律咨询</option>
+                        <option value="其他" {{if isEqual .c "其他"}}selected="selected"{{end}}>其他</option>
+                      </select>
+                </div>
+			{{else}}
+				{{if isEqual .title "居住地"}}
+				<div class="box h100">
+					<select  id="pwd" class="select">
+						<option value="">请选择居住地</option>
+						<option value="太平街道" {{if isEqual .c "太平街道"}}selected="selected"{{end}}>太平街道</option>
+						<option value="城东街道" {{if isEqual .c "城东街道"}}selected="selected"{{end}}>城东街道</option>
+						<option value="城西街道" {{if isEqual .c "城西街道"}}selected="selected"{{end}}>城西街道</option>
+						<option value="城北街道" {{if isEqual .c "城北街道"}}selected="selected"{{end}}>城北街道</option>
+						<option value="横峰街道" {{if isEqual .c "横峰街道"}}selected="selected"{{end}}>横峰街道</option>
+						<option value="滨海镇" {{if isEqual .c "滨海镇"}}selected="selected"{{end}}>滨海镇</option>
+						<option value="城南镇" {{if isEqual .c "城南镇"}}selected="selected"{{end}}>城南镇</option>
+						<option value="大溪镇" {{if isEqual .c "大溪镇"}}selected="selected"{{end}}>大溪镇</option>
+						<option value="箬横镇" {{if isEqual .c "箬横镇"}}selected="selected"{{end}}>箬横镇</option>
+						<option value="石桥头镇" {{if isEqual .c "石桥头镇"}}selected="selected"{{end}}>石桥头镇</option>
+						<option value="石塘镇" {{if isEqual .c "石塘镇"}}selected="selected"{{end}}>石塘镇</option>
+						<option value="松门镇" {{if isEqual .c "松门镇"}}selected="selected"{{end}}>松门镇</option>
+						<option value="温峤镇" {{if isEqual .c "温峤镇"}}selected="selected"{{end}}>温峤镇</option>
+						<option value="坞根镇" {{if isEqual .c "坞根镇"}}selected="selected"{{end}}>坞根镇</option>
+						<option value="新河镇" {{if isEqual .c "新河镇"}}selected="selected"{{end}}>新河镇</option>
+						<option value="泽国镇" {{if isEqual .c "泽国镇"}}selected="selected"{{end}}>泽国镇</option>
+						<option value="其他地区" {{if isEqual .c "其他地区"}}selected="selected"{{end}}>其他地区</option>
+					</select>
+				</div>
+				{{else}}
+					<div class="box h100">
+						<input class="inputtext" type="text" placeholder="请输入{{.title}}" id="pwd" value="{{.c}}"/>
+					</div>
+				{{end}}
+			{{end}}
+		
+		{{end}}
+		<div class="box h100" style="text-align: center;">
+			<input class="inputbtn" type="button" value="修改" onclick="up()"/>
+		</div>
+	</div>	
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script>
+		function up(){
+			if($("#pwd").val()==""){
+				alert("内容不可为空");
+				return false;
+			}
+			$.ajax({
+				type : "post",  
+				url : "/user/upuser",
+				data:{
+					"d":"{{.d}}",
+					"c":$("#pwd").val()
+				},
+				sync : false,
+				success : function(data){
+				    eval("var dataJson="+data);
+				    if(dataJson.status==1){
+				    	window.location.href="/user/userinfo"
+				    }else{
+				    	alert(dataJson.msg);
+				    }
+				}  
+			});
+		}
+	</script>
+</body>
+</html>

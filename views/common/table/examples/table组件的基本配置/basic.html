@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>table的基本配置项</title>
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/template.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/datepicker.css" />
+		<script src="../../../../js/common/jquery-1.9.1.min.js"></script>
+		<script src="../../js/datepicker.js"></script>
+		<script src="../../js/resize.js"></script>
+		<script src="../../js/tree.js"></script>
+		<script src="../../js/table.js"></script>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<div id="basic1"></div>
+		<div id="basic2"></div>
+	</body>
+	<script>
+		/*
+		 table组件的功能:分页，列移动，列筛选，跨页多选，能够嵌入日历组件和树组件，同时可以支持多样的查询功能
+		 * */
+		
+		var basicOpt1 = {
+			header: [{
+				key: {
+					text: '输入您的大名吧！',
+					name: 'yourName',
+					width: '120px'
+				},
+				value: [{
+					text: '请输入1',
+					type: 'input',
+					width: '120px',
+					require: true,
+					initValue:'v1'
+				},{
+					text: '请输入2',
+					type: 'input',
+					width: '120px',
+					require: true,
+					initValue:'v2'
+				}]
+			}, {
+				key: {
+					text: 'select框的孪生兄弟1',
+					name: 'brother1',
+					width: '126px'
+				},
+				value: [{
+//					marginLeft: '0px',
+					text: '看我是不是很像select呀Xoxoxo',
+					initVaule:'',		//4.22 规范表头select框的初始值
+					type: 'select',
+					width: '200px',
+					require: true,
+					initValue:'s1',
+					options:[
+						{value:'m1',text:'萌1'},	//4.22 调整option的接口  value跟原生option的value表现一致  text表示option的文本内容
+						{value:'m2',text:'萌2'},// 不再推荐使用原生的接口  name value
+						{value:'m3',text:'萌3'}
+						],
+					callback:function(curValue){
+						console.log('s1')
+						if(curValue){
+							console.log(curValue);
+						}
+					}
+				},{
+//					marginLeft: '0px',
+					text: '看我是不是很像select呀Xoxoxo',
+					initVaule:'',		//4.22 规范表头select框的初始值
+					type: 'select',
+					width: '200px',
+					require: true,
+					initValue:'ss1',
+					options:[
+						{value:'m1',text:'萌1'},	//4.22 调整option的接口  value跟原生option的value表现一致  text表示option的文本内容
+						{value:'m2',text:'萌2'},// 不再推荐使用原生的接口  name value
+						{value:'m3',text:'萌3'}
+						],
+					callback:function(curValue){
+						console.log('ss1')
+						if(curValue){
+							console.log(curValue);
+						}
+					}
+				}]
+			}, {
+				key: {
+					text: 'select框的孪生兄弟',
+					name: 'brother1',
+					width: '126px'
+				},
+				value: [{
+//					marginLeft: '0px',
+					text: '看我是不是很像select呀Xoxoxo',
+					initVaule:'s',		//4.22 规范表头select框的初始值
+					type: 'select',
+					width: '200px',
+					require: true,
+					initValue:'s',
+					options:[
+						{value:'m1',text:'萌1'},	//4.22 调整option的接口  value跟原生option的value表现一致  text表示option的文本内容
+						{value:'m2',text:'萌2'},// 不再推荐使用原生的接口  name value
+						{value:'m3',text:'萌3'}
+						]
+				}]
+			}, {
+				key: {
+					text: 'select框的孪生兄弟2',
+					name: 'brother2',
+					width: '126px'
+				},
+				value: [{
+//					marginLeft: '0px',
+					text: '看我是不是很像select呀Xoxoxo',
+					initVaule:'s2',		//4.22 规范表头select框的初始值
+					type: 'select',
+					width: '200px',
+					require: true,
+					initValue:'s1',
+					options:[
+						{value:'m1',text:'萌1'},	//4.22 调整option的接口  value跟原生option的value表现一致  text表示option的文本内容
+						{value:'m2',text:'萌2'},// 不再推荐使用原生的接口  name value
+						{value:'m3',text:'萌3'}
+						],
+					callback:function(curValue){
+						console.log('s2')
+						if(curValue){
+							console.log(curValue);
+						}
+					}
+				}]
+			}],
+			body: {
+				url: 'data/a.json',
+				mtype: 'get',
+				colModel: [{
+					name: 'id',
+					width: 55,
+					text: '序号'
+				}, {
+					name: 'devtype',
+					sort: true,
+					align: 'left',
+					text: '设备类型'
+				}, {
+					name: 'ip',
+					sort: true,
+					text: 'IP地址'
+				}, {
+					name: 'mac',
+					sort: true,
+					text: 'MAC地址'
+				}, {
+					name: 'online',
+					sort: true,
+					text: '在线状态'
+				}, {
+					name: 'block',
+					sort: true,
+					text: '阻断状态',
+				}],
+				pageSize: 12, 
+				orderType: 'ASC', 
+				orderBy: 'id',
+				//=====结束=======
+				rowList: [12, 20, 30],
+				unScrollBar:true,	//4.22  添加是否有滚动条 默认为false[有滚动条] true没有滚动条
+				sortable: true,
+				resizeable:true,
+				tools: [{
+					text: '可自定义导出功能',
+					toolIcon: 't-btn-add-table',
+					title: '可导出哟',
+					toolEvent: {
+						type: 'click',
+						cb: function(e) {
+							alert('已导出文档 xoxoxo')
+						}
+					}
+				}],
+				cruds: [{
+					text: 'cruds里存放对表格内容的基础操作',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '表格的基础操作step1',
+						crudEvent: {
+							type: 'click',
+							cb: function() {
+								alert('默认操作step1');
+							}
+						}
+					}]
+				}, {
+					text: '基础 基础  基础 操作(对表格内容的)',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '真的很基础',
+						crudEvent: {
+							type: 'click',
+							cb: function(e) {
+								alert('真的挺基础的！');
+							}
+						}
+					}]
+				}]
+			}
+		};
+		$('#basic1').table(basicOpt1);
+	</script>
+
+</html>

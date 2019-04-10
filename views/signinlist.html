@@ -1,0 +1,78 @@
+<style>
+ #siginin td {
+    border: 1px solid #dad6d6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 35px;
+}
+ #siginin th {
+    border: 1px solid #dad6d6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 35px;
+    text-align: center;
+}
+</style>
+<div class="page-3">
+	<div class="t-cols-wrap" style="height: 600px;overflow-y: auto;">
+		        <table id="siginin">
+              <thead>
+                <tr>
+                  <th style="width:40px;">序号</th>
+                  <th style="width:50px;">姓名</th>
+                  <th style="width:80px;">手机号</th>
+                  <th style="width:40px;">本人报名</th>
+                  <th style="width:90px;">报名时间</th>
+                  <th style="width:90px;">签到时间</th>
+                  <th style="width:50px;">签到人员</th>
+                  <th style="width:90px;">签退时间</th>
+                  <th style="width:50px;">签退人员</th>
+                  <th style="width:40px;">积分</th>
+                </tr>
+              </thead>
+              <tbody>
+              {{range .data}}
+                <tr>
+                  <td style="text-align: center;" title="{{.xhid}}">{{.xhid}}</td>
+                  <td style="padding-left: 10px;" title="{{.name}}">{{.name}}</td>
+                  <td style="padding-left: 5px;"  title="{{.tel}}">{{.tel}}</td>
+                  <td style="text-align: center;"  title="{{.idcard}}">{{if isEqual (toInt .idcard) 0}}否{{else}}是{{end}}</td>
+                  <td style="text-align: center;"  title="{{.time}}">{{.time}}</td>
+                  <td style="text-align: center;"  title="{{.signintime}}">{{.signintime}}</td>
+                  <td style="padding-left: 10px;"  title="{{.signinname}}">{{.signinname}}</td>
+                  <td style="text-align: center;"  title="{{.signbacktime}}">{{.signbacktime}}</td>
+                  <td style="padding-left: 10px;"  title="{{.signbackname}}">{{.signbackname}}</td>
+                  <td style="padding-left: 10px;"  title="{{.addintegral}}">{{.addintegral}}</td>
+                </tr>
+              {{end}}
+              </tbody>
+            </table>
+             
+  </div>
+</div>
+  <script>
+    function update(){
+        $.ajax({
+            type: "POST",
+            url: "/user/saveteacher?" + new Date(),
+            async:false,
+            data:{
+              "id":"123"
+            },
+            success: function(data){
+              eval("var jsondata="+data);
+              if(jsondata.status==1){
+                cdialog.success("保存成功",null,null,true,'center');
+                $(".inputTargetCode").find("input").val($(".current").html());
+                $(".targetCode").click();
+                $(".t-pop-close").click();
+              }else{
+                cdialog.error(jsondata.msg,null,null,true,'center');
+              }
+            }
+        });
+      return false;
+    }
+  </script>

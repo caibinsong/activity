@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<style>
+			/*横向滚动条样式例子*/
+			
+			/*#scrollBar {
+				width: 200px;
+				height: 600px;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#scrollBar .content {
+				width: 500px;
+			}
+			
+			#scrollBar .content .red {
+				height: 300px;
+				background: red;
+			}*/
+			body{
+				height: 1000px;
+			}
+			/*纵向滚动条样式例子*/
+			#scrollBar {
+				width: 200px;
+				height: 600px;
+				position: relative;
+				overflow: hidden;
+			}
+			#scrollBar .content{
+				width:100px;
+			}
+			#scrollBar .content .red {
+				height: 300px;
+				background: red;
+			}
+			
+			#scrollBar .content .yellow {
+				height: 300px;
+				background: yellow;
+			}
+			
+			#scrollBar .content .black {
+				height: 300px;
+				background: black;
+			}
+			
+		</style>
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="scrollBar" class="custombar">
+			<div class="content t-scrollContent">
+				<div class="red">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam magni, quia unde? Esse perspiciatis, id numquam voluptatibus tenetur quae obcaecati laborum delectus iure, voluptas officiis consequuntur autem necessitatibus quas molestiae.</div>
+				<div class="yellow"></div>
+				<div class="black"></div>
+			</div>
+		</div>
+	</body>
+	<script src="../version/js/jquery-2.1.0.js"></script>
+	<script src="./js/customScrollBar.js"></script>
+	<script type="text/javascript">
+		//调用自定义滚动条
+		var opt = {
+			//以下样式对象跟jquery的样式对象的格式完全一致
+			//注意滚动条都不可以人为的设置宽高，滚动槽可以设置对应宽高，X可设置高，Y可设置宽度
+			scrollBoxCssX: {	//X轴滚动槽样式对象
+				width: 8,
+				backgroundColor:'black'
+			},
+			scrollBarCssX: {	//X轴滚动条样式对象	
+				backgroundColor:'white'				
+			},
+			scrollBoxCssY: {	//Y轴滚动槽样式对象
+				width: 10,
+				backgroundColor:'green'
+			},
+			scrollBarCssY: {	//Y轴滚动条样式对象
+				backgroundColor:'black'
+			},
+			initShiftValue:{
+				top:150
+			}
+		}
+		$('#scrollBar').customScrollBar(opt);
+	</script>
+
+</html>

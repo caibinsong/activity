@@ -1,0 +1,96 @@
+@charset "utf-8";
+/* ---------------全局参数配置Start---------------- */
+@bodyBgColor: #fff; // 主背景色调
+@bodyMinWidth: 1280px; // 页面最小宽度
+@disableBgColor: #eee; // 禁用颜色
+@bgColorLight: #f1f1f3; // 浅色背景
+@borderColor: #d8d8d8; // 通用边框颜色
+@borderHoverColor: #b2d4ff; //边框交互颜色
+@fontColor: #505050; // 通用字体颜色
+@fontHoverColor: #58a2ff; // 字体交互颜色
+@fontSize: 12px; // 通用字号
+@borderRadius: 3px; // 圆角度数
+@lessBackgroundUrl: '../img/index.png'; // 雪碧图配置
+@lessBackgroundUrl-s: '../../../img/common/index-s.png'; // 雪碧图配置
+@lessBackgroundUrl-m: '../../../img/common/index-m.png'; // 雪碧图配置
+@lessBackgroundUrl-l: '../../../img/common/index-l.png'; // 雪碧图配置
+@import 'lessLibrary';
+.t-pagination {
+    @pageFontColor: @fontColor;
+    @pageBorderRadius: @borderRadius;
+    @pageBorderColor: @borderColor;
+    @pageBorderHoverColor: @borderHoverColor;
+    @pageFontHoverColor: @fontHoverColor;
+    @pageBgHoverColor: #eee;
+    text-align: left;
+    color: @pageFontColor;
+//  float: right;
+    background: #fff;
+    a,
+    span {
+        display: inline-block;
+        box-sizing: border-box;
+        height: 34px;
+        line-height: 34px;
+        padding: 0 13px;
+        border: 1px solid @pageBorderColor;
+        border-right: 1px solid transparent;
+        vertical-align: middle;
+        &:last-child {
+            border-right: 1px solid @pageBorderColor;
+        }
+        &:hover {
+            background-color: @pageBgHoverColor;
+        }
+    }
+    span {
+        &.ellipsis:hover {
+            background: #fff;
+        }
+        &.current {
+            @currentBgColor: #58a2ff;
+            @currentBorderColor: #428bca;
+            @currentBgHoverColor: #79b5f4;
+            cursor: pointer;
+            color: #fff;
+            background-color: @currentBgColor;
+            border: 1px solid @currentBorderColor;
+            vertical-align: middle;
+            &:hover {
+                background-color: @currentBgHoverColor;
+            }
+        }
+        &.disabled {
+            color: #bfbfbf;
+            background: @disableBgColor;
+            vertical-align: middle;
+            border: 1px solid #ccc;
+            .cursor(not-allowed);
+        }
+    }
+    .dataCount {
+        text-align: center;
+        background: #f2f2f2;
+        cursor: default;
+        &:hover{
+            background: #f2f2f2;
+        }
+    }
+    .inputTargetCode {
+        width: 64px;
+        &:hover {
+            background-color: white;
+        }
+        input {
+            width: 100%;
+            color: @pageFontColor;
+            text-align: center;
+        }
+    }
+    .targetCode {
+        .p-icon {
+            .setting(10px,12px,inline-block);
+            .setBackground-s(-355px -515px);
+        }
+    }
+}

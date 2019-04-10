@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS [teacher] (
+	[id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[usertableid] INTEGER NULL,
+	[img] NVARCHAR(256)  NULL,
+	[technical] TEXT  NULL,
+	[specialty] TEXT  NULL,
+	[des] TEXT  NULL
+)

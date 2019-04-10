@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"  name="viewport" />
+	<title>志愿者注册</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 100%;position: absolute; height: 96%;top: 2%;overflow: auto;}
+		.box{width: 94%;height:270px;background: #fff;margin-bottom: 5px;padding: 6px 3%;font-size: 16px;}
+		.box .line{font-size: 16px;margin-bottom: 10px;}
+		.box .del{color:red;text-align: right}
+		.delbtn{width: 50px;}
+		.h100{height:30px;}
+		.h300{height:300px;}
+		.addbtn{width: 100%;height: 270px;background: url(/img/add.png) no-repeat center center;}
+		.inputtext{width: 100%;height: 30px;font-size: 16px;border: 0px;}
+		.textarea{width: 100%;font-size: 16px;height: 300px;border: 0px;}
+		.inputbtn{width: 90%;height: 35px;font-size: 16px; background: #f95307;border: 0px;color: #fff;}
+		.inputradio{height: 16px;width: 16px;}
+		.select{height: 30px;font-size: 16px;width: 300px;}
+	</style>
+</head>
+<body>		
+	<div id="bg">
+		<div class="box h100">            
+			<input class="inputtext" type="text" placeholder="登录名（必填）" id="user"/>
+		</div>
+		<div class="box h100">
+			<input class="inputtext" type="password" placeholder="登录密码（必填）" id="pwd">
+		</div>
+		<div class="box h100">
+			<input class="inputtext" type="password" placeholder="确认密码（必填）" id="pwd2">
+		</div>
+		<div class="box h100">
+			<input class="inputtext" placeholder="姓名（必填）" id="name">
+		</div>
+		<div class="box h100" style="line-height: 30px;">
+			<input type="radio" class="inputradio" name="sex" value="男" checked="checked"/>男&nbsp;&nbsp;&nbsp;<input type="radio" class="inputradio" name="sex" value="女"/>女
+		</div>
+		<div class="box h100">
+			<input class="inputtext" type="text" placeholder="手机号（必填）" id="tel"/>
+		</div>
+		<div class="box h100">
+			<input class="inputtext" type="text" placeholder="身份证（必填）" id="idcard"/>
+		</div>
+		<div class="box h100">
+			<select  id="political" class="select">
+				<option value="">请选择政治面貌</option>
+				<option value="群众">群众</option>
+				<option value="团员">团员</option>
+				<option value="预备党员">预备党员</option>
+				<option value="中共党员">中共党员</option>
+				<option value="民主党派">民主党派</option>
+			</select>
+		</div>
+		<div class="box h100">
+			<select  id="specialty" class="select">
+				<option value="">请选择特长</option>
+				<option value="理发">理发</option>
+				<option value="水电">水电</option>
+				<option value="木匠">木匠</option>
+				<option value="房屋建造">房屋建造</option>
+				<option value="家电维修">家电维修</option>
+				<option value="医疗护理">医疗护理</option>
+				<option value="法律咨询">法律咨询</option>
+				<option value="其他">其他</option>
+			</select>
+		</div>
+		<div class="box h100">
+			<select  id="place" class="select">
+				<option value="">请选择居住地</option>
+				<option value="太平街道">太平街道</option>
+				<option value="城东街道">城东街道</option>
+				<option value="城西街道">城西街道</option>
+				<option value="城北街道">城北街道</option>
+				<option value="横峰街道">横峰街道</option>
+				<option value="滨海镇">滨海镇</option>
+				<option value="城南镇">城南镇</option>
+				<option value="大溪镇">大溪镇</option>
+				<option value="箬横镇">箬横镇</option>
+				<option value="石桥头镇">石桥头镇</option>
+				<option value="石塘镇">石塘镇</option>
+				<option value="松门镇">松门镇</option>
+				<option value="温峤镇">温峤镇</option>
+				<option value="坞根镇">坞根镇</option>
+				<option value="新河镇">新河镇</option>
+				<option value="泽国镇">泽国镇</option>
+				<option value="其他地区">其他地区</option>
+			</select>
+		</div>
+		<div class="box h100" style="display:none">
+			<input class="inputtext" type="text" placeholder="地址" id="addr"/>
+		</div>
+		<div class="box h100" style="display:none">
+			<input class="inputtext" type="text" placeholder="qq" id="qq"/>
+		</div>
+		<div class="box h100" style="display:none">
+			<input class="inputtext" type="text" placeholder="微信" id="wx"/>
+		</div>
+		<div class="box h100" style="display:none">
+			<input class="inputtext" type="text" placeholder="邮箱" id="email"/>
+		</div>
+		<div class="box h100">
+			<select  id="teamname" class="select">
+				<option value="">请选择志愿队</option>
+				<option value="太平火速志愿队">太平火速志愿队</option>
+				<option value="东辉社区志愿队">东辉社区志愿队</option>
+				<option value="繁昌社区志愿队">繁昌社区志愿队</option>
+				<option value="方城社区（北门）志愿队">方城社区（北门）志愿队</option>
+				<option value="锦屏社区（下河）志愿队">锦屏社区（下河）志愿队</option>
+				<option value="锦园社区志愿队">锦园社区志愿队</option>
+				<option value="卖鱼桥社区志愿队">卖鱼桥社区志愿队</option>
+				<option value="南屏社区志愿队">南屏社区志愿队</option>
+				<option value="南泉社区（南门）志愿队">南泉社区（南门）志愿队</option>
+				<option value="尚书坊社区（西门）志愿队">尚书坊社区（西门）志愿队</option>
+				<option value="三星社区志愿队">三星社区志愿队</option>
+				<option value="太平社区志愿队">太平社区志愿队</option>
+				<option value="西园社区（西郊）志愿队">西园社区（西郊）志愿队</option>
+				<option value="迎辉社区（田洋）志愿队">迎辉社区（田洋）志愿队</option>
+				<option value="月河社区志愿队">月河社区志愿队</option>
+				<option value="岙底胡村志愿队">岙底胡村志愿队</option>
+				<option value="岙底杨村志愿队">岙底杨村志愿队</option>
+				<option value="北山村志愿队">北山村志愿队</option>
+				<option value="东门村志愿队">东门村志愿队</option>
+				<option value="后应村志愿队">后应村志愿队</option>
+				<option value="梅岭村志愿队">梅岭村志愿队</option>
+				<option value="屏下村志愿队">屏下村志愿队</option>
+				<option value="山下金村志愿队">山下金村志愿队</option>
+				<option value="三星桥村志愿队">三星桥村志愿队</option>
+				<option value="塔下村志愿队">塔下村志愿队</option>
+				<option value="小河头村志愿队">小河头村志愿队</option>
+				<option value="小南门村志愿队">小南门村志愿队</option>
+				<option value="肖泉村志愿队">肖泉村志愿队</option>
+				<option value="女童保护基金温岭团队">女童保护基金温岭团队</option>
+			</select>
+		</div>
+		<div class="box h100" style="text-align: center;background: #f7f7f7;">
+			<input class="inputbtn" type="button" value="注册" onclick="registered()"/>
+		</div>
+	</div>	
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script>
+		function registered(){
+			if($("#user").val()==""||$("#pwd").val()==""||$("#pwd2").val()==""||$("#name").val()==""||$("#tel").val()==""||$("#idcard").val()==""){
+				alert("必镇项不可为空");
+				return false;
+			}
+			if($("#user").val().length<2){
+				alert("登录名必须大于2位");
+				return false;
+			}
+			if($("#pwd").val().length<6){
+				alert("密码必须大于6位");
+				return false;
+			}
+			if($("#pwd").val()!=$("#pwd2").val()){
+				alert("两次密码必须一致");
+				return false;
+			}
+			if($("#teamname").val()==""){
+				alert("请选择志愿队");
+				return false;
+			}
+			$.ajax({
+				type : "post",  
+				url : "/user/add",
+				data:{            
+					"user":$("#user").val(),
+					"pwd":$("#pwd").val(),
+					"name":$("#name").val(),
+					"sex":$("input[name='sex']:checked").val(),
+					"tel":$("#tel").val(),
+					"idcard":$("#idcard").val(),
+					"political":$("#political").val(),
+					"specialty":$("#specialty").val(),
+					"place":$("#place").val(),
+					"addr":$("#addr").val(),
+					"qq":$("#qq").val(),
+					"wx":$("#wx").val(),
+					"email":$("#email").val(),
+					"teamname":$("#teamname").val()
+				},
+				sync : false,
+				success : function(data){
+				    eval("var dataJson="+data);
+				    alert(dataJson.msg);
+				    window.location.href="/frame/tologin";
+				}  
+			});
+		}
+	</script>
+</body>
+</html>

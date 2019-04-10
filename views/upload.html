@@ -1,0 +1,65 @@
+<!-- <form method="post" action="/frame/uploadimg" enctype="multipart/form-data"> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Eledito Demo</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- 引入jQuery -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/webuploader.min.js"></script>
+	    <!-- 插件核心 -->
+    <script src="/js/Eleditor.min.js"></script>
+	<script src="/js/layer.js"></script>
+	<style>
+		*{margin: 0;padding: 0;}
+		body { -webkit-touch-callout: none;background-color: #fff;line-height: inherit;padding-top: 30px;}
+		#contentEditor{width: 100%;min-height: 300px;box-sizing: border-box;padding: 10px;color: #444;}
+		#contentEditor p{letter-spacing: 0.25px;font: 16px/25px Tahoma, Verdana, 宋体;margin: 20px 0px;}
+		#contentEditor h4 {font-weight: bold;line-height: 1.333em;margin: 10px 0 20px;padding: 25px 0 0;}
+		#contentEditor img{width: 100%;height: auto;box-sizing: border-box;}
+		.dempTip{border-left: 2px solid #00BCD4;padding-left: 5px;margin: 10px;font-size: 16px;}
+		.viewTit{color: #FF5722;position: fixed;top: 0;left: 0;height: 30px;line-height: 30px;font-size: 14px;text-align: center;display: block;width: 100%;background: #FFEB3B;box-shadow: 0 0 5px;}
+	</style>
+</head>
+<body>
+<script>
+	var ua = navigator.userAgent.toLowerCase();	;
+	if( ua.indexOf('android') >= 0 || ua.indexOf('iphone') >= 0 || ua.indexOf('ipad') >= 0 || $(window).width() <= 500 ){
+		$('.viewTit').hide();
+		$('body').css('padding-top', 0);
+	}
+</script>
+<div id="contentEditor">
+   <h1 style="text-align: center;">点击开始编辑文章</h1>
+</div>
+
+<script>
+var contentEditor = new Eleditor({
+						el: '#contentEditor',
+						upload:{
+							server: '/frame/uploadimg',
+							compress: false,
+							fileSizeLimit: 2
+						},
+						/*自定义按钮的例子*/
+						toolbars: [
+							'insertText',
+							'editText',
+							'insertImage',
+							'insertLink',
+							'insertHr',
+			                'cancel'
+						]
+					});
+</script>
+<style>
+	/*临时代码*/
+	.Eleditor-controller ul li div[id^='rt_rt_'] {
+	    top: 0!important;
+	}
+</style>
+</body>
+</html>

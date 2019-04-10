@@ -1,0 +1,39 @@
+
+		<div class="footitem" id="ft1" onclick="footclick(this,1)" {{if isEqual .status 1}}style="background:#FFF;color:#000;"{{end}}><img id="ftapply" src="/img/apply{{if isEqual .status 1}}0{{else}}1{{end}}.png"/><div>活动</div></div>
+		<div class="footitem" id="ft2" onclick="footclick(this,2)" {{if isEqual .status 2}}style="background:#FFF;color:#000;"{{end}}><img id="ftactivity" src="/img/activity{{if isEqual .status 2}}0{{else}}1{{end}}.png"/><div>动态</div></div>
+		<div class="footitem" id="ft3" onclick="footclick(this,3)" {{if isEqual .status 3}}style="background:#FFF;color:#000;"{{end}}><img id="ftstudy" src="/img/study{{if isEqual .status 3}}0{{else}}1{{end}}.png"/><div>课堂</div></div>
+		<div class="footitem" id="ft4" onclick="footclick(this,4)" {{if isEqual .status 4}}style="background:#FFF;color:#000;"{{end}}><img id="ftself" src="/img/self{{if isEqual .status 4}}0{{else}}1{{end}}.png"/><div>个人</div></div>
+	<script>
+		function footclick(obj,index){
+			$(".footitem").attr("style","");
+			$(obj).attr("style","background:#fff;color:#000;");
+			if(index==1){
+				$("#ftapply").attr("src","/img/apply0.png");
+				$("#ftactivity").attr("src","/img/activity1.png");
+				$("#ftstudy").attr("src","/img/study1.png");
+				$("#ftself").attr("src","/img/self1.png");
+				window.location.href="/frame/list?aaa="+Date.parse(new Date());
+			}
+			if(index==2){
+				$("#ftapply").attr("src","/img/apply1.png");
+				$("#ftactivity").attr("src","/img/activity0.png");
+				$("#ftstudy").attr("src","/img/study1.png");
+				$("#ftself").attr("src","/img/self1.png");
+				window.location.href="/dynamic/list?aaa="+Date.parse(new Date());
+			}
+			if(index==3){
+				$("#ftapply").attr("src","/img/apply1.png");
+				$("#ftactivity").attr("src","/img/activity1.png");
+				$("#ftstudy").attr("src","/img/study0.png");
+				$("#ftself").attr("src","/img/self1.png");
+				window.location.href="/course/list?aaa="+Date.parse(new Date());
+			}
+			if(index==4){
+				$("#ftapply").attr("src","/img/apply1.png");
+				$("#ftactivity").attr("src","/img/activity1.png");
+				$("#ftstudy").attr("src","/img/study1.png");
+				$("#ftself").attr("src","/img/self0.png");
+				window.location.href="/user/home?aaa="+Date.parse(new Date());
+			}
+		}
+	</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"  name="viewport" />
+	<title>志愿者活动参与排名</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		.bg{width: 96%;position: absolute;bottom: 10%;top: 50px;left: 2%;overflow-y: auto;overflow-x: hidden;}
+		.box{width: 94%;height:25px;background: #fff;padding: 10px}
+		.box .line{font-size: 12px;margin-bottom: 10px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;line-height:25px;}
+		.box .del{color:red;text-align: right}
+		.delbtn{width: 50px;}
+		.addbtn{width: 100%;height: 270px;background: url(/img/add.png) no-repeat center center;}
+
+		.morebox{height:120px;width: 94%;margin-bottom: 20px;background: #fff;padding: 0px 30px;}
+		.more{width: 100%;height: 30px;text-align: center;line-height: 30px;font-size: 12px;}
+
+		#foot{height:8%;width: 100%;position: absolute;bottom: 0px;background-color: #3a7fca;}
+		.footitem{width:25%;border:0;padding:0px;margin:0px;float:left;height: 100%;text-align: center;font-size:12px;color:#fff;}
+		.footitem img{height:50%;margin-top:4%;}
+		.t{float: left;height: 40px;line-height: 40px;width: 50%;text-align: center;background: #fff;}
+	</style>
+</head>
+<body>
+	<div style="height: 50px;font-size: 20px;text-align: center;line-height: 50px;">志愿者活动参加明细</div>
+	<div class="bg" id="box1">
+			{{range $k,$n:=.tjinfo}}
+				<div class="box" >
+						<div class="line" style="position: relative;"><div style="position: absolute;margin-right: 100px;width: 80%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">{{add $k 1}}、{{.theme}}</div><div style="float:right;text-align:right;width:100px;">{{.t}}</div></div>
+				</div>
+			{{end}}
+	</div>
+	<div id="foot">
+		<div class="footitem" id="ft1" onclick="footclick(this,1)" ><img id="ftapply" src="/img/apply1.png"/><div>活动</div></div>
+		<div class="footitem" id="ft2" onclick="footclick(this,2)" ><img id="ftactivity" src="/img/activity1.png"/><div>动态</div></div>
+		<div class="footitem" id="ft3" onclick="footclick(this,3)" ><img id="ftstudy" src="/img/study1.png"/><div>课堂</div></div>
+		<div class="footitem" id="ft4" onclick="footclick(this,4)" ><img id="ftself" src="/img/self1.png"/><div>个人</div></div>
+	</div>
+
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+		$("#foot").load("/frame/foot?status=4");
+	</script>
+</body>
+</html>

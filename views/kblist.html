@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的卡包</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 96%;position: absolute; height: 88%;top: 2%;left: 2%;overflow-y: auto;overflow-x: hidden;}
+		.box{width: 94%;height: 600px;margin-bottom: 20px;padding: 20px 30px;background: url(/img/kbbg.png) no-repeat;background-size: 100%;color:#f0e3d0;}
+		.box .line{font-size: 36px;margin-bottom: 10px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+
+
+		#foot{height:8%;width: 100%;position: absolute;bottom: 0px;background-color: #3a7fca;}
+		.footitem{width:25%;border:0;padding:0px;margin:0px;float:left;height: 100%;text-align: center;font-size:36px;color:#fff;}
+		.footitem img{height:50%;margin-top:4%;}
+	</style>
+</head>
+<body style="height:100%;width:100%;background:url(/img/kbbj.png);">		
+	<div id="bg">
+		{{range .data}}
+		<div class="box">
+			<div style="width:100%;height:300px;white-space: nowrap;">
+				<div style="margin-top: 10px;float:left;background:url({{.img}}) no-repeat center center;background-size:70% 70%;width:300px;height:300px;"><img src="/img/kbimgbg.png" style="width:300px;height:300px;"/></div>
+				<div style="float:left;height: 250px;margin-left: 30px;width: 500px;margin-top: 50px;">
+					<ul style="height:300px;">
+						<li class="line">{{.title}}</li>
+						<li class="line">{{.place}}</li>
+						<li class="line">{{if isEqual .used 0}}未使用{{else}}已使用{{end}}</li>
+					</ul>
+				</div>
+			</div>
+			<div style="text-align: right;margin-right: 50px;">
+				<img style="width:250px;height:250px;" src="/imgfile/{{.code}}.png" onclick="show('/imgfile/{{.code}}.png')"/>
+				<div style="font-size:36px;">(非商家请勿扫码)</div>
+			</div>
+			
+		</div>
+		{{end}}
+	</div>
+	<div id="foot">
+		<div class="footitem" id="ft1" onclick="footclick(this,1)"><img id="ftapply" src="/img/apply1.png"/><div>活动</div></div>
+		<div class="footitem" id="ft2" onclick="footclick(this,2)" ><img id="ftactivity" src="/img/activity1.png"/><div>动态</div></div>
+		<div class="footitem" id="ft3" onclick="footclick(this,3)" ><img id="ftstudy" src="/img/study1.png"/><div>课堂</div></div>
+		<div class="footitem" id="ft4" onclick="footclick(this,4)" style="background:#fff;color:#000;" ><img id="ftself" src="/img/self0.png"/><div>个人</div></div>
+	</div>
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script>
+		$("#foot").load("/frame/foot?status=4");
+		function show(val){
+			window.location.href=val;
+		}
+	</script>
+</body>
+</html>

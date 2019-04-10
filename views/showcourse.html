@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>公益课堂明细</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 100%;position: absolute; height: 96%;top: 2%;overflow: auto;}
+		.box{width: 94%;background: #fff;margin-bottom: 20px;padding: 20px 30px;font-size: 36px;}
+		.box .line{font-size: 36px;margin-bottom: 10px;}
+		.box .del{color:red;text-align: right}
+		.delbtn{width: 50px;}
+		.h100{height:100px;}
+		.h300{height:300px;}
+		.addbtn{width: 100%;height: 270px;background: url(/img/add.png) no-repeat center center;}
+		.inputtext{width: 100%;height: 100px;font-size: 36px;border: 0px;}
+		.textarea{width: 100%;font-size: 36px;height: 300px;border: 0px;}
+		.inputbtn{width: 90%;height: 100px;font-size: 36px; background: #f95307;border: 0px;color: #fff;}
+		.txtshow{font-size: 36px;}
+
+	</style>
+</head>
+<body>		
+	<div id="bg">
+		<div class="box txtshow">【课程名】 {{.data.theme}}</div>
+		<div class="box txtshow">【讲师名】 {{.data.name}}</div>
+		<div class="box txtshow">【职称】 {{.data.technical}}</div>
+		<div class="box txtshow">【课程内容】 {{.data.content}}</div>
+		<div class="box txtshow">【上课时间】 {{.data.time}}</div>
+		<div class="box txtshow">【上课地点】 {{.data.place}}</div>
+		<div class="box txtshow">【所需积分】 {{.data.integralnum}}</div>
+		<div class="box txtshow">【可报名人数】 {{.data.usernum}}</div>
+		<div class="box">
+			【报名人员】<br>{{$permissions:=.permissions}}
+			{{range .userlist}}
+				<div>&nbsp;&nbsp;{{.xhid}}、{{.name}}{{if IsPermissions1 $permissions}}&nbsp;<a href="tel:{{.tel}}">{{.tel}}</a>{{end}}</div>
+			{{end}}
+		</div>
+		<div class="box h100">
+			<input class="inputtext" type="text" placeholder="报名人姓名" id="addname"/>
+		</div>
+		<div class="box h100">
+			<input class="inputtext" type="text" placeholder="报名人手机号" id="addtel"/>
+		</div>
+		<div class="box h100" style="text-align: center;">
+			<input class="inputbtn" type="button" value="我要报名" onclick="sub()"/>
+		</div>
+	</div>	
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script>
+		function sub(){
+			if($("#addname").val()==""){
+				alert("姓名不可为空");
+				return false;
+			}
+			if(!confirm("报名会扣除相应积分，确认报名吗")){
+				return false;
+			}
+			$.ajax({
+				type : "post",  
+				url : "/course/adduser",
+				data:{
+					"courseid":{{.data.id}},
+					"name":$("#addname").val(),
+					"tel":$("#addtel").val()
+				},
+				sync : false,
+				success : function(data){
+					if(data.indexOf("window.top.location.href='/frame/tologin';")>0){
+						window.top.location.href='/frame/tologin';
+						return;
+					}
+				    eval("var dataJson="+data);
+				    alert(dataJson.msg);
+				    window.location.href="/course/show?id={{.data.id}}";
+				}  
+			});
+		}
+	</script>
+</body>
+</html>

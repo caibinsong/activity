@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"  name="viewport" />
+	<title>志愿队登录</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 100%;height: 100%;position: absolute;left: 0;top: 0;background: linear-gradient(to top left,#3577cd 0%, #51a5c1 50%, #69cab7 100%);}
+		#welcome{font-size: 40px;color: #fff;width: 100%;text-align: center;}
+		#userbox{position: absolute;top: 25%;width:100%;text-align: center;}
+		.input{height: 40px;width: 60%;border-radius: 50px;background-color: transparent;padding-left: 5%;font-size: 16px;color:#fff; border: 1px solid #fff;}
+    input::-webkit-input-placeholder {color: #fff;font-size: 16px;line-height:36px;}
+	</style>
+</head>
+<body>		
+	<div id="bg">
+		<div id="userbox">
+			<div id="welcome">重置密码</div>
+			<input type="text" id="user" class="input" placeholder="登录名" style="margin-top: 10%;"/><br>
+			<input type="text" id="idcard" class="input" placeholder="身份证" style="margin-top: 5%;"/>
+			<input type="button" id="btn" class="input" onclick="onresetpass()" value="重置密码 (新密码：123456)" style="margin-top: 5%;padding:0px;background-color:#51b2f9;width: 65%;height: 45px;border: 1px solid #51b2f9;"/>
+	</div>	
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+
+		function onresetpass(){
+			if($("#user").val()==""){
+			alert("用户名不可为空");
+			return false;
+		}
+		if($("#idcard").val()==""){
+			alert("身份证不可为空");
+			return false;
+		}
+			$.ajax({
+				type : "post",  
+				url : "/user/reset",
+				data:{            
+					"user":$("#user").val(),
+					"idcard":$("#idcard").val()
+				},
+				sync : false,
+				success : function(data){
+				    eval("var dataJson="+data);
+				    alert(dataJson.msg);
+				    window.location.href="/frame/toresetpass";
+				}  
+			});
+		}
+	</script>
+</body>
+</html>

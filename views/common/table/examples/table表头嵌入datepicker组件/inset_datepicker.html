@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>table表头嵌入datepicker组件</title>
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/template.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/datepicker.css" />
+		<script src="../../../../js/common/jquery-1.9.1.min.js"></script>
+		<script src="../../js/datepicker.js"></script>
+		<script src="../../js/resize.js"></script>
+		<script src="../../js/tree.js"></script>
+		<script src="../../js/table.js"></script>
+	</head>
+
+	<body>
+		<div id="inset_datepicker"></div>
+	</body>
+	<script>
+		var insetDatepickerOpt = {
+			header: [{
+				key: {
+					text: '选个好日子来泡妹子吧，还在等什么，buddy?!!',
+					name: 'brother',
+					width: '300px'
+				},
+				value: [{
+					marginLeft: '0px',
+					text: '+1',
+					type: 'input',
+					width: '150px',
+					require: true,
+					datepicker:{			//datepicker组件的配置项
+						defaultShowDate:0,		//由于是input调用datepicker组件，表示不启用默认展示框
+						initValue:'2017/05/20'	//datepicker的初始值
+					}
+				}]
+			}],
+			body: {
+				url: 'data/a.json',
+				mtype: 'get',
+				colModel: [{
+					name: 'id',
+					width: 55,
+					text: '序号'
+				}, {
+					name: 'devtype',
+					sort: true,
+					align: 'left',
+					text: '设备类型'
+				}, {
+					name: 'ip',
+					sort: true,
+					text: 'IP地址'
+				}, {
+					name: 'mac',
+					sort: true,
+					text: 'MAC地址'
+				}, {
+					name: 'online',
+					sort: true,
+					text: '在线状态'
+				}, {
+					name: 'block',
+					sort: true,
+					text: '阻断状态',
+				}],
+				pageSize: 10,
+				orderType: 'ASC',
+				orderBy: 'id',
+				rowList: [10, 20, 30],
+				sortable: true,
+				resizeable: false,
+				tools: [{
+					text: '可自定义导出功能',
+					toolIcon: 't-btn-add-table',
+					title: '可导出哟',
+					toolEvent: {
+						type: 'click',
+						cb: function(e) {
+							alert('已导出文档 xoxoxo')
+						}
+					}
+				}],
+				cruds: [{
+					text: 'cruds里存放对表格内容的基础操作',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '表格的基础操作step1',
+						crudEvent: {
+							type: 'click',
+							cb: function() {
+								alert('默认操作step1');
+							}
+						}
+					}]
+				}, {
+					text: '基础 基础  基础 操作(对表格内容的)',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '真的很基础',
+						crudEvent: {
+							type: 'click',
+							cb: function(e) {
+								alert('真的挺基础的！');
+							}
+						}
+					}]
+				}]
+			}
+		};
+		$('#inset_datepicker').table(insetDatepickerOpt);
+	</script>
+
+</html>

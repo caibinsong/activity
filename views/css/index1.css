@@ -1,0 +1,222 @@
+html {
+  background: transparent url(/img/bg.jpg) center top;
+  min-width: 1280px;
+}
+html .span {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 100%;
+}
+html body {
+  height: 100%;
+}
+#login {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
+#login img {
+  width: 100%;
+}
+#login .part-animate {
+  width: 45%;
+  margin-left: 11%;
+  float: left;
+  display: inline-block;
+  vertical-align: middle;
+}
+#login .login-wrap {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  width: 43%;
+  float: right;
+}
+#login .login-wrap .part-login {
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+#login .login-wrap .part-login dl {
+  width: 430px;
+}
+#login .login-wrap .part-login dl dt {
+  padding-left: 53px;
+  color: #fff;
+  position: relative;
+  margin-bottom: 20px;
+  font: 22px/44px "microsoft yahei";
+}
+#login .login-wrap .part-login dl dt:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 53px;
+  height: 100%;
+  background: url(/img/index-l.png) -76px -1880px;
+}
+#login .login-wrap .part-login dl dd {
+  height: 40px;
+  line-height: 40px;
+  margin-top: 13px;
+  border-radius: 3px;
+  background-image: #071830;
+}
+#login .login-wrap .part-login dl dd.d-psw {
+  position: relative;
+}
+#login .login-wrap .part-login dl dd.d-psw:after {
+  cursor: pointer;
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 6px;
+  width: 25px;
+  height: 25px;
+  background: url(/img/index-s.png) -188px -1467px;
+}
+#login .login-wrap .part-login dl dd.d-psw.active:after {
+  background-position: -268px -1467px;
+}
+#login .login-wrap .part-login dl dd.d-msg .err-msg {
+  float: left;
+  padding: 0 1rem;
+  background-color: #f05d51;
+  color: #fff;
+  font-size: 12px;
+  line-height: 30px;
+  border-radius: 3px;
+}
+#login .login-wrap .part-login dl dd.d-msg .forget-psw {
+  font-size: 12px;
+  color: #a4d9ff;
+  float: right;
+}
+#login .login-wrap .part-login dl dd.d-reg input {
+  width: 60%;
+}
+#login .login-wrap .part-login dl dd.d-reg .reg-img {
+  float: right;
+  width: 35%;
+  height: 100%;
+  cursor: pointer;
+}
+#login .login-wrap .part-login dl dd.login-in {
+  text-align: center;
+}
+#login .login-wrap .part-login dl dd.login-in a {
+  color: #fff;
+  overflow: hidden;
+  border-radius: 3px;
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  background: #328eff;
+}
+#login .login-wrap .part-login dl dd.login-in a:hover {
+  opacity: .8;
+}
+#login .login-wrap .part-login dl dd.login-in a:after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: url(/img/index-m.png) -936px -236px;
+  left: 0;
+  top: 50%;
+  left: 50%;
+  margin-top: -14px;
+  margin-left: -41px;
+}
+#login .login-wrap .part-login dl dd input {
+  border-radius: 3px;
+  border: 1px solid #2d5995;
+  padding: 0 40px 0 1rem;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(50, 142, 255, 0.2);
+  box-sizing: border-box;
+  color: #a4d9ff;
+}
+#login .login-wrap .part-login dl dd input::-webkit-input-placeholder,
+#login .login-wrap .part-login dl dd textarea::-webkit-input-placeholder {
+  color: #a4d9ff;
+}
+#login .login-wrap .part-login dl dd input:-moz-placeholder,
+#login .login-wrap .part-login dl dd textarea:-moz-placeholder {
+  color: #a4d9ff;
+}
+#login .login-wrap .part-login dl dd input::-moz-placeholder,
+#login .login-wrap .part-login dl dd textarea::-moz-placeholder {
+  color: #a4d9ff;
+}
+#login .login-wrap .part-login dl dd input:-ms-input-placeholder,
+#login .login-wrap .part-login dl dd textarea:-ms-input-placeholder {
+  color: #a4d9ff;
+}
+#login .login-wrap .part-login .login-type {
+  position: fixed;
+  right: -73px;
+  top: 50%;
+  margin-top: -45px;
+}
+#login .login-wrap .part-login .login-type ul {
+  width: 110px;
+}
+#login .login-wrap .part-login .login-type ul li {
+  margin-bottom: 10px;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 40px;
+  font: 12px/40px "microsoft yahei";
+  position: relative;
+  background: #0056ff;
+  border-radius: 3px;
+  color: #328eff;
+  cursor: pointer;
+}
+#login .login-wrap .part-login .login-type ul li:hover {
+  transform: translateX(-70px);
+  transition: all 0.5s;
+}
+#login .login-wrap .part-login .login-type ul li:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  background: url(/img/index-s.png);
+}
+#login .login-wrap .part-login .login-type ul li.active {
+  color: #fff;
+}
+#login .login-wrap .part-login .login-type ul li.kl-login:after {
+  background-position: -1151px -1390px;
+}
+#login .login-wrap .part-login .login-type ul li.kl-login.active:after {
+  background-position: -1071px -1390px;
+}
+#login .login-wrap .part-login .login-type ul li.sz-login:after {
+  background-position: -110px -1470px;
+}
+#login .login-wrap .part-login .login-type ul li.sz-login.active:after {
+  background-position: -31px -1470px;
+}
+#login .copyright {
+  position: absolute;
+  text-align: center;
+  bottom: 1%;
+  width: 100%;
+  line-height: 40px;
+  font-size: 12px;
+  color: rgba(50, 142, 255, 0.65);
+}

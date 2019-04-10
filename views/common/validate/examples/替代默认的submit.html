@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>多表单相同错误验证信息的情况</title>
+		<style type="text/css">
+			#multiForm {
+				width: 670px;
+			}
+			
+			#multiForm label.error {
+				margin-left: 10px;
+				width: auto;
+				display: inline;
+			}
+			
+			#newsletter_topics label.error {
+				display: none;
+				margin-left: 103px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form class="cmxform" id="customAndResetForm" method="get" action="">
+			<fieldset>
+				<legend>Validating a complete form</legend>
+				<p>
+					<label for="firstname">Firstname</label>
+					<input id="firstname" name="firstname" type="text">
+				</p>
+				<p>
+					<label for="lastname">Lastname</label>
+					<input id="lastname" name="lastname" type="text">
+				</p>
+				<p>
+					<label for="username">Username</label>
+					<input id="username" name="username" type="text">
+				</p>
+				<p>
+					<label for="password">Password</label>
+					<input id="password" name="password" type="password">
+				</p>
+				<p>
+					<label for="confirm_password">Confirm password</label>
+					<input id="confirm_password" name="confirm_password" type="password">
+				</p>
+				<p>
+					<label for="email">Email</label>
+					<input id="email" name="email" type="email">
+				</p>
+				<p>
+					<input class="submit" type="submit" value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;
+					<input id="reset" type="button" value="Reset">
+				</p>
+			</fieldset>
+		</form>
+		<!--<form class="cmxform" id="moreform" method="get" action="">
+			<fieldset>
+				<legend>Validating a complete moreform</legend>
+				<p>
+					<label for="morefirstname">moreFirstname</label>
+					<input id="morefirstname" name="morefirstname" type="text">
+				</p>
+				<p>
+					<input class="moresubmit" type="submit" value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;
+				</p>
+			</fieldset>
+		</form>-->
+	</body>
+	<script src="../js/jquery-1.9.1.js"></script>
+	<script src="../js/validate.js"></script>
+	<script type="text/javascript">
+		//替代默认的submit,示例如下
+		//同页面单个表单
+//		var validator = $('#customAndResetForm').validate({
+//			submitHandler: function(form) {
+//				alert("common page one form submitted!");
+//				form.submit();
+//			}
+//		});
+		var v = jQuery("#customAndResetForm").validate({
+			submitHandler: function(form) {
+				alert('ada');
+			}
+		});
+		//同页面多个表单
+		//		$.validator.setDefaults({
+		//			submitHandler: function(form) {
+		//				alert("common page more forms submitted!");
+		//				form.submit();
+		//			}
+		//		});
+		//		var validator = $('#customAndResetForm').validate();
+
+		//重置表单
+		jQuery("#reset").click(function() {
+			v.resetForm();
+		});
+	</script>
+
+</html>

@@ -1,0 +1,72 @@
+/*业务层自定义样式模板*/
+
+/*默认展示框样式自定义*/
+.t-datepicker-showDate{
+	/*自定义样式*/
+	border-color:red;
+}
+/*交互部分*/
+/*注意:hover和focus的样式必须统一*/
+.t-datepicker-showDate:hover{
+	/*自定义样式*/
+	border-color:green;
+}
+.t-datepicker-showDate.focus{
+	/*自定义样式*/
+	border-color:green;
+}
+/**
+ *补充：若要修改对应调用元素的默认展示框  这里假设.wr调用datepicker组件
+ * .wr .t-datepicker-showDate [其他同理按照上面方式即可] 
+ */
+
+/*日历弹出框样式*/
+.t-datepicker-box{
+	/*自定义样式*/
+	border-color:red;
+}
+/*头部部分样式自定义*/
+.t-datepicker-box>.header{
+	/*自定义样式*/
+	background-color:pink;
+}
+/*头部选择年，月样式*/
+.t-datepicker-box .header>span{
+	/*自定义样式*/
+	border-color:red;
+	color:green;
+}
+.t-datepicker-box .header>span.focus{
+	/*自定义样式*/
+	border-color:pink;
+	color:yellowgreen;
+}
+.t-datepicker-box .header>span:hover{
+	/*自定义样式*/
+	border-color:pink;
+	color:yellowgreen;
+}
+/*日期表格样式修改*/
+/*修改周末样式*/
+.t-datepicker-box>.t-datepicker-table .week{
+	color:red;
+}
+/*修改非当月日期样式*/
+.t-datepicker-box>.t-datepicker-table .invalid{
+	color:#999;
+}
+/*修改当月日期样式*/
+.t-datepicker-box>.t-datepicker-table td span{
+	color:blue;
+}
+.t-datepicker-box>.t-datepicker-table td span:hover{
+	color:pink;
+	background-color: green;
+}
+/*修改今日日期样式*/
+/*注意：此样式应该与当月日期样式相同*/
+.t-datepicker-box>.t-datepicker-table td.selected span{
+	color:pink;
+	background-color: green;
+}
+

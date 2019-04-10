@@ -1,0 +1,197 @@
+	<link rel="stylesheet" href="/css/template.css" />
+
+	<div id="fullConfig"></div>
+	<div class="bar"></div>
+	<script>
+		var fullConfig = {
+			headerQuery: { //查询头样式 
+				text: '检索', //表头查询按钮文本内容,默认查询
+				btnIcon: true //表头查询按钮是否需要图标，默认为true
+			},
+			header: [{
+					key: {
+						column: 2,
+						text: '兑换人',
+						name: 'name',
+					},
+					value: [{
+						width: '100px',
+						text: '',
+						type: 'input',
+						initValue: ''
+					}, ]
+				}, {
+					key: {
+						column: 2,
+						text: '类型',
+						name: 'type',
+					},
+					value: [{
+						width: '100px',
+						text: '',
+						type: 'input',
+						initValue: ''
+					}, ]
+				}, {
+					key: {
+						text: '赞助商',
+						name: 'sponsors',
+					},
+					value: [{
+						width: '100px',
+						text: '',
+						type: 'input',
+						initValue: ''
+					},]
+				}, {
+					key: {
+						text: '名称',
+						name: 'title',
+					},
+					value: [{
+						width: '100px',
+						text: '',
+						type: 'input',
+						initValue: ''
+					},]
+				},  {
+					key: {
+						text: '使用状态',
+						name: 'used',
+					},
+					value: [{
+						text: '请选择',
+						type: 'select',
+						initValue: '',
+						options: [{
+								value: '1',
+								text: '已使用'
+							},{
+								value: '0',
+								text: '未使用'
+							}
+						]
+					}]
+				},{
+					key: {
+						text: '兑换时间',
+						name: 'time',
+					},
+					value: [{
+						text: '请选择',
+						type: 'select',
+						initValue: '',
+						options: [{
+								value: '',
+								text: '全部'
+							},{{range $one:=.t}} {
+								value: '{{$one}}',
+								text: '{{$one}}'
+							},{{end}}
+						]
+					}]
+				},{
+					key: {
+						text: '使用时间',
+						name: 'usedtime',
+					},
+					value: [{
+						text: '请选择',
+						type: 'select',
+						initValue: '',
+						options: [{
+								value: '',
+								text: '全部'
+							},{{range $one:=.t}} {
+								value: '{{$one}}',
+								text: '{{$one}}'
+							},{{end}}
+						]
+					}]
+				}
+			],
+			body: {
+				url: '/product/recordlist', //获取数据的主url
+				mtype: 'get', //对应主url的ajax请求类型
+				update: { //开启editable后方可使用
+					url: '/product/recordlist', //用于更新的url
+					utype: 'get' //对应更新url的ajax请求类型
+				},//name sex tel idcard political specialty place qq wx email 
+				colModel: [{ //表格展示内容，成员为对象形式，参数:name,width,align,text,sort
+					name: 'xhid',
+					width: 20,
+					text: '序号'
+				},{
+					name: 'type',
+					width: 45,
+					align: 'left',
+					text: '类型'
+				},{
+					name: 'name',
+					width: 45,
+					align: 'left',
+					text: '兑换人'
+				},{
+					name: 'time',
+					width: 45,
+					align: 'center',
+					text: '兑换时间'
+				},{
+					name: 'usedtime',
+					width: 45,
+					align: 'center',
+					text: '使用时间'
+				}, {
+					name: 'title',
+					width: 50,
+					align: 'left',
+					text: '名称'
+				}, {
+					name: 'sponsors',
+					width: 45,
+					align: 'left',
+					text: '赞助商'
+				}, {
+					name: 'place',
+					width: 45,
+					align: 'left',
+					text: '地点'
+				}, {
+					name: 'integral',
+					width: 25,
+					align: 'center',
+					text: '积分'
+				}],
+				//新版本的接口
+				pageSize: 10, //初始时请求的每页条数
+				orderType: 'ASC', //初始时排序类型
+				orderBy: 'id', //初始时排序字段
+				rowList: [10, 20, 30], //可选的每页条数，对应页脚的左侧多选框内容
+				sortable: false, //是否排序，必须开启之后colModel中sort才会起作用
+				unScrollBar:true,	//表格内容主体部分是否需要滚动条，默认为false[需要]，
+				pageable: true, //是否需要分页功能	
+				resizeable: true, //是否可以列移动
+				checkable: false, //是否出现多选框
+				tools: [],
+				//冷门的配置项
+				noBorder: false, //去除表格内的边框		可选值row/column,表示去除行/列的边框
+				editable: false, //是否开启表格默认的编辑功能=>开启后update参数才有效
+				isWrapRow: false, //是否开启换行背景的样式
+				filterByColumn: false, //是否开启默认筛选列的功能
+
+				//5.25 添加配置项
+				//用于处理后台错误信息的自定义函数
+				errorCallback: function(errorRes) { //errorRes表示返回来的错误信息，格式应为对象，且
+					/*代码区*/ //{status:'error'}    一定要带有status:'error'的标识
+					//函数返回值为true 表示存在错误，不渲染表格内容
+					return true; //若返回值为false表示不存在错误，仍渲染表格内容
+				},
+				// 7.10 添加是否开启选择数目区域的选项
+				success: function(res) { //7.20 添加请求成功之后的回调函数
+					//				    console.log('success:', res);
+				}
+			}
+		}
+		$('#fullConfig').table(fullConfig);
+
+	</script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+		<script src="../version/js/jquery-2.1.0.js"></script>
+		<script src="js/select.js"></script>
+		<style type="text/css">
+			#btn {
+				width: 200px;
+				line-height: 50px;
+				background-color: red;
+				color: white;
+				text-align: center;
+				font-size: 20px;
+			}
+		</style>
+	</head>
+	<style>
+		body {
+			text-align: left;
+		}
+		.form-psw{
+			width:100px;
+			height: 28px;
+			border:1px solid red ;
+		}
+	</style>
+
+	<body>
+		<form action="" id="form" style="margin: 50px;">
+			<div class="d1" style="margin: 100px auto;"></div>
+			<input type="text" name="password" class="form-psw"/>
+			<a id="btn">submit11</a>
+		</form>
+	</body>
+	<script>
+		var opt = {
+			width: '160px',
+			require: false,
+			text: '请选择',
+//			initValue: '2', //4.11 提供初始默认值
+			name:'uname',				//4.22 对应表单控件的name属性，用于提交给后台作为参数的键名
+			content: {
+				// 必须有返回值
+				type: 'select',
+				//4.21 调整data中option的接口参数，并且还要保证兼容
+				multiable:true,			// 6.7  是否需要开启复选模式，默认false[不开启]
+				data: [{
+						value: 0,
+						text:'option0'
+					},
+					{
+						value: 1,
+						text:'option1'
+					},
+					{
+						value: 2,
+						text:'option2'
+					}
+				],
+//				template: '<h1>this is template of custom !</h1>',
+				callBack: function(ins) { //4.21   专用于select选定的回调函数
+					console.log(ins);
+				}
+			}	
+		}
+		$('.d1').select(opt);
+	</script>
+
+</html>

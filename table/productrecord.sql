@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS [productrecord] (
+	[id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[productid] INTEGER  NULL,
+	[userid] INTEGER NULL,
+	[time] NVARCHAR(64)  NULL,
+	[used] INTEGER NULL,
+	[usedtime] NVARCHAR(64) NULL,
+	[code] NVARCHAR(128) NULL
+)

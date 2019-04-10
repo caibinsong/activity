@@ -1,0 +1,244 @@
+<div class="page-3">
+	<div class="t-cols-wrap">
+		<div class="t-pop m-pop-column1 bgwhite widthb100">
+								
+       <div class="pop-column fn-clear">
+          <div class="column-cols" style="float: none;margin: 20px auto 20px 100px;">
+
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">登录名：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="user" placeholder="登录名" style="width: 200px;" value="{{.data.user}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">姓名：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="name" placeholder="姓名" style="width: 200px;" value="{{.data.name}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="t-form-wrap" id="newpwd2box">
+              	 <label class="t-label width80">性别：</label>
+                 <div class="t-input active">
+                    <div class="input-wrap">
+                       <input type="radio" class="inputradio" name="sex" value="男" {{if isEqual .data.sex "男"}}checked="checked"{{end}}/>男&nbsp;&nbsp;&nbsp;<input type="radio" class="inputradio" name="sex" value="女" {{if isEqual .data.sex "女"}}checked="checked"{{end}}/>女
+                    </div>
+                 </div>
+              </div>
+             
+              <div class="t-form-wrap">
+                 <label class="t-label width80">手机号：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="tel" placeholder="手机号" style="width: 200px;" value="{{.data.tel}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              
+              <div class="t-form-wrap">
+                 <label class="t-label width80">志愿队：</label>
+                 <div class="t-input">
+                    <div class="input-wrap">
+              <select  id="teamname" class="select" style="width: 200px;height: 27px;border: 1px solid #d8d8d8;">
+        <option value="">请选择志愿队</option>
+        <option value="太平火速志愿队" {{if isEqual .data.teamname "太平火速志愿队"}}selected="selected"{{end}}>太平火速志愿队</option>
+        <option value="三星桥村志愿队" {{if isEqual .data.teamname "三星桥村志愿队"}}selected="selected"{{end}}>三星桥村志愿队</option>
+        <option value="三星社区志愿队" {{if isEqual .data.teamname "三星社区志愿队"}}selected="selected"{{end}}>三星社区志愿队</option>
+        <option value="东辉社区志愿队" {{if isEqual .data.teamname "东辉社区志愿队"}}selected="selected"{{end}}>东辉社区志愿队</option>
+        <option value="繁昌社区志愿队" {{if isEqual .data.teamname "繁昌社区志愿队"}}selected="selected"{{end}}>繁昌社区志愿队</option>
+        <option value="方城社区（北门）志愿队" {{if isEqual .data.teamname "方城社区（北门）志愿队"}}selected="selected"{{end}}>方城社区（北门）志愿队</option>
+        <option value="锦屏社区（下河）志愿队" {{if isEqual .data.teamname "锦屏社区（下河）志愿队"}}selected="selected"{{end}}>锦屏社区（下河）志愿队</option>
+        <option value="锦园社区志愿队" {{if isEqual .data.teamname "锦园社区志愿队"}}selected="selected"{{end}}>锦园社区志愿队</option>
+        <option value="卖鱼桥社区志愿队" {{if isEqual .data.teamname "卖鱼桥社区志愿队"}}selected="selected"{{end}}>卖鱼桥社区志愿队</option>
+        <option value="南屏社区志愿队" {{if isEqual .data.teamname "南屏社区志愿队"}}selected="selected"{{end}}>南屏社区志愿队</option>
+        <option value="南泉社区（南门）志愿队" {{if isEqual .data.teamname "南泉社区（南门）志愿队"}}selected="selected"{{end}}>南泉社区（南门）志愿队</option>
+        <option value="尚书坊社区（西门）志愿队" {{if isEqual .data.teamname "尚书坊社区（西门）志愿队"}}selected="selected"{{end}}>尚书坊社区（西门）志愿队</option>
+        <option value="太平社区志愿队" {{if isEqual .data.teamname "太平社区志愿队"}}selected="selected"{{end}}>太平社区志愿队</option>
+        <option value="西园社区（西郊）志愿队" {{if isEqual .data.teamname "西园社区（西郊）志愿队"}}selected="selected"{{end}}>西园社区（西郊）志愿队</option>
+        <option value="迎辉社区（田洋）志愿队" {{if isEqual .data.teamname "迎辉社区（田洋）志愿队"}}selected="selected"{{end}}>迎辉社区（田洋）志愿队</option>
+        <option value="月河社区志愿队" {{if isEqual .data.teamname "月河社区志愿队"}}selected="selected"{{end}}>月河社区志愿队</option>
+        <option value="岙底胡村志愿队" {{if isEqual .data.teamname "岙底胡村志愿队"}}selected="selected"{{end}}>岙底胡村志愿队</option>
+        <option value="岙底杨村志愿队" {{if isEqual .data.teamname "岙底杨村志愿队"}}selected="selected"{{end}}>岙底杨村志愿队</option>
+        <option value="北山村志愿队" {{if isEqual .data.teamname "北山村志愿队"}}selected="selected"{{end}}>北山村志愿队</option>
+        <option value="东门村志愿队" {{if isEqual .data.teamname "东门村志愿队"}}selected="selected"{{end}}>东门村志愿队</option>
+        <option value="后应村志愿队" {{if isEqual .data.teamname "后应村志愿队"}}selected="selected"{{end}}>后应村志愿队</option>
+        <option value="梅岭村志愿队" {{if isEqual .data.teamname "梅岭村志愿队"}}selected="selected"{{end}}>梅岭村志愿队</option>
+        <option value="屏下村志愿队" {{if isEqual .data.teamname "屏下村志愿队"}}selected="selected"{{end}}>屏下村志愿队</option>
+        <option value="山下金村志愿队" {{if isEqual .data.teamname "山下金村志愿队"}}selected="selected"{{end}}>山下金村志愿队</option>
+        <option value="塔下村志愿队" {{if isEqual .data.teamname "塔下村志愿队"}}selected="selected"{{end}}>塔下村志愿队</option>
+        <option value="小河头村志愿队" {{if isEqual .data.teamname "小河头村志愿队"}}selected="selected"{{end}}>小河头村志愿队</option>
+        <option value="小南门村志愿队" {{if isEqual .data.teamname "小南门村志愿队"}}selected="selected"{{end}}>小南门村志愿队</option>
+        <option value="肖泉村志愿队" {{if isEqual .data.teamname "肖泉村志愿队"}}selected="selected"{{end}}>肖泉村志愿队</option>
+        <option value="女童保护基金温岭团队" {{if isEqual .data.teamname "女童保护基金温岭团队"}}selected="selected"{{end}}>女童保护基金温岭团队</option>
+      </select>
+      </div>
+                 </div>
+              </div>
+
+              <div class="t-form-wrap">
+                 <label class="t-label width80">政治面貌：</label>
+                 <div class="t-input">
+                    <div class="input-wrap">
+                       <select  id="political" style="width: 200px;height: 27px;border: 1px solid #d8d8d8;">
+                        <option value="">请选择政治面貌</option>
+                        <option value="群众">群众</option>
+                        <option value="团员">团员</option>
+                        <option value="预备党员">预备党员</option>
+                        <option value="中共党员">中共党员</option>
+                        <option value="民主党派">民主党派</option>
+                      </select>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+                 <label class="t-label width80">特长：</label>
+                 <div class="t-input">
+                    <div class="input-wrap">
+                       <select  id="specialty" style="width: 200px;height: 27px;border: 1px solid #d8d8d8;">
+                        <option value="">请选择特长</option>
+                        <option value="理发">理发</option>
+                        <option value="水电">水电</option>
+                        <option value="木匠">木匠</option>
+                        <option value="房屋建造">房屋建造</option>
+                        <option value="家电维修">家电维修</option>
+                        <option value="医疗护理">医疗护理</option>
+                        <option value="法律咨询">法律咨询</option>
+                        <option value="其他">其他</option>
+                      </select>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+                 <label class="t-label width80">居住地：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="place" placeholder="居住地" style="width: 200px;" value="{{.data.place}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+                 <label class="t-label width80">地址：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="addr" placeholder="地址" style="width: 200px;" value="{{.data.addr}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+                 <label class="t-label width80">微信：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="wx" placeholder="微信" style="width: 200px;" value="{{.data.wx}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+                 <label class="t-label width80">QQ：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="qq" placeholder="QQ" style="width: 200px;" value="{{.data.qq}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+                 <label class="t-label width80">邮箱：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="email" placeholder="邮箱" style="width: 200px;" value="{{.data.email}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+                 <label class="t-label width80">积分：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="integral" placeholder="积分" style="width: 200px;" value="{{.data.integral}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+                 <label class="t-label width80">权限：</label>
+                 <div class="t-input">
+                    <div class="input-wrap">
+                       <select  id="permissions" style="width: 200px;height: 27px;border: 1px solid #d8d8d8;">
+                        <option value="0">普通会员</option>
+                        <option value="1">小队长</option>
+                        <option value="2">管理员</option>
+                        <option value="3">总管理员</option>
+                      </select>
+                    </div>
+                 </div>
+              </div>
+               <!-- user,name,sex,tel,idcard,political,specialty,place,addr,qq,wx,email,integral,permissions-->
+              <div class="t-form-wrap">
+                 <label class="t-label width80"></label>
+                 <div class="t-input icon active">
+                      <a class="t-button" href="javascript:void(0)">
+                        <label class="t-btn-text" onclick="update()">保存</label>
+                      </a>
+
+                 </div>
+              </div>
+
+          </div>
+       </div>
+
+    </div>		
+  </div>
+</div>
+  <script>
+    $("#political option[value='{{.data.political}}']").attr("selected", true); 
+    $("#specialty option[value='{{.data.specialty}}']").attr("selected", true); 
+    $("#permissions option[value='{{.data.permissions}}']").attr("selected", true); 
+    function update(){
+        $.ajax({
+            type: "POST",
+            url: "/user/saveuser?" + new Date(),
+            async:false,
+            data:{
+              "id":{{.data.id}},
+              "user":$('#user').val(),
+              "name":$('#name').val(),
+              "sex":$("input[name='sex']:checked").val(),
+              "tel":$('#tel').val(),
+              "political":$('#political').val(),
+              "specialty":$('#specialty').val(),
+              "place":$('#place').val(),
+              "addr":$('#addr').val(),
+              "wx":$('#wx').val(),
+              "qq":$('#qq').val(),
+              "email":$('#email').val(),
+              "integral":$('#integral').val(),
+              "permissions":$('#permissions').val(),
+              "teamname":$("#teamname").val()
+            },
+            success: function(data){
+              eval("var jsondata="+data);
+              if(jsondata.status==1){
+                cdialog.success("保存成功",null,null,true,'center');
+                $(".inputTargetCode").find("input").val($(".current").html());
+                $(".targetCode").click();
+                $(".t-pop-close").click();
+              }else{
+                cdialog.error(jsondata.msg,null,null,true,'center');
+              }
+            }
+        });
+      return false;
+    }
+  </script>

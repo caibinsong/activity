@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>基本配置</title>
+		<style type="text/css">
+			#baseForm {
+				width: 670px;
+			}
+			
+			#baseForm label.error {
+				margin-left: 10px;
+				width: auto;
+				display: inline;
+				color: red;
+				font-weight: 600;
+			}
+			
+			#newsletter_topics label.error {
+				display: none;
+				margin-left: 103px;
+			}
+			/*#radios label.error {
+				display: none;
+				margin-left: 103px;
+			}
+			#selects label.error {
+				display: none;
+				margin-left: 103px;
+			}*/
+		</style>
+	</head>
+
+	<body>
+		<form class="cmxform" id="baseForm" method="get" action="">
+			<fieldset>
+				<legend>Validating a complete form</legend>
+				<p>
+					<label for="firstname">Firstname</label>
+					<input id="firstname" name="firstname" type="text">
+				</p>
+				<p>
+					<label for="lastname">Lastname</label>
+					<input id="lastname" name="lastname" type="text">
+				</p>
+				<p>
+					<label for="username">Username</label>
+					<input id="username" name="username" type="text">
+				</p>
+				<p>
+					<label for="password">Password</label>
+					<input id="password" name="password" type="password">
+				</p>
+				<p>
+					<label for="confirm_password">Confirm password</label>
+					<input id="confirm_password" name="confirm_password" type="password">
+				</p>
+				<p>
+					<label for="email">Email</label>
+					<input id="email" name="email" type="email">
+				</p>
+				<p>
+					<label for="agree">Please agree to our policy</label>
+					<input type="checkbox" class="checkbox" id="agree" name="agree">
+				</p>
+				<p>
+					<label for="newsletter">I'd like to receive the newsletter</label>
+					<input type="checkbox" class="checkbox" id="newsletter" name="newsletter">
+				</p>
+				<fieldset id="newsletter_topics">
+					<legend>Topics (select at least two) - note: would be hidden when newsletter isn't selected, but is visible here for the demo</legend>
+					<label for="topic_marketflash">
+					<input type="checkbox" id="topic_marketflash" value="marketflash" name="topic">Marketflash
+				</label>
+					<label for="topic_fuzz">
+					<input type="checkbox" id="topic_fuzz" value="fuzz" name="topic">Latest fuzz
+				</label>
+					<label for="topic_digester">
+					<input type="checkbox" id="topic_digester" value="digester" name="topic">Mailing list digester
+				</label>
+					<label for="newsletter_topics" class="error">Please select only 2</label>
+				</fieldset>
+				<fieldset id="radios">
+					<legend>radios (select at least two) - note: would be hidden when newsletter isn't selected, but is visible here for the demo</legend>
+					<label for="r1">
+					<input type="radio" id="r1" value="r1" name="radioDemo">r1
+				</label>
+					<label for="r2">
+					<input type="radio" id="r2" value="r2" name="radioDemo">r2
+				</label>
+					<label for="topic_digester">
+					<input type="radio" id="r3" value="r3" name="radioDemo">r3
+				</label>
+					<label for="radios" class="error">Please select only one</label>
+				</fieldset>
+				<fieldset id="selects">
+					<legend>selects (select at least two) - note: would be hidden when newsletter isn't selected, but is visible here for the demo</legend>
+					<select name="selectDemo" multiple>
+						<option value="0">s1</option>
+						<option value="1">s2</option>
+						<option value="2">s3</option>
+					</select>
+					<label for="selects" class="error">Please select least 2</label>
+				</fieldset>
+				<p>
+					<input class="submit" type="submit" value="Submit">
+				</p>
+			</fieldset>
+		</form>
+	</body>
+	<script src="../js/jquery-1.9.1.js"></script>
+	<script src="../js/validate.js"></script>
+	<script type="text/javascript">
+		$('#baseForm').validate({
+			rules: {
+				firstname: "required",
+				lastname: "required",
+				username: {
+					required: true,
+					
+					minlength: 2
+				},
+				//多选
+				topic: {
+					required: "#newsletter:checked",
+					minlength: 2
+				},
+				//单选
+				radioDemo: 'required',
+				//select
+				selectDemo:{
+					required:true,
+					minlength:2
+				},
+				password: {
+					required: function(element) {
+//						console.log(element);	//element指被验证的dom元素
+						return false;
+					},
+					minlength: 5
+				},
+				confirm_password: {
+					required: true,
+					minlength: 5,
+					equalTo: "#password"
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				agree: "required"
+			},
+			messages: {
+				firstname: "Please enter your firstname",
+				lastname: "Please enter your lastname",
+				username: {
+					required: "Please enter a username",
+					minlength: $.validator.format("请输入一个 长度最少是 {0} 的字符串")
+				},
+				password: {
+					required: "Please provide a password",
+					minlength: "Your password must be at least 5 characters long"
+				},
+				confirm_password: {
+					required: "Please provide a password",
+					minlength: "Your password must be at least 5 characters long",
+					equalTo: "Please enter the same password as above"
+				},
+				email: "Please enter a valid email address",
+				agree: "Please accept our policy",
+				topic: "Please select at least 2 topics",
+				radioDemo: "Please select at only one radio",
+				selectDemo: "Please select at least 2 selects"
+			}
+		});
+		//rules 表示验证条件  messages 表示验证不通过时的错误提示信息
+		//rules中键值对的形式存在，键名表示用于验证的表单控件的name名，键值表示验证条件
+		//验证条件参数详解:
+		/*
+			(1)required:true/string/callback   必输字段
+			(2)email:true                  必须输入正确格式的电子邮件
+			(3)url:true                    必须输入正确格式的网址
+			(4)date:true                   必须输入正确格式的日期 日期校验ie6出错，慎用
+			(5)dateISO:true                必须输入正确格式的日期(ISO)，例如：2009-06-23，1998/01/22 只验证格式，不验证有效性
+			(6)number:true                 必须输入合法的数字(负数，小数)
+			(7)digits:true                 必须输入整数
+			(8)creditcard:                 必须输入合法的信用卡号
+			(9)equalTo:"#field"           输入值必须和#field相同
+			(10)accept:                    输入拥有合法后缀名的字符串（上传文件的后缀）
+			(11)maxlength:5                输入长度最多是5的字符串(汉字算一个字符)
+			(12)minlength:10               输入长度最小是10的字符串(汉字算一个字符)
+			(13)rangelength:[5,10]         输入长度必须介于 5 和 10 之间的字符串")(汉字算一个字符)
+			(14)range:[5,10]               输入值必须介于 5 和 10 之间
+			(15)max:5                      输入值不能大于5
+			(16)min:10                     输入值不能小于10		 
+		 * */
+		//messages中键值对的形式存在，键名表示用于验证的表单控件的name名，键值表示对应验证条件不通过时出现的错误提示信息
+		//注意：
+		/**
+		 *1. rules中的required
+		 * a.如果表单控件只需要必填的条件，那么只填'required',
+		 * eg. firstname:'required'
+		 * b.required:string
+		 * eg.required:"#newsletter:checked"  表示当$('#newsletter')元素为checked时，键名对应的topic的验证条件才触发
+		 * c.required:callback  callback的回调函数返回true的时候表示必填
+		 *2.checkbox,radio,select的验证
+		 * a.radio的required表示必须选中一个
+		 * b.checkbox的required表示必须选中,checkbox的minlength表示必须选中的最小个数,maxlength表示最大的选中个数,rangelength:[2,3]表示选中个数区间
+		 * c.select的required表示选中的value不能为空,select（可多选的select）的minlength表示选中的最小个数,maxlength表示最大的选中个 数,rangelength:[2,3]表示选中个数区间
+		 */
+	</script>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>多导航配置展示</title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+		<link rel="stylesheet" type="text/css" href="./css/custom.css" />
+		<style>
+			.leftMenu{
+				position: fixed;
+				top: 0;
+				left: ;
+				height:100%;
+			}
+			.right-cont{
+				position: fixed;
+				top: 0;
+				left: 221px;
+				z-index: 999;
+				bottom:0;
+				right: 0;
+				background: yellow;
+				padding:20px;
+			}
+			a{
+				display: block;
+				height:30px;
+				font-size: 20px;
+				font-weight: 600;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body class="fn-clear">
+		<div class="d1">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium temporibus suscipit magni iste iusto vitae porro voluptatibus quisquam deserunt fugiat soluta maiores voluptate perferendis labore id voluptates velit saepe atque?
+		</div>
+		<div class="leftMenu"></div>
+		<div class="right-cont">
+			<a> 切换左导航顶级项1</a>
+			<a> 切换左导航顶级项2</a>
+			<a> 切换左导航顶级项3</a>
+			<a> 切换左导航顶级项4</a>
+			<a> 切换左导航顶级项5</a>
+		</div>
+	</body>
+
+	<script src="../version/js/jquery-2.1.0.js"></script>
+	<script src="js/aside.js"></script>
+	<script type="text/javascript">
+		/*
+		 aside功能:可以实现多导航和少导航两种类型,支持自动收缩，导航项撑满页面的时候回自动出现滚动条用于显示多余内容
+		 * */
+		
+		var optMore = {
+			asideType: 0, //选择导航类型，0对应多导航，1对应少导航
+			asideHeader: {
+				btnIcon: 'dev', //导航头部选择按钮
+				text: '系统管理', //导航头的文字
+				//noRightBtn: true  //控制是否需要导航头右侧的按钮
+				callback:function(ele){
+					//第一个参数为对应绑定dom对象,但dom对象返回的上下文不同，
+					//如果是展开的情况下，返回的是展开时候头按钮
+					//如果是缩小的情况下，返回的是缩小时候头按钮
+					
+					//示例:点击导航头按钮触发右侧跟随移动行为
+					if(parseInt($('.right-cont').css('left')) === 221){
+						$('.right-cont').animate({
+							left:50
+						},200)
+					}else{
+						$('.right-cont').animate({
+							left:221
+						},200)
+					}
+				}
+			},
+			asideBody: [{
+//				btnIcon: 'com',
+				text: '注册管理1',
+				active:1,
+				childList:[{
+					text: '注册管理1'
+				},{
+					text: '注册管理1'
+				},{
+					text: '注册管理1'
+				},{
+					text: '注册管理1'
+				}]
+			},{
+				text: '注册管理2',
+			},{
+				text: '注册管理3',
+				childList:[{
+					text: '注册管理3'
+				},{
+					text: '注册管理3'
+				},{
+					text: '注册管理3'
+				},{
+					text: '注册管理3'
+				}]
+			},{
+				text: '注册管理4',
+			},{
+				text: '注册管理5',
+			}],
+			toolBox: {
+				asideBtn: false, //是否需要侧边按钮
+			},
+		}
+		$('.leftMenu').aside(optMore);
+		
+		var aside = $('.leftMenu').data('aside');
+		$('.right-cont a').click(function(){
+			var index = $(this).index();
+			console.log(index);
+			aside.activateTopItem(index);
+		})
+	</script>
+</html>

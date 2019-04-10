@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>志愿队动态编辑</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<!-- 引入jQuery -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/webuploader.min.js"></script>
+	<!-- 插件核心 -->
+    <script src="/js/Eleditor.min.js"></script>
+	<script src="/js/layer.js"></script>
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 100%;position: absolute; height: 96%;top: 2%;overflow: auto;}
+		.box{width: 94%;height:270px;background: #fff;margin-bottom: 20px;padding: 20px 30px;}
+		.box .line{font-size: 36px;margin-bottom: 10px;}
+		.box .del{color:red;text-align: right}
+		.delbtn{width: 50px;}
+		.h100{height:100px;}
+		.h300{height:300px;}
+		.addbtn{width: 100%;height: 270px;background: url(/img/add.png) no-repeat center center;}
+		.inputtext{width: 100%;height: 100px;font-size: 36px;border: 0px;}
+		.textarea{width: 100%;font-size: 36px;height: 300px;border: 0px;}
+		.inputbtn{width: 90%;height: 100px;font-size: 36px; background: #f95307;border: 0px;color: #fff;}
+
+		*{margin: 0;padding: 0;}
+		#contentEditor{width: 100%;min-height: 300px;box-sizing: border-box;padding: 10px;color: #444;}
+		#contentEditor p{letter-spacing: 0.25px;font: 16px/25px Tahoma, Verdana, 宋体;margin: 20px 0px;}
+		#contentEditor h4 {font-weight: bold;line-height: 1.333em;margin: 10px 0 20px;padding: 25px 0 0;}
+		#contentEditor img{width: 100%;height: auto;box-sizing: border-box;}
+		.dempTip{border-left: 2px solid #00BCD4;padding-left: 5px;margin: 10px;font-size: 16px;}
+		.viewTit{color: #FF5722;position: fixed;top: 0;left: 0;height: 30px;line-height: 30px;font-size: 14px;text-align: center;display: block;width: 100%;background: #FFEB3B;box-shadow: 0 0 5px;}
+		.Eleditor-method{height: 5%;font-size: 36px;}
+		.Eleditor-method button{font-size: 36px;padding-top: 2%;}
+		.Eleditor-inputarea {bottom: 5%;}
+	</style>
+	<script>
+	var ua = navigator.userAgent.toLowerCase();	;
+	if( ua.indexOf('android') >= 0 || ua.indexOf('iphone') >= 0 || ua.indexOf('ipad') >= 0 || $(window).width() <= 500 ){
+		$('.viewTit').hide();
+		$('body').css('padding-top', 0);
+	}
+</script>
+</head>
+<body>		
+	<div id="bg">
+		<div class="box h100">
+			<input class="inputtext" style="font-size:46px;" type="text" placeholder="动态标题" id="title" value="{{.data.title}}"/>
+		</div>
+		<div class="box h100">
+			<input class="inputtext" style="font-size:46px;" type="text" placeholder="链接地址" id="content" value="{{.data.content}}"/>
+		</div>
+		<!-- <div style="width: 100%;background: #fff;margin-bottom: 20px;padding: 20px 30px;" id="contentEditor">{{str2html .data.content}}
+		</div> -->
+		<div class="box h100">
+			<input class="inputtext" type="password" placeholder="管理员密码" id="pwd"/>
+		</div>
+		<div class="box h100" style="text-align: center;">
+			<input class="inputbtn" type="button" value="完成" onclick="sub()"/>
+		</div>
+	</div>
+
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script>
+		var contentEditor = new Eleditor({
+			el: '#contentEditor',
+			upload:{
+				server: '/frame/uploadimg',
+				compress: false,
+				fileSizeLimit: 2
+			},
+			/*自定义按钮的例子*/
+			toolbars: [
+				'insertText',
+				'editText',
+				'insertImage',
+				'insertLink',
+				'insertHr',
+				'delete',
+			    'cancel'
+			]
+		});
+
+		function sub(){
+			if($("#title").val()==""){
+				alert("动态标题不可为空");
+				return false;
+			}
+			if($("#pwd").val()==""){
+				alert("密码不可为空");
+				return false;
+			}
+			if($("#content").val()==""){
+				alert("内容不可为空");
+				return false;
+			}
+			$.ajax({
+				type : "post",  
+				url : "/dynamic/edit",
+				data:{
+					"id":"{{.data.id}}",
+					"title":$("#title").val(),
+					"content":$("#content").val(),
+					"pwd":$("#pwd").val()
+				},
+				sync : false,
+				success : function(data){
+				    eval("var dataJson="+data);
+				    if(dataJson.status==1){
+				    	window.location.href="/dynamic/list"
+				    }else{
+				    	alert(dataJson.msg);
+				    }
+				}  
+			});
+		}
+	</script>
+</body>
+</html>

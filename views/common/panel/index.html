@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+		<script src="../version/js/jquery-2.1.0.js"></script>
+		<script src="../select/js/select.js"></script>
+		<script src="./js/panel.js"></script>
+	</head>
+	<style>
+		#panel {
+			margin: 300px auto;
+			width: 600px;
+		}
+		.t-panel-container li {
+			display: list-item;
+		}
+	</style>
+
+	<body>
+		<div id="panel"></div>
+	</body>
+	<script>
+		$(function() {
+			var fullConfig = {
+				style: {
+					average: false,
+					current: 0,
+					animate: true,
+					isOpen: false,
+					simple: {
+						isOpen: !false,
+						target: '.yc',
+						cb: function(status){
+							console.log('简化之后执行！');
+							console.log(status);
+						}
+					},
+					css: {
+						width: '800px',
+						background: '#fff',
+						position: 'absolute',
+						left: '50%',
+						marginLeft: '-400px',
+					}
+				},
+				beforeShrink: function() {
+					console.log('Shrink Begin !');
+				},
+				afterShrink: function() {
+					console.log('Shrink End !');
+				},
+				tools: [{
+					cssName: 'panel-more',
+					cb: function(th, k) {
+						console.log(th);
+						console.log(k);
+					}
+				}, {
+					cssName: 'panel-downarrow',
+					cb: function(th, k) {
+						console.log(th);
+						console.log(k);
+					}
+				}],
+				tabs: [{
+					text: 'one',
+					template: '<h1 style="color:red;font-weight:900;font-size: 30px;">template为模板字符串</h1>',
+					cb: function(t, k) {
+						console.log(t)
+						console.log(k)
+					}
+				}, {
+					text: 'two',
+					template: function(wrap) {
+						return '<h1 style="color:red;font-weight:900;font-size: 30px;">template为函数 return返回模板字符串</h1>';
+					},
+					cb: function(t, k) {
+						console.log(t)
+						console.log(k)
+					}
+				}, {
+					text: 'three',
+					template: '<h1 style="color:blue;font-weight:900;font-size: 30px">tmplate</h1>\
+								<h1 class="yc" style="color:red;font-weight:900;font-size: 30px">隐藏内容</h1>',
+					cb: function(t, k) {
+						console.log(t)
+						console.log(k)
+					}
+				}, {
+					text: 'four',
+					url: './data/index-2.html',
+					cb: function(t, k) {
+						console.log(t)
+						console.log(k)
+					}
+				}, {
+					text: 'five',
+					url: './data/index-3.html',
+					cb: function(t, k) {
+						console.log(t)
+						console.log(k)
+					}
+				}, {
+					text: 'six',
+					template: function(wrap) {
+						createSelect(wrap);
+						wrap.append('<h1 style="color:red; margin: 10px;">演示如何嵌入其他组件</h1>')
+						return false;
+					},
+					cb: function(t, k) {
+						console.log(t)
+						console.log(k)
+					}
+				}]
+			};
+			var simpleConfig = {
+				style: {
+					simple: {
+						isOpen: !true,
+						target: '.yc'
+					}
+				},
+				tabs: [{
+					template: '<h1 style="color:red;font-weight:900;">12346789</h1><h1 class="yc">被隐藏！！！</h1>'
+				}],
+				tools: [{
+					cssName: 'panel-downarrow'
+				}]
+			}
+			var s = new Panel($('#panel'), fullConfig).switchTo(0);
+			function createSelect(wrap) {
+				wrap.select({
+					width: '160px',
+					require: false,
+					text: '请选择',
+					initValue: '13131', //4.11 提供初始默认值
+					name: 'uname', //4.22 对应表单控件的name属性，用于提交给后台作为参数的键名
+					content: {
+						// 必须有返回值
+						type: 'select',
+						//4.21 调整data中option的接口参数，并且还要保证兼容
+						data: [{
+							name: '',
+							value: 'lalala1'
+						}, {
+							name: 'type2',
+							value: 'lalala2'
+						}, {
+							name: 'type3',
+							value: 'lalala3'
+						}],
+						//					template: '<h1>this is template of custom !</h1>',
+						callBack: function(ins) { //4.21   专用于select选定的回调函数
+							//foo(ins);
+						},
+					}
+
+				});
+			}
+		})
+	</script>
+
+</html>

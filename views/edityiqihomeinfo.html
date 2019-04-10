@@ -1,0 +1,63 @@
+<div class="page-3">
+	<div class="t-cols-wrap">
+		<div class="t-pop m-pop-column1 bgwhite widthb100">
+								
+       <div class="pop-column fn-clear">
+          <div class="column-cols" style="float: none;margin: 20px auto 20px 100px;width:60%;">
+
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">标题：</label>
+                 <div class="t-input require">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="title" placeholder="标题" value="{{.data.title}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div style="clear:both"></div>
+              <div class="t-form-wrap" style="width: 90%;max-width: 90%;min-width: 90%">
+                 <label class="t-label width80">内容：</label>
+                    <div class="t-textarea" style="width: 70%;min-width: 70%;max-width: 70%;padding: 0px;">
+                        <textarea class="t-field wh" placeholder="内容" style="width: 100%;max-height: 550px;min-height: 550px;" id="content" value="{{.data.content}}">{{.data.content}}</textarea>
+                      </div>
+              </div>
+              <div style="clear:both"></div>
+              <div class="t-form-wrap">
+                 <label class="t-label width80"></label>
+                 <div class="t-input icon active">
+                      <a class="t-button" href="javascript:void(0)">
+                        <label class="t-btn-text" onclick="update()">保存</label>
+                      </a>
+
+                 </div>
+              </div>
+
+          </div>
+       </div>
+
+    </div>		
+  </div>
+</div>
+  <script>
+    function update(){
+        $.ajax({
+            type: "POST",
+            url: "/frame/saveyiqihomeinfo?" + new Date(),
+            async:false,
+            data:{
+              "head":$('#title').val(),
+              "content":$('#content').val(),
+              "introducename":"{{.data.introducename}}"
+            },
+            success: function(data){
+              eval("var jsondata="+data);
+              if(jsondata.status==0){
+                cdialog.error(jsondata.msg,null,null,true,'center');
+              }else{
+                cdialog.success("保存成功",null,null,true,'center');
+              }
+            }
+        });
+      return false;
+    }
+  </script>

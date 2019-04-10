@@ -1,0 +1,99 @@
+@charset "utf-8";
+/* ---------------全局参数配置Start---------------- */
+/* -----------------默认配置 --------------------*/
+/* ----------------- 默认配置END ----------------*/
+html {
+  min-height: 100%;
+}
+html body {
+  min-height: 100%;
+  min-width: 1280px;
+  font: normal 12px / 1rem "microsoft Yahei";
+  color: #505050;
+}
+.fn-clear:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.span {
+  width: 0;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.t-pagination {
+  text-align: left;
+  color: #505050;
+  background: #fff;
+}
+.t-pagination a,
+.t-pagination span {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 34px;
+  line-height: 34px;
+  padding: 0 13px;
+  border: 1px solid #d8d8d8;
+  border-right: 1px solid transparent;
+  vertical-align: middle;
+}
+.t-pagination a:last-child,
+.t-pagination span:last-child {
+  border-right: 1px solid #d8d8d8;
+}
+.t-pagination a:hover,
+.t-pagination span:hover {
+  background-color: #eeeeee;
+}
+.t-pagination span.ellipsis:hover {
+  background: #fff;
+}
+.t-pagination span.current {
+  cursor: pointer;
+  color: #fff;
+  background-color: #58a2ff;
+  border: 1px solid #428bca;
+  vertical-align: middle;
+}
+.t-pagination span.current:hover {
+  background-color: #79b5f4;
+}
+.t-pagination span.disabled {
+  color: #bfbfbf;
+  background: #eeeeee;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  cursor: not-allowed;
+  -moz-cursor: not-allowed;
+  -webkit-cursor: not-allowed;
+  -o-cursor: not-allowed;
+}
+.t-pagination .dataCount {
+  text-align: center;
+  background: #f2f2f2;
+  cursor: default;
+}
+.t-pagination .dataCount:hover {
+  background: #f2f2f2;
+}
+.t-pagination .inputTargetCode {
+  width: 64px;
+}
+.t-pagination .inputTargetCode:hover {
+  background-color: white;
+}
+.t-pagination .inputTargetCode input {
+  width: 100%;
+  color: #505050;
+  text-align: center;
+}
+.t-pagination .targetCode .p-icon {
+  width: 10px;
+  height: 12px;
+  display: inline-block;
+  background: url('../../../img/common/index-s.png') no-repeat -355px -515px;
+}

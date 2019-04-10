@@ -1,0 +1,318 @@
+@charset:"utf-8";
+/* ---------------全局参数配置Start---------------- */
+@bodyBgColor: #fff; // 主背景色调
+@bodyMinWidth: 1280px; // 页面最小宽度
+@disableBgColor: #eee; // 禁用颜色
+@bgColorLight: #f1f1f3; // 浅色背景
+@borderColor: #d8d8d8; // 通用边框颜色
+@borderHoverColor: #b2d4ff; //边框交互颜色
+@fontColor: #505050; // 通用字体颜色
+@fontHoverColor: #58a2ff; // 字体交互颜色 
+@fontSize: 12px; // 通用字号
+@borderRadius: 3px; // 圆角度数
+//@lessBackgroundUrl: '../../../img/index.png'; // 雪碧图配置
+@lessBackgroundUrl-s: '../../../img/common/index-s.png'; // 雪碧图配置
+@lessBackgroundUrl-m: '../../../img/common/index-m.png'; // 雪碧图配置
+@lessBackgroundUrl-l: '../../../img/common/index-l.png'; // 雪碧图配置
+@import 'lessLibrary';
+
+/* aside 左菜单  */
+.t-aside {
+    @aSideFontSize: 12px;
+    @childListPadLeft:10px;
+    @bgColor: #ef0e18;
+    @tSideOptionHeight: 42px;
+    @tSidefontColor: @fontColor;
+    @hoverFontColor: #57a3f1;
+    @dvScollBarBgColor:#b4e1ff;
+    height:100%;
+    border-right:1px solid @borderColor;
+    //3.22修改aside背景色
+    .setBackground(@bgColor);
+    position: relative;
+    .dvScrollBar::-webkit-scrollbar-thumb {
+        background: @dvScollBarBgColor;
+    }
+    .dvScrollBar::-webkit-scrollbar-track {
+        display: none;
+    }
+    .asideBtn{
+        width:13px;
+        height:35px;
+        .cursor(pointer);
+        position: absolute;
+        right: -14px;
+        top:50%;
+        margin-top:-18px;
+        .setBackground-s(-754px -584px);
+        &.active{
+            .setBackground-s(-835px -584px);
+        }
+    }
+    .xtgl {
+        .setBackground-s(-512px -739px);
+    }
+    .option-wrap {
+        position: relative;
+        overflow:hidden; 
+        &:hover {
+            .aside-text {
+                color: @hoverFontColor;
+            }
+            .xtgl {
+          
+                .setBackground-s(-512px -499px);
+            }
+        }
+        //3.22为事件元素添加样式
+        &.focus{
+            .aside-text {
+                color: @hoverFontColor;
+            }
+        }
+        .setting(inherit, auto);
+        .t-aside-icon {
+            position: absolute;
+            top: 0px;
+            left: 21px;
+            .setting(20px, 100%);
+        }
+        .setASideFont(@aSideFontSize, @lineHeight, @tSidefontColor, @paddingL) {
+            padding-left: @paddingL;
+            padding-right: 50px;
+            .box-sizing(border-box);
+            .setting(100%, 100%);
+            .setFont(@aSideFontSize,@lineHeight,@tSidefontColor);
+        }
+        .caption-text {
+            .setASideFont(14px,@tSideOptionHeight,@tSidefontColor, 53px);
+            font-weight: bold;
+        }
+        .aside-text {
+            padding-left: 53px;
+            .ellipsis;
+            .box-sizing(border-box);
+            .setASideFont(@aSideFontSize ,@tSideOptionHeight,@tSidefontColor, 53px);
+        }
+        .setRightIcon(@right, @width) {
+            top: 0px;
+            right: @right;
+            position: absolute;
+            .setting(@width, 100%);
+        }
+        .aside-btn {
+            .cursor(pointer);
+            .setRightIcon(10px,33px);
+
+            .setBackground-m(-1134px -30px);
+            &:hover {
+                .opacity(.8);
+            }
+        }
+        .aside-arrow {
+            .setRightIcon(0,21px);
+            .setBackground-s(-1077px -819px);
+        }
+    }
+    .t-caption-title {
+        border-left: 5px solid transparent;
+        border-bottom: 1px solid @borderColor;
+        .box-sizing(border-box);
+        .setting(100%, @tSideOptionHeight);
+        .setBackground(@bgColor);
+        .option-wrap {
+            height: 100%;
+        }
+    }
+    .t-aside-less {
+        .setting(220px, 100%);
+        .box-sizing(border-box);
+        position: relative;
+        background: @bgColor;
+        z-index: 999;
+        .caption-text {
+            font-weight: normal;
+        }
+        .aside-option {
+            .root-ul {
+                .cursor(pointer);
+                & > li {
+                    width: 210px;
+                    padding-right: 5px;
+                    border-left: 5px solid transparent;
+                    .setBackground(@bgColor);
+                    overflow: hidden;
+                }
+                & > .active {
+                    border-left: 5px solid @hoverFontColor;
+                    //3.22修改选定的背景色
+                    .setBackground(#fff);
+                    & > .option-wrap > .aside-text {
+                        color: @tSidefontColor;
+                        font-weight: 600;
+                    }
+                    .xtgl {
+                        .setBackground-s(-512px -499px);
+                    }
+                    & > .option-wrap > .aside-arrow {
+                        .setBackground-s(-195px -419px);
+                    }
+                }
+                .aside-node {
+                    width: inherit;
+                    display: none;
+                    .active > .option-wrap  {
+                        & > .aside-text{
+                            color: @hoverFontColor;
+                        }
+                        & > .aside-arrow{
+                            .setBackground-s(-195px -419px);
+                        }
+                    }
+                    .childList {
+                        padding-left:@aSideFontSize;
+                    }
+                }
+                .dvScrollBar.active>.aside-node{
+                    display: block;
+                }
+            }
+        }
+    }
+    .t-aside-more {
+        .setting(220px, auto);
+        .box-sizing(border-box);
+        background-color:@bgColor;
+        .aside-option {
+            overflow: hidden;
+            .root-ul {
+                .cursor(pointer);
+                .moreChildList>li {
+                    width: 210px;
+                    padding-right: 5px;
+                    border-left: 5px solid transparent;
+                    .setBackground(@bgColor);
+                    transition: height .2s; 
+                }
+                .moreChildList>.active {
+                    border-left: 5px solid @hoverFontColor;
+                    //3.22修改选定的背景色
+                    .setBackground(#fff);
+                    & > .option-wrap > .aside-text {
+                        color: @tSidefontColor;
+                        font-weight: 600;
+                    }
+                    .xtgl {
+                        .setBackground-s(-512px -499px);
+                    }
+                    & > .option-wrap > .aside-arrow {
+						.setBackground-s(-195px -419px);                    
+					}
+                }
+                .aside-node {
+                    width: inherit;
+                    display: none;
+                    .active > .option-wrap  {
+                        & > .aside-text{
+                            color: @hoverFontColor;
+                        }
+                        & > .aside-arrow{
+                            .setBackground-s(-195px -580px);
+                        }
+                    }
+                    .childList {
+                        padding-left:@aSideFontSize;
+                    }
+                }
+                .dvScrollBar.active>.aside-node{
+                    display: block;
+                }
+            }
+        }
+    }
+    .t-aside-mini {
+        .setting(50px, auto);
+        display: none;
+        .box-sizing(border-box);
+        .aside-option {
+            .root-ul {
+                & > li {
+                    position: relative;
+                    .cursor(pointer);
+                    .boder-t-b(@borderColor) {
+                        border-top: 1px solid @borderColor;
+                        border-bottom: 1px solid @borderColor;
+                    }
+                    .boder-t-b(transparent);
+                    &:hover {
+                        .boder-t-b(@borderColor);
+                        .xtgl {
+                            .setBackground-s(-512px -499px);
+                        }
+                        .setBackground(#eaeaea);
+                        .mini-option-wrap {
+                            display: block;
+                        }
+                    }
+                    .setting(100%,40px);
+                    .t-aside-icon {
+                        position: absolute;
+                        top: 0;
+                        left: 14px;
+                        .setting(20px, 100%);
+                    }
+                    .mini-option-wrap {
+                        position: absolute;
+                        left: 50px;
+                        top: -1px;
+                        .setting(180px, auto,none);
+                        border: 1px solid @borderColor;
+                        z-index:999;
+                        background-color:@bodyBgColor;
+                        .title-option {
+                            text-indent: 15px;
+                            position: relative;
+                            left: -1px;
+                            padding-right: 1px;
+                            cursor: initial;
+                            &:hover {
+                                color: @tSidefontColor;
+                            }
+                            .setting(100%,40px);
+                            .setFont(@aSideFontSize,@tSideOptionHeight,@tSidefontColor);
+                            .setBackground(#eaeaea);
+                            font-weight: bold;
+                        }
+                        &>.aside-node{
+                            overflow: auto;
+                        }
+                        &>.aside-node .active > .option-wrap  {
+                            & > .aside-text{
+                                color: @hoverFontColor;
+                            }
+                            & > .aside-arrow{
+                                .setBackground-s(-195px -419px);
+                            }
+                        }
+                        li {
+                            text-indent: 15px;
+                            &:hover {
+                                color: @hoverFontColor;
+                            }
+                            .cursor(pointer);
+                            .setBackground(#fff);
+                            .setFont(@aSideFontSize,36px,@tSidefontColor);
+                            .aside-text{
+                               padding-left: 0; 
+                            }
+                        }
+                        .childList{
+                            display: none;
+                            padding-left: @childListPadLeft;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,412 @@
+@charset "utf-8";
+
+/* ---------------全局参数配置Start---------------- */
+
+@bodyBgColor: #fff; // 主背景色调
+@bodyMinWidth: 1280px; // 页面最小宽度
+@disableBgColor: #eee; // 禁用颜色
+@bgColorLight: #f1f1f3; // 浅色背景
+@borderColor: #d8d8d8; // 通用边框颜色
+@borderHoverColor: #b2d4ff; //边框交互颜色
+@fontColor: #505050; // 通用字体颜色
+@fontHoverColor: #58a2ff; // 字体交互颜色
+@fontSize: 12px; // 通用字号
+@borderRadius: 3px; // 圆角度数
+@lessBackgroundUrl: '../img/index.png'; // 雪碧图配置
+@lessBackgroundUrl-s: '../../../img/common/index-s.png'; // 雪碧图配置
+@lessBackgroundUrl-m: '../../../img/common/index-m.png'; // 雪碧图配置
+@lessBackgroundUrl-l: '../../../img/common/index-l.png'; // 雪碧图配置
+@import 'lessLibrary';
+
+/* ---------------全局参数配置END------------------ */
+
+//tree自定义样式
+.t-tree li {
+    list-style: none;
+    line-height: 30px;
+    text-align: left;
+    white-space: nowrap;
+    outline: 0
+}
+
+.t-tree li ul {
+    padding-left: 20px
+}
+
+.t-tree li a {
+    position: relative;
+    top: 2px;
+    .cursor(pointer);
+    padding: 1px 3px 0 0;
+    font-size: 13px;
+    color: @fontColor;
+}
+
+.t-tree li a:hover {
+    color: @fontHoverColor;
+}
+
+.t-tree li a.curSelectedNode {
+    color: @fontHoverColor;
+}
+
+.t-tree li a.tmpTargetNode_inner {
+    padding-top: 0px;
+    background-color: #316AC5;
+    color: white;
+    height: 16px;
+    border: 1px #316AC5 solid;
+    opacity: 0.8;
+    filter: alpha(opacity=80)
+}
+
+.t-tree li a input.rename {
+    height: 14px;
+    width: 100px;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+    border: 1px #7EC4CC solid;
+    *border: 0px
+}
+
+.t-tree li span {
+    line-height: 16px;
+    margin-right: 2px
+}
+
+//.button只会影响到文件夹图标和文档图标
+.t-tree li span.button {
+    width: 17px;
+    height: 18px;
+    display: inline-block;
+    .cursor(pointer);
+    .setBackground-s(0 0);
+    vertical-align: middle;
+}
+
+@chkBorderColor: #cbc9ca;
+@partBgColor: #cde3ff;
+.t-tree li span.button.chk {
+    position: relative;
+    .box-sizing(border-box);
+    width: 15px;
+    height: 15px;
+    border: 1px solid @chkBorderColor;
+    margin-right: 7px;
+    &:hover {
+        border-color: @fontHoverColor;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -4px 0 0 -5px;
+        overflow: hidden;
+        width: 10px;
+        height: 8px;
+        display: block;
+    }
+}
+
+.t-tree li span.button.chk.checkbox_false_disable {
+    .cursor(not-allowed);
+    background-color: @disableBgColor;
+    &:hover {
+        border-color: @chkBorderColor;
+    }
+}
+
+.t-tree li span.button.chk.checkbox_true_full {
+    &:after {
+        .setBackground-s(-355px -277px);
+    }
+}
+
+.t-tree li span.button.chk.checkbox_true_full_focus {
+    &:after {
+        .setBackground-s(-435px -277px);
+    }
+}
+
+.t-tree li span.button.chk.checkbox_true_part {
+    background-color: @partBgColor;
+    &:after {
+        .setBackground-s(-355px -277px);
+    }
+}
+
+.t-tree li span.button.chk.checkbox_true_part_focus {
+    background-color: @partBgColor;
+    border: 1px solid @fontHoverColor;
+    &:after {
+        .setBackground-s(-355px -277px);
+    }
+}
+
+.t-tree li span.button.chk.checkbox_true_disable {
+    .cursor(not-allowed);
+    background-color: @disableBgColor;
+    &:hover {
+        border-color: @chkBorderColor;
+    }
+    &:after {
+        .setBackground-s(-355px -277px);
+    }
+}
+
+//radio样式
+@radioChkBgColor: #687A8E;
+@radioChkHoverColor: #60a8f2;
+.t-tree li span.button.chk.radio_false_full {
+    width: 16px;
+    height: 16px;
+    .border-radius(50%);
+    border: 1px solid @chkBorderColor;
+}
+
+.t-tree li span.button.chk.radio_false_full_focus {
+    width: 16px;
+    height: 16px;
+    .border-radius(50%);
+    border: 1px solid @fontHoverColor;
+}
+
+.t-tree li span.button.chk.radio_false_part {
+    width: 16px;
+    height: 16px;
+    .border-radius(50%);
+    border: 1px solid @chkBorderColor;
+    background-color: @partBgColor;
+}
+
+.t-tree li span.button.chk.radio_false_part_focus {
+    width: 16px;
+    height: 16px;
+    .border-radius(50%);
+    border: 1px solid @fontHoverColor;
+    background-color: @partBgColor;
+}
+
+.t-tree li span.button.chk.radio_false_disable {
+    width: 16px;
+    height: 16px;
+    .border-radius(50%);
+    border: 1px solid @fontHoverColor;
+    .cursor(not-allowed);
+    background-color: @disableBgColor;
+}
+
+.t-tree li span.button.chk.radio_true_full {
+    width: 16px;
+    height: 16px;
+    .border-radius(50%);
+    border: 1px solid @chkBorderColor;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -3px 0 0 -3px;
+        overflow: hidden;
+        .border-radius(50%);
+        width: 6px;
+        height: 6px;
+        display: block;
+        background-color: @radioChkBgColor;
+    }
+}
+
+.t-tree li span.button.chk.radio_true_full_focus {
+    width: 16px;
+    height: 16px;
+    .border-radius(50%);
+    border: 1px solid @fontHoverColor;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -3px 0 0 -3px;
+        overflow: hidden;
+        .border-radius(50%);
+        width: 6px;
+        height: 6px;
+        display: block;
+        background-color: @radioChkHoverColor;
+    }
+}
+
+.t-tree li span.button.chk.radio_true_part {
+    width: 16px;
+    height: 16px;
+    .border-radius(50%);
+    border: 1px solid @chkBorderColor;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -3px 0 0 -3px;
+        overflow: hidden;
+        .border-radius(50%);
+        width: 6px;
+        height: 6px;
+        display: block;
+        background-color: @radioChkBgColor;
+    }
+}
+
+.t-tree li span.button.chk.radio_true_part_focus {
+    width: 16px;
+    height: 16px;
+    .border-radius(50%);
+    border: 1px solid @fontHoverColor;
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -3px 0 0 -3px;
+        overflow: hidden;
+        .border-radius(50%);
+        width: 6px;
+        height: 6px;
+        display: block;
+        background-color: @radioChkHoverColor;
+    }
+}
+
+.t-tree li span.button.chk.radio_true_disable {
+    width: 16px;
+    height: 16px;
+    background-color: @disableBgColor;
+    .border-radius(50%);
+    border: 1px solid @chkBorderColor;
+    .cursor(not-allowed);
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -3px 0 0 -3px;
+        overflow: hidden;
+        .border-radius(50%);
+        width: 6px;
+        height: 6px;
+        display: block;
+        background-color: @radioChkBgColor;
+    }
+}
+
+.t-tree li span.button.switch {
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+}
+
+.t-tree li span.button.root_open {
+    background-position: -191px -432px
+}
+
+.t-tree li span.button.root_close {
+    background-position: -272px -432px
+}
+
+.t-tree li span.button.roots_open {
+    background-position: -191px -432px
+}
+
+.t-tree li span.button.roots_close {
+    background-position: -272px -432px
+}
+
+.t-tree li span.button.center_open {
+    background-position: -191px -432px
+}
+
+.t-tree li span.button.center_close {
+    background-position: -272px -432px
+}
+
+.t-tree li span.button.bottom_open {
+    background-position: -191px -432px
+}
+
+.t-tree li span.button.bottom_close {
+    background-position: -272px -432px
+}
+
+.t-tree li span.button.noline_open {
+    background-position: -191px -432px
+}
+
+.t-tree li span.button.noline_close {
+    background-position: -272px -432px
+}
+
+.t-tree li .node_name {
+    position: relative;
+    top: 1px;
+    margin-right: 8px;
+}
+
+.t-tree li .level0>span.button.ico_open {
+    background-position: -353px -433px;
+}
+
+.t-tree li .level0>span.button.ico_close {
+    background-position: -353px -433px;
+}
+
+.t-tree li span.button.ico_open {
+    margin-right: 5px;
+    background-position: -432px -433px;
+}
+
+.t-tree li span.button.ico_close {
+    margin-right: 5px;
+    background-position: -432px -433px;
+}
+
+.t-tree li span.button.ico_docu {
+    margin-right: 5px;
+    background-position: -513px -432px;
+    &:hover {
+        background-position: -593px -432px;
+    }
+}
+
+.t-tree li span.button.edit {
+    margin-right: 4px;
+    background-position: -912px -432px;
+}
+
+.t-tree li span.button.remove {
+    margin-right: 4px;
+    background-position: -993px -432px;
+}
+
+.t-tree li span.button.add {
+    margin-right: 4px;
+    background-position: -833px -432px;
+}
+
+//添加新增样式
+.t-tree-newAdd {
+    display: inline-block;
+    .cursor(pointer);
+    padding: 3px 4px;
+    i {
+        width: 17px;
+        height: 18px;
+        display: inline-block;
+        .setBackground-s(-833px -433px);
+        vertical-align: middle;
+        margin-right: 3px;
+    }
+    &:hover {
+        color: @fontHoverColor;
+    }
+}

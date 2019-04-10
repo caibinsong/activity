@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>弹出框</title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+		<link rel="stylesheet" href="./css/dialog.css" />
+	</head>
+
+	<body>
+		<div class="dialog"></div>
+	</body>
+
+	<script src="../version/js/jquery-2.1.0.js"></script>
+	<script src="js/dialog.js"></script>
+	<script type="text/javascript">
+		//弹出框
+		var optPop = {
+			dialogType: 0,
+			dialogHeader: {
+				text: '此处为标题'
+			},
+			dialogContent: {
+				text: '此处为內容'
+			},
+			dialogNo: {
+				callback: function() {
+					alert('no');
+				}
+			}
+		}
+		$('.dialog').dialog(optPop);
+		/*var optTipPop = {
+			dialogType: 1,
+			confirmType: 1,
+			dialogHeader: {
+				//				tipIcon:'warning',
+			},
+			dialogContent: {
+				title: '警告',
+				text: '您输入的密码有错，请核对以后重新输入或点击忘记密码！'
+			},
+			dialogYes: {
+				callback: function() {
+					alert('yes');
+				}
+			},
+			dialogNo: {
+				callback: function() {
+					alert('no');
+				}
+			}
+		}*/
+
+		//4.22 新接口
+/*		var dialog = {
+			dialogType: 'pop', //4.22 dialogType为弹出框样式  可选值:'pop'  'success'  'news'  'warning' 'error'
+			style: { //弹出框的样式
+				width: '',
+				height: '',
+				left: 200,
+				top: 200
+			},
+			content: {
+				title: '此处有标题',
+				text:	'此处方内容'
+			},
+			yesCallBack:function(){
+				
+			},
+			noCallBack:function(){
+				alert('此处应有弹出框')
+			}
+		}
+	*/
+		//修改弹窗默认居中属性为js控制。以前的margin-left会使拖拽造成定位偏差。
+		$(document).ready(function(){        
+            $('.dialog').css({
+                    position:'absolute',
+                    left: ($(window).width() - $('.dialog').outerWidth())/2,  
+                    top: 10,
+                    margin:0
+            });
+			function drag() {
+			    var obj = $('.dialog');
+			    obj.bind('mousedown', start);
+			    function start(e) {
+			        var  ol = obj.offset().left;		        
+			        var  ot = obj.offset().top;
+			        deltaX = e.clientX -ol;
+			        deltaY = e.clientY-ot;
+			        
+			        $(document).bind({
+			            'mousemove': move,
+			            'mouseup': stop
+			        });
+			        return false;
+			    }
+			    function move(e) {
+			        obj.css({
+			            "left": (e.clientX - deltaX),
+			            "top": (e.clientY - deltaY)
+			        });
+			        return false;
+			    }
+			    function stop() {
+			        $(document).unbind({
+			            'mousemove': move,
+			            'mouseup': stop
+			        });
+			    }
+			}
+			drag();
+		});
+	</script>
+
+</html>

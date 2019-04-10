@@ -1,0 +1,88 @@
+<div class="page-3">
+	<div class="t-cols-wrap">
+		<div class="t-pop m-pop-column1 bgwhite widthb100">
+								
+       <div class="pop-column fn-clear">
+          <div class="column-cols" style="float: none;margin: 20px auto 20px 100px;">
+
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">原密码：</label>
+                 <div class="t-input require">
+                    <div class="input-wrap">
+                       <input class="text-input" type="password" id="oldpwd" placeholder="原密码">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">新密码：</label>
+                 <div class="t-input require">
+                    <div class="input-wrap">
+                       <input class="text-input" type="password" id="newpwd1" placeholder="新密码">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="t-form-wrap" id="newpwd2box">
+              	 <label class="t-label width80">确认密码：</label>
+                 <div class="t-input require active">
+                    <div class="input-wrap">
+                       <input class="text-input" type="password" id="newpwd2" placeholder="确认密码">
+                       <i class="text-icon"></i>
+                    </div>
+
+                    <div class="tip-content tip-content-down warning" id="err_pwd" style="display:none">  
+                       <div class="tip-text" id="err_msg">修改失败</div>
+                    </div>
+                    <div class="tip-content tip-content-down success" id="ok_pwd" style="display:none">  
+                       <div class="tip-text">修改成功(2秒后自动退出)</div>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="t-form-wrap">
+                 <label class="t-label width80"></label>
+                 <div class="t-input icon active">
+                      <a class="t-button" href="javascript:void(0)">
+                        <label class="t-btn-text" onclick="update()">保存</label>
+                      </a>
+
+                 </div>
+              </div>
+
+          </div>
+       </div>
+
+    </div>		
+  </div>
+</div>
+  <script>
+    function update(){
+        $.ajax({
+            type: "POST",
+            url: "/frame/changepwd?" + new Date(),
+            async:false,
+            data:{
+              "oldpwd":$('#oldpwd').val(),
+              "newpwd1":$('#newpwd1').val(),
+              "newpwd2":$('#newpwd2').val()
+            },
+            success: function(data){
+              eval("var jsondata="+data);
+              $("#newpwd2box").attr("style","height:60px");
+              $("#err_pwd").attr("style","display:none");
+              $("#ok_pwd").attr("style","display:none");
+              if(jsondata.status==0){
+                $("#err_msg").html(jsondata.msg);
+                $("#err_pwd").attr("style","");
+              }else{
+                $("#ok_pwd").attr("style","");
+                setTimeout('window.location.href="/frame/outlogin"', 2000);
+              }
+            }
+        });
+      return false;
+    }
+  </script>

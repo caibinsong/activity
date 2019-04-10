@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS [usertable] (
+	[id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[user] NVARCHAR(50)  NULL,
+	[name] NVARCHAR(50)  NULL,
+	[sex] NVARCHAR(50)  NULL,
+	[pwd] NVARCHAR(50)  NULL,
+	[tel] NVARCHAR(20)  NULL,
+	[idcard] NVARCHAR(64)  NULL,
+	[political] NVARCHAR(64)  NULL,
+	[specialty] NVARCHAR(256)  NULL,
+	[place] NVARCHAR(256)  NULL,
+	[addr] NVARCHAR(256)  NULL,
+	[qq] NVARCHAR(64)  NULL,
+	[wx] NVARCHAR(64)  NULL,
+	[email] NVARCHAR(64)  NULL,
+	[createtime] NVARCHAR(100)  NULL,
+	[lastlogintime] NVARCHAR(100)  NULL,
+	[logintime] NVARCHAR(100)  NULL,
+	[integral] DOUBLE  NULL,
+	[permissions] NVARCHAR(512)  NULL
+)

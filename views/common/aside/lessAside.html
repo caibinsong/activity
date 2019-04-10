@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>少导航配置展示</title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+		<link rel="stylesheet" type="text/css" href="./css/custom.css" />
+		<style>
+			.leftMenu{
+				/*margin-top:60px;*/
+				/*float:left;*/
+				position: fixed;
+				top: 0;
+				left: ;
+				height:100%;
+			}
+			.d1{
+				height: 500px;
+				background-color:red;
+			}
+			.right-cont{
+				position: fixed;
+				top: 0;
+				left: 221px;
+				z-index: 999;
+				bottom:0;
+				right: 0;
+				background: yellow;
+				padding:20px;
+			}
+			a{
+				display: block;
+				height:30px;
+				font-size: 20px;
+				font-weight: 600;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body class="fn-clear">
+		<div class="d1">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium temporibus suscipit magni iste iusto vitae porro voluptatibus quisquam deserunt fugiat soluta maiores voluptate perferendis labore id voluptates velit saepe atque?
+		</div>
+		<div class="leftMenu"></div>
+		<div class="right-cont">
+			<a> 切换左导航顶级项1</a>
+			<a> 切换左导航顶级项2</a>
+			<a> 切换左导航顶级项3</a>
+			<a> 切换左导航顶级项4</a>
+			<a> 切换左导航顶级项5</a>
+			<a> 切换左导航顶级项6</a>
+			<a> 切换左导航顶级项7</a>
+			<a> 切换左导航顶级项8</a>
+			<a> 切换左导航顶级项9</a>
+		</div>
+	</body>
+
+	<script src="../version/js/jquery-2.1.0.js"></script>
+	<script src="js/aside.js"></script>
+	<script type="text/javascript">
+		var optLess = {
+			asideType: 1, //选择导航类型，0对应多导航，1对应少导航
+			asideHeader: {
+				btnIcon: 'dev', //导航头部选择按钮
+				text: '网站导航', //导航头的文字
+				//					noRightBtn: true  //控制是否需要导航头右侧的按钮
+				callback:function(ele){
+					//第一个参数为对应绑定dom对象,但dom对象返回的上下文不同，
+					//如果是展开的情况下，返回的是展开时候头按钮
+					//如果是缩小的情况下，返回的是缩小时候头按钮
+					
+					//示例:点击导航头按钮触发右侧跟随移动行为
+					if(parseInt($('.right-cont').css('left')) === 221){
+						$('.right-cont').animate({
+							left:50
+						},200)
+					}else{
+						$('.right-cont').animate({
+							left:221
+						},200)
+					}
+					
+				}
+			},
+			asideBody: [{
+					btnIcon: 'com',
+					text: '系统管理',
+					active:1 ,//给指定菜单项添加打开效果
+					childList: [{
+						text: '注册管理',
+						callback:function(){
+							console.log('aa');
+						}
+					}, {
+						text: '注册审核'
+					}]
+				},
+				{
+					btnIcon: 'xtgl',
+					text: '接入管理',
+					childList: [{
+						text: '注册管理',
+						childList: [{
+							text: '工作台',
+							callback: function() { alert('l2') }
+						},{
+							text: '工作台',
+							callback: function() { alert('l2') }
+						}]
+					}, {
+						text: '注册审核',
+						callback:function(){
+							alert('a')
+						}
+					},{
+						text: '注册管理',
+						childList: [{
+							text: '工作台',
+							callback: function() { alert('l2') }
+						},{
+							text: '工作台',
+							callback: function() { alert('l2') }
+						},{
+							text: '工作台',
+							callback: function() { alert('l2') }
+						},{
+							text: '工作台',
+							callback: function() { alert('l2') }
+						},{
+							text: '工作台',
+							callback: function() { alert('l2') }
+						},{
+							text: '工作台',
+							callback: function() { alert('l2') }
+						},{
+							text: '工作台',
+							callback: function() { alert('l2') }
+						},{
+							text: '工作台',
+							callback: function() { alert('l2') }
+						}]
+					}, {
+						text: '注册审核',
+						callback:function(){
+							alert('a')
+						}
+					}]
+				}, {
+					btnIcon: 'xtgl trigger',
+					text: '安检管理',
+					callback:function(){
+//						alert('x1')
+						console.log('aa')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					callback:function(){
+						alert('x2')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					callback:function(){
+						alert('x3')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					callback:function(){
+						alert('x4')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					callback:function(){
+						alert('x5')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					callback:function(){
+						alert('x6')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					callback:function(){
+						alert('x7')
+					}
+				}
+			],
+			toolBox: {
+				asideBtn: false, //是否需要侧边按钮
+			}
+		}
+		$('.leftMenu').aside(optLess);
+		
+		var aside = $('.leftMenu').data('aside');
+		$('.right-cont a').click(function(){
+			var index = $(this).index();
+			console.log(index);
+			aside.activateTopItem(index);
+		})
+	</script>
+</html>

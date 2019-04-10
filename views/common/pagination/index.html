@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>分页组件</title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+	</head>
+
+	<body>
+		<div class="pager"></div>
+		<div class="pager" style="margin-top:50px;"></div>
+	</body>
+	<script src="../version/js/jquery-2.1.0.js"></script>
+	<script src="js/pagination.js"></script>
+	<script type="text/javascript">
+		var success = function() {
+			console.log('data')
+		}
+		$('.pager').pagination(
+			'./data/data.json', //ajax请求数据的url（必填）
+			100, //预定义的总页数（必填）
+			success, //ajax请求成功的回调函数
+			{
+				name: 'TEST'
+			}, //ajax请求的参数（选填）
+			'get' //ajax请求方法（选填）[默认为'get']
+		)
+	</script>
+
+</html>

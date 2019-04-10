@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>上传图片预览</title>
+
+	<style type="text/css">
+		/* box */
+		
+		.imgPreview{
+			/*width:120px;*/
+			/*height:120px;*/
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<input type="file" id="file"/>
+	<br />
+	<div class="imgPreview">
+	</div>
+	<div class="imgPreview">
+	</div>
+	<div class="imgPreview">
+	</div>
+
+</body>
+<script src="../../js/common/jquery-1.9.1.min.js"></script>
+<script src="./js/upImgPreview.js"></script>
+
+<script type="text/javascript">
+
+	$('#file').upImgPreview({
+		showAt: '.imgPreview',
+		showImgWidth: '100px',
+		showImgHeight: '200px'
+	});
+
+
+</script>
+
+</html>

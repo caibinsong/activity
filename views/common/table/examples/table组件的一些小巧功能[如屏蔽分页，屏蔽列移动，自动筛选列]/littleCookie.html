@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>table组件的一些小巧功能[如屏蔽分页，屏蔽列移动，自动筛选列]</title>
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/template.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/datepicker.css" />
+		<script src="../../../../js/common/jquery-1.9.1.min.js"></script>
+		<script src="../../js/datepicker.js"></script>
+		<script src="../../js/resize.js"></script>
+		<script src="../../js/tree.js"></script>
+		<script src="../../js/table.js"></script>
+	</head>
+
+	<body>
+		<div id="littleCookie"></div>
+	</body>
+	<script>
+		var lcOpt = {
+			header: [{
+				key: {
+					text: '输入您的大名吧！',
+					name: 'yourName',
+					width: '120px'
+				},
+				value: [{
+					marginLeft: '0px',
+					text: '请输入',
+					type: 'input',
+					width: '120px',
+					require: true,
+				}]
+			}, {
+				key: {
+					text: 'select框的孪生兄弟',
+					name: 'brother',
+					width: '126px'
+				},
+				value: [{
+					marginLeft: '0px',
+					text: '看我是不是很像select呀Xoxoxo',
+					type: 'select',
+					width: '200px',
+					require: true,
+					options:[
+						{value:'m1',text:'萌1'},
+						{value:'m2',text:'萌2'},
+						{value:'m3',text:'萌3'}
+						]
+				}]
+			}],
+			body: {
+				url: 'data/a.json',
+				mtype: 'get',
+				colModel: [{
+					name: 'id',
+					width: 55,
+					text: '序号'
+				}, {
+					name: 'devtype',
+					sort: true,
+					align: 'left',
+					text: '设备类型'
+				}, {
+					name: 'ip',
+					sort: true,
+					text: 'IP地址'
+				}, {
+					name: 'mac',
+					sort: true,
+					text: 'MAC地址'
+				}, {
+					name: 'online',
+					sort: true,
+					text: '在线状态'
+				}, {
+					name: 'block',
+					sort: true,
+					text: '阻断状态',
+				}],
+				pageSize: 10, 
+				orderType: 'ASC', 
+				orderBy: 'id',
+				rowList: [10, 20, 30],
+				sortable: true,
+				resizeable:false,	//屏蔽列移动
+				pageable:false,		//屏蔽分页功能
+				filterByColumn: true,	//自动筛选列
+				tools: [{
+					text: '可自定义导出功能',
+					toolIcon: 't-btn-add-table',
+					title: '可导出哟',
+					toolEvent: {
+						type: 'click',
+						cb: function(e) {
+							alert('已导出文档 xoxoxo')
+						}
+					}
+				}],
+				cruds: [{
+					text: 'cruds里存放对表格内容的基础操作',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '表格的基础操作step1',
+						crudEvent: {
+							type: 'click',
+							cb: function() {
+								alert('默认操作step1');
+							}
+						}
+					}]
+				}, {
+					text: '基础 基础  基础 操作(对表格内容的)',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '真的很基础',
+						crudEvent: {
+							type: 'click',
+							cb: function(e) {
+								alert('真的挺基础的！');
+							}
+						}
+					}]
+				}]
+			}
+		};
+		$('#littleCookie').table(lcOpt);
+	</script>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>table表格内容操作[基础操作以及自定义操作]</title>
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/template.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/datepicker.css" />
+		<script src="../../../../js/common/jquery-1.9.1.min.js"></script>
+		<script src="../../js/datepicker.js"></script>
+		<script src="../../js/resize.js"></script>
+		<script src="../../js/tree.js"></script>
+		<script src="../../js/table.js"></script>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<div id="doWithDefaultAndCustom"></div>
+	</body>
+	<script>
+		function clickPPG(curValue, curData) {
+			alert('第一个参数为对应单元格的原始值(如这里的curValue):' + curValue + '\n第二个参数为对应行完整的数据(如这里的curData):' + JSON.stringify(curData) + '\n拥有这些数据您应该可以做你想的事了，比如。。。。。。。。[请点确定]');
+		}
+		var doWithDefaultAndCustomOpt = {
+			body: {
+				url: 'data/a.json',
+				mtype: 'get',
+				colModel: [{
+					name: 'id',
+					width: 55,
+					text: '序号'
+				}, {
+					name: 'devtype',
+					sort: true,
+					align: 'left',
+					text: '设备类型'
+				}, {
+					name: 'ip',
+					sort: true,
+					text: 'IP地址'
+				}, {
+					name: 'mac',
+					sort: true,
+					text: 'MAC地址'
+				}, {
+					name: 'online',
+					sort: true,
+					text: '在线状态',
+					callback: function(curValue, curData) {
+						$(document).on('click', '.ppg-' + curData.id + '', clickPPG.bind(null, curValue, curData));
+						return '<span class="ppg-' + curData.id + '" style="cursor:pointer;border:1px solid red;">狠狠点击这个皮皮怪</span>'
+					}
+				}, {
+					name: 'block',
+					sort: true,
+					text: '阻断状态',
+				}],
+				pageSize: 10,
+				orderType: 'ASC',
+				orderBy: 'id',
+				rowList: [10, 20, 30],
+				sortable: true,
+				resizeable: false,
+				tools: [{
+					text: '可自定义导出功能',
+					toolIcon: 't-btn-add-table',
+					title: '可导出哟',
+					toolEvent: {
+						type: 'click',
+						cb: function(e) {
+							alert('已导出文档 xoxoxo')
+						}
+					}
+				}],
+				cruds: [{ //这里cruds是为了方便对表格内容进行操作，提供了便利的接口，
+					text: 'cruds里存放对表格内容的基础操作', //当然如果您想自定义操作部分可利用colModel中callback
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '表格的基础操作step1',
+						crudEvent: {
+							type: 'click',
+							cb: function(curRowData, e) {
+								alert('可通过第一个参数拿到对应行的数据,比如这里的curRowData:' + JSON.stringify(curRowData));
+							}
+						}
+					}]
+				}, {
+					text: '基础 基础  基础 操作(对表格内容的)',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '真的很基础',
+						crudEvent: {
+							type: 'click',
+							cb: function(e) {
+								alert('真的挺基础的！');
+							}
+						}
+					}]
+				}]
+			}
+		};
+		$('#doWithDefaultAndCustom').table(doWithDefaultAndCustomOpt);
+	</script>
+
+</html>

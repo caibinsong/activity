@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>tree新增功能</title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+	</head>
+
+	<body>
+		<div id="newAddDemo"></div>
+	</body>
+	<script src="../version/js/jquery-2.1.0.js"></script>
+	<script src="./js/tree.js"></script>
+	<script type="text/javascript">
+		var setting = {
+			async: {
+				enable: true,
+				url: 'data/newadd.json',
+				type: 'get',
+				autoParam: ['id', 'name', 'level']
+			},
+			edit: {
+				enable: true,
+				showRemoveBtn: true,
+				showRenameBtn: true
+			},
+			check: {
+				enable: true,
+				//				chkStyle:'radio'
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			view: {
+				showIcon: true,
+				addHoverDom: addHoverDom,
+				removeHoverDom: function removeHoverDom(treeId, treeNode) {
+					$("#addBtn_" + treeNode.tId).unbind().remove();
+				}
+			},
+			callback: {
+				onCheck: function(e, treeId, treeNode) {
+					var pn = treeNode.getParentNode(),
+						ztree = $.fn.zTree.getZTreeObj(treeId);
+					if(pn) {
+						pn.halfCheck = false;
+						ztree.updateNode(pn);
+					}
+				}
+			}
+		};
+		//自定义添加add功能
+		var newCount = 0;
+
+		function addHoverDom(treeId, treeNode) {
+			if(!treeNode.isParent) {
+				var sObj = $("#" + treeNode.tId + "_span");
+				if(treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+				var addStr = "<span class='button add' id='addBtn_" + treeNode.tId +
+					"' title='add node' onfocus='this.blur();'></span>";
+				sObj.after(addStr);
+				var btn = $("#addBtn_" + treeNode.tId);
+				if(btn) btn.bind("click", function() {
+					var zTree = $.fn.zTree.getZTreeObj("_ztree");
+					zTree.addNodes(treeNode, {
+						id: (100 + newCount),
+						pId: treeNode.id,
+						name: "new node" + (newCount++)
+					});
+					return false;
+				});
+			}
+		}
+		$(document).ready(function() {
+			$('#newAddDemo').tree(setting, true);
+		});
+	</script>
+
+</html>

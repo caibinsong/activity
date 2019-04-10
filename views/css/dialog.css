@@ -1,0 +1,260 @@
+@-webkit-keyframes cdialog-bounceIn {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(.5);
+		transform: scale(.5)
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		transform: scale(1)
+	}
+}
+
+@keyframes cdialog-bounceIn {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(.5);
+		-ms-transform: scale(.5);
+		transform: scale(.5)
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: scale(1);
+		-ms-transform: scale(1);
+		transform: scale(1)
+	}
+}
+
+.cdialog-anim {
+	animation: cdialog-bounceIn .5s;
+}
+
+@-webkit-keyframes cdialog-zoomInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(.1) translateY(-2000px);
+		transform: scale(.1) translateY(-2000px);
+		-webkit-animation-timing-function: ease-in-out;
+		animation-timing-function: ease-in-out
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: scale(.475) translateY(60px);
+		transform: scale(.475) translateY(60px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out
+	}
+}
+
+@keyframes cdialog-zoomInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(.1) translateY(-2000px);
+		-ms-transform: scale(.1) translateY(-2000px);
+		transform: scale(.1) translateY(-2000px);
+		-webkit-animation-timing-function: ease-in-out;
+		animation-timing-function: ease-in-out
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: scale(.475) translateY(60px);
+		-ms-transform: scale(.475) translateY(60px);
+		transform: scale(.475) translateY(60px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out
+	}
+}
+
+.cdialog-anim-01 {
+	animation: cdialog-zoomInDown .5s;
+}
+
+@-webkit-keyframes cdialog-fadeInUpBig {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(2000px);
+		transform: translateY(2000px)
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+		transform: translateY(0)
+	}
+}
+
+@keyframes cdialog-fadeInUpBig {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(2000px);
+		-ms-transform: translateY(2000px);
+		transform: translateY(2000px)
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+		-ms-transform: translateY(0);
+		transform: translateY(0)
+	}
+}
+
+.cdialog-anim-02 {
+	animation: cdialog-fadeInUpBig .5s;
+}
+
+@-webkit-keyframes cdialog-zoomInLeft {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(.1) translateX(-2000px);
+		transform: scale(.1) translateX(-2000px);
+		-webkit-animation-timing-function: ease-in-out;
+		animation-timing-function: ease-in-out
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: scale(.475) translateX(48px);
+		transform: scale(.475) translateX(48px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out
+	}
+}
+
+@keyframes cdialog-zoomInLeft {
+	0% {
+		opacity: 0;
+		-webkit-transform: scale(.1) translateX(-2000px);
+		-ms-transform: scale(.1) translateX(-2000px);
+		transform: scale(.1) translateX(-2000px);
+		-webkit-animation-timing-function: ease-in-out;
+		animation-timing-function: ease-in-out
+	}
+	60% {
+		opacity: 1;
+		-webkit-transform: scale(.475) translateX(48px);
+		-ms-transform: scale(.475) translateX(48px);
+		transform: scale(.475) translateX(48px);
+		-webkit-animation-timing-function: ease-out;
+		animation-timing-function: ease-out
+	}
+}
+
+.cdialog-anim-03 {
+	animation: cdialog-zoomInLeft .5s;
+}
+
+@-webkit-keyframes cdialog-rollIn {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateX(-100%) rotate(-120deg);
+		transform: translateX(-100%) rotate(-120deg)
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0) rotate(0);
+		transform: translateX(0) rotate(0)
+	}
+}
+
+@keyframes cdialog-rollIn {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateX(-100%) rotate(-120deg);
+		-ms-transform: translateX(-100%) rotate(-120deg);
+		transform: translateX(-100%) rotate(-120deg)
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0) rotate(0);
+		-ms-transform: translateX(0) rotate(0);
+		transform: translateX(0) rotate(0)
+	}
+}
+
+.cdialog-anim-04 {
+	animation: cdialog-rollIn .5s;
+}
+
+@-webkit-keyframes fadeIn {
+	0% {
+		opacity: 0
+	}
+	100% {
+		opacity: 1
+	}
+}
+
+@keyframes cdialog-fadeIn {
+	0% {
+		opacity: 0
+	}
+	100% {
+		opacity: 1
+	}
+}
+
+.cdialog-anim-05 {
+	animation: cdialog-fadeIn .5s;
+}
+
+@-webkit-keyframes cdialog-shake {
+	0%,
+	100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0)
+	}
+	10%,
+	30%,
+	50%,
+	70%,
+	90% {
+		-webkit-transform: translateX(-10px);
+		transform: translateX(-10px)
+	}
+	20%,
+	40%,
+	60%,
+	80% {
+		-webkit-transform: translateX(10px);
+		transform: translateX(10px)
+	}
+}
+
+@keyframes cdialog-shake {
+	0%,
+	100% {
+		-webkit-transform: translateX(0);
+		-ms-transform: translateX(0);
+		transform: translateX(0)
+	}
+	10%,
+	30%,
+	50%,
+	70%,
+	90% {
+		-webkit-transform: translateX(-10px);
+		-ms-transform: translateX(-10px);
+		transform: translateX(-10px)
+	}
+	20%,
+	40%,
+	60%,
+	80% {
+		-webkit-transform: translateX(10px);
+		-ms-transform: translateX(10px);
+		transform: translateX(10px)
+	}
+}
+
+.cdialog-anim-06 {
+	animation: cdialog-shake .5s;
+}
+
+.t-dialog-mask {
+	background: rgba(0, 0, 0, .6);
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 999999999999;
+}

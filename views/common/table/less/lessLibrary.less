@@ -1,0 +1,110 @@
+/* -----------------默认配置 --------------------*/
+@defaultFontColor: @fontColor; // 默认字体颜色
+@defaultFontSize: @fontSize; // 默认字体大小
+@defaultBodyWidth: @bodyMinWidth;   // 页面最小宽度
+@defaultBorderRadius: @borderRadius; // 默认圆角度数
+@defaultBorderColor: @borderColor; // 默认边框颜色
+@defaultBackground: @bgColorLight; // 浅色背景
+@defaultBackgroundUrl: @lessBackgroundUrl;// 默认雪碧图URL
+@defaultBackgroundUrl-s: @lessBackgroundUrl-s; // 默认雪碧图URL
+@defaultBackgroundUrl-m: @lessBackgroundUrl-m; // 默认雪碧图URL
+@defaultBackgroundUrl-l: @lessBackgroundUrl-l; // 默认雪碧图URL
+/* ----------------- 默认配置END ----------------*/
+html {
+    min-height: 100%;
+    body {
+        min-height: 100%;
+        min-width: @defaultBodyWidth;
+        font: normal @defaultFontSize / 1rem "microsoft Yahei";
+        color: @defaultFontColor;
+    }
+}
+// 兼容封装
+.compatible(@key, @value) {
+    @{key}: @value;
+    -moz-@{key}: @value;
+    -webkit-@{key}: @value;
+    -o-@{key}: @value;
+}
+.box-sizing(@args) {
+    .compatible(box-sizing,@args);
+}
+.border-radius(@radius: @defaultBorderRadius) {
+    .compatible(border-radius, @radius);
+}
+.box-shadow(@x: 0, @y: 0, @blur: 0, @color: transparent) {
+    .compatible(box-shadow, @arguments);
+}
+.cursor(@cursor) {
+    .compatible(cursor, @cursor);
+}
+.cursor(@cursor) when (@cursor = pointer ) {
+    .compatible(cursor, @cursor);
+    cursor: hand;
+    // IE5 兼容
+    cursor: -ms-hand;
+    cursor: @cursor;
+}
+.opacity(@opacity:1) {
+    @ie6_value: (@opacity * 100);
+    .compatible(opacity, @opacity);
+    filter:~'alpha(opacity = @{ie6_value})';
+}
+.transition(@property: all, @duration: 0s, @timing-function:ease, @delay: 0s) {
+    .compatible(transition, @property @duration @timing-function @delay);
+}
+// 设置宽高
+.setting(@width: auto, @height: auto, @display: block) {
+    width: @width;
+    height: @height;
+    display: @display;
+}
+// 设置字体
+.setFont(@fontSize: @defaultFontSize, @lineHeight: 1rem, @fontColor: @defaultFontColor, @fontWeight: normal, @fontFamily: 'Microsoft YaHei') {
+    color: @defaultFontColor;
+    font: @fontWeight @fontSize / @lineHeight @fontFamily;
+}
+// 设置背景图片(需配置URL)
+@defaultBackgroundUrl-s: @lessBackgroundUrl-s;
+.setBackground( @args ) when (iscolor(@args)) {
+    background-color: @args;
+}
+.setBackground( @args ) when not(iscolor(@args)) {
+    background: url(@defaultBackgroundUrl) no-repeat @args;
+}
+.setBackground-s( @args ) when not(iscolor(@args)) {
+    background: url(@defaultBackgroundUrl-s) no-repeat @args;
+}
+// 设置背景图片(需配置URL)
+@defaultBackgroundUrl-m: @lessBackgroundUrl-m;
+.setBackground-m( @args ) when not(iscolor(@args)) {
+    background: url(@defaultBackgroundUrl-m) no-repeat @args;
+}
+// 设置背景图片(需配置URL)
+@defaultBackgroundUrl-l: @lessBackgroundUrl-l;
+.setBackground-l( @args ) when not(iscolor(@args)) {
+    background: url(@defaultBackgroundUrl-l) no-repeat @args;
+}
+// 清除浮动 
+.fn-clear:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.fn-clear() {
+    zoom: 1;
+}
+// 省略号
+.ellipsis() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+// 垂直居中实现
+.span {
+    .setting(0, 100%, inline-block);
+    vertical-align: middle;
+}

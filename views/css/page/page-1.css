@@ -1,0 +1,10 @@
+/*----------------------------------- page-1 --------------------------------------*/
+.page-1 .t-form-title {
+  padding-top: 10px;
+}
+.page-1 .t-textarea {
+  padding: 0;
+}
+.page-1 .t-title {
+  float: left;
+}

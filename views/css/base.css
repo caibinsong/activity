@@ -1,0 +1,489 @@
+@charset "utf-8";
+/* 
+	@名称: base
+	@功能: 重设浏览器默认样式
+	@最后操作人: 董凯
+	@最后操作时间: 17/2/10
+*/
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+html {
+  *position: static;
+  min-height: 100%;
+  color: #505050;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+}
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+/* HTML5 媒体文件跟 img 保持一致 */
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+/* 要注意表单元素并不继承父级 font 的问题 */
+body,
+button,
+input,
+select,
+textarea {
+  font: normal 12px/1.5 "Microsoft YaHei";
+}
+input,
+select,
+textarea {
+  font-size: 100%;
+}
+/* 去除默认边框 */
+fieldset,
+img {
+  border: 0;
+}
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+  display: block;
+}
+/* 去掉 firefox 下此元素的边框 */
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+/* 一致的 del 样式 */
+del {
+  text-decoration: line-through;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+  font-style: normal;
+  font-weight: 500;
+}
+/* 去掉列表前的标识, li 会继承 */
+ol,
+ul {
+  list-style: none;
+}
+/* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 500;
+}
+q:before,
+q:after {
+  content: '';
+}
+/* 统一上标和下标 */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+/* a 标签样式重置  */
+a {
+  color: #666;
+}
+a:focus {
+  outline: none;
+}
+a:hover,
+a:active {
+  outline: none;
+  text-decoration: none;
+}
+/* 默认不显示下划线，保持页面简洁 */
+ins,
+a {
+  text-decoration: none;
+}
+/*img*/
+img {
+  border: 0;
+  vertical-align: middle;
+}
+a img,
+img {
+  -ms-interpolation-mode: bicubic;
+}
+/*表单重置*/
+input,
+select,
+textarea,
+button {
+  outline: none;
+}
+button,
+input {
+  border: 0;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+/* chrome 下字体过小的问题 */
+.fn-webkit-adjust {
+  -webkit-text-size-adjust: none;
+}
+/* 单行文字溢出时出现省略号，需设定宽度 */
+/* 表格重置 */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+table tr td {
+  height: 33px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
+}
+table tr th {
+  height: 33px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* IE bug fixed: th 不继承 text-align*/
+th {
+  text-align: inherit;
+}
+/* 小元素重置 */
+i,
+s {
+  text-decoration: none;
+  font-style: normal;
+}
+/* hide */
+.hide {
+  display: none!important;
+}
+/* 清理浮动 */
+.fn-clear:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.fn-clear {
+  zoom: 1;
+  /* for IE6 IE7 */
+}
+.ui-grid-1,
+.ui-grid-2,
+.ui-grid-3,
+.ui-grid-4,
+.ui-grid-5,
+.ui-grid-6,
+.ui-grid-7,
+.ui-grid-8,
+.ui-grid-9,
+.ui-grid-10,
+.ui-grid-11,
+.ui-grid-12 {
+  float: left;
+  position: relative;
+}
+.ui-grid-12 {
+  width: 100%;
+}
+.ui-grid-11 {
+  width: 91.66666667%;
+}
+.ui-grid-10 {
+  width: 83.33333333%;
+}
+.ui-grid-9 {
+  width: 75%;
+}
+.ui-grid-8 {
+  width: 66.66666667%;
+}
+.ui-grid-7 {
+  width: 58.33333333%;
+}
+.ui-grid-6 {
+  width: 50%;
+}
+.ui-grid-5 {
+  width: 41.66666667%;
+}
+.ui-grid-4 {
+  width: 33.33333333%;
+}
+.ui-grid-3 {
+  width: 25%;
+}
+.ui-grid-2 {
+  width: 16.66666667%;
+}
+.ui-grid-1 {
+  width: 8.33333333%;
+}
+.ui-pull-12 {
+  right: 100%;
+}
+.ui-pull-11 {
+  right: 91.66666667%;
+}
+.ui-pull-10 {
+  right: 83.33333333%;
+}
+.ui-pull-9 {
+  right: 75%;
+}
+.ui-pull-8 {
+  right: 66.66666667%;
+}
+.ui-pull-7 {
+  right: 58.33333333%;
+}
+.ui-pull-6 {
+  right: 50%;
+}
+.ui-pull-5 {
+  right: 41.66666667%;
+}
+.ui-pull-4 {
+  right: 33.33333333%;
+}
+.ui-pull-3 {
+  right: 25%;
+}
+.ui-pull-2 {
+  right: 16.66666667%;
+}
+.ui-pull-1 {
+  right: 8.33333333%;
+}
+.ui-pull-0 {
+  right: auto;
+}
+.ui-push-12 {
+  left: 100%;
+}
+.ui-push-11 {
+  left: 91.66666667%;
+}
+.ui-push-10 {
+  left: 83.33333333%;
+}
+.ui-push-9 {
+  left: 75%;
+}
+.ui-push-8 {
+  left: 66.66666667%;
+}
+.ui-push-7 {
+  left: 58.33333333%;
+}
+.ui-push-6 {
+  left: 50%;
+}
+.ui-push-5 {
+  left: 41.66666667%;
+}
+.ui-push-4 {
+  left: 33.33333333%;
+}
+.ui-push-3 {
+  left: 25%;
+}
+.ui-push-2 {
+  left: 16.66666667%;
+}
+.ui-push-1 {
+  left: 8.33333333%;
+}
+.ui-push-0 {
+  left: auto;
+}
+.ui-offset-12 {
+  margin-left: 100%;
+}
+.ui-offset-11 {
+  margin-left: 91.66666667%;
+}
+.ui-offset-10 {
+  margin-left: 83.33333333%;
+}
+.ui-offset-9 {
+  margin-left: 75%;
+}
+.ui-offset-8 {
+  margin-left: 66.66666667%;
+}
+.ui-offset-7 {
+  margin-left: 58.33333333%;
+}
+.ui-offset-6 {
+  margin-left: 50%;
+}
+.ui-offset-5 {
+  margin-left: 41.66666667%;
+}
+.ui-offset-4 {
+  margin-left: 33.33333333%;
+}
+.ui-offset-3 {
+  margin-left: 25%;
+}
+.ui-offset-2 {
+  margin-left: 16.66666667%;
+}
+.ui-offset-1 {
+  margin-left: 8.33333333%;
+}
+.ui-offset-0 {
+  margin-left: 0;
+}
+/* 滚动条样式美化 (IE不兼容) */
+.dvScrollBar::-webkit-scrollbar {
+  width: 0.4em;
+}
+.dvScrollBar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+.dvScrollBar::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 5px #b2d4ff;
+  background: #b2d4ff;
+  height: 10px;
+}

@@ -1,0 +1,55 @@
+@charset "utf-8";
+.t-formDrag {
+  position: relative;
+  width: 417px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+}
+.t-formDrag .move {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 100%;
+  cursor: move;
+  border-radius: 5px 0 0 5px;
+}
+.t-formDrag .move.move-bg {
+  background: #0056ff url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAAbUlEQVQ4T2NkoDJgpLJ5DLQ3cMnN//9j1BkxLMIlju5DrBpBitANBRmITZyggSAFuDQTYyjOMCTXULyRQo6hBGOZVEMJGkhqmBI0kKouJNUwkG/oE8vkuAyWwGmfU6ielyktzggmG1ItGIEGAgBeMWgWNK4jkwAAAABJRU5ErkJggg==") no-repeat center;
+}
+.t-formDrag .move.move-okBg {
+  background: #0056ff;
+}
+.t-formDrag .drag-bg {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.t-formDrag .drag-leftBg {
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  border-radius: 5px 0 0 5px;
+}
+.t-formDrag .drag-rightBg {
+  display: inline-block;
+  background: rgba(68, 145, 225, 0.2);
+  width: 100%;
+  height: 100%;
+  border-radius: 0 5px 5px 0;
+}
+.t-formDrag .drag-text {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-indent: 70px;
+  font-size: 12px;
+  color: #a4d9ff;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+}

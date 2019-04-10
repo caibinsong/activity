@@ -1,0 +1,41 @@
+/*业务使用者自定义样式模板*/
+/**
+ *3.24  添加 
+ * 
+/*导航头按钮样式*/
+/*假定按钮自定义类名.dev[类名可通过组件传参]*/
+.t-aside .t-caption-title .dev{
+	background:url(../img/index-s.png) no-repeat -31px -981px;
+}
+.t-aside .t-caption-title:hover .dev{
+	background:url(../img/index-s.png) no-repeat -111px -981px;
+}
+
+/*导航体按钮样式*/
+/*多导航*/
+/***
+ *  多导航的情况下导航头按钮样式，应该与导航体相同
+ */
+.t-aside-mini .root-ul li>.dev{
+	background:url(../img/index-s.png) no-repeat -31px -981px;
+} 
+.t-aside-mini .root-ul li:hover>.dev{
+	background:url(../img/index-s.png) no-repeat -111px -981px;
+} 
+/*使用少导航*/
+/*假定按钮自定义类名.com[类名可通过组件传参]*/
+.t-aside .root-ul .com{
+	background:url(../img/index-s.png) no-repeat -111px -819px;
+}
+.t-aside .root-ul .option-wrap:hover>.com{
+	background:url(../img/index-s.png) no-repeat -591px -819px;
+}
+.t-aside .root-ul li.active .com{
+	background:url(../img/index-s.png) no-repeat -591px -819px;
+}
+
+.t-aside-mini .root-ul li:hover>.com{
+	background:url(../img/index-s.png) no-repeat -591px -819px;
+}
+
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"  name="viewport" />
+
+	<title>个人中心</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 100%;position: absolute; height: 90%;overflow: auto;}
+		.box{width: 94%;height:270px;background: #fff;margin-bottom: 20px;padding: 2px 3%;font-size: 16px;}
+		.h100{height:35px;}
+		.h300{height:300px;}
+		.inputtext{width: 50%;height: 80px;font-size: 16px;border: 0px;}
+		.inputradio{height: 25px;width: 30px;}
+		.select{height: 60px;font-size: 16px;margin-top: 10px;width: 300px;}
+
+		.left{width:30%;height: 30px;font-size: 16px;border: 0px;}
+		.right{width: 70%;height: 80px;font-size: 16px;border: 0px;text-align: right;}
+		.bottom{margin-bottom:0px;margin-bottom: 0px;border-bottom: 2px solid #f7f7f7;}
+
+		#foot{height:8%;width: 100%;position: absolute;bottom: 0px;background-color: #3a7fca;}
+		.footitem{width:25%;border:0;padding:0px;margin:0px;float:left;height: 100%;text-align: center;font-size:12px;color:#fff;}
+		.footitem img{height:50%;margin-top:4%;}
+
+		
+		.go{width: 20px;float: right;padding-top: 5px;padding-left: 2%;}
+
+		.inputbtn{width: 90%;height: 40px;font-size: 16px; background: #404040;border: 0px;color: #fff;}
+
+		.welcome{width:95%;background:#3a7fca;color:#fff;font-size:14px;height:110px;padding-left:5%;}
+		.huodong{height:160px;width:100%;text-align: center;background:#fff;margin-bottom:10px;}
+		.huodongitem{width: 90px;height: 90px;display: inline-block;margin:20px 3px;}
+		.huodongbg{width: 90px;height: 90px;border-radius: 50%;background-size: 90px;font-size: 40px;color: #fff;line-height: 90px;}
+		.huodongtxt{font-size:12px;margin-top: 10px;}
+	</style>
+</head>
+<body>		
+	<div id="bg">
+		<div class="welcome">
+			<div style="height:75px;font-size:20px;line-height: 75px;">您好：<span style="color:yellow">{{.data.name}}</span> 欢迎回来！</div>
+			<div>注册时间：{{.data.createtime}}</div>
+		</div>
+		<div class="huodong">
+			<div class="huodongitem">
+				<div class="huodongbg" style="background: #febf00;">{{.huodong.cs}}</div>
+				<div class="huodongtxt">参加活动总次数</div>
+			</div>
+			<div class="huodongitem">
+				<div class="huodongbg" style="background:#ff7372">{{.huodong.integral}}</div>
+				<div class="huodongtxt">活动总时长</div>
+			</div>
+			<div class="huodongitem">
+				<div class="huodongbg" style="background:#5cb702" onclick="href('/product/toshowjf?aaa={{TimeUnix}}')">{{.data.integral}}</div>
+				<div class="huodongtxt" onclick="href('/product/toshowjf?aaa={{TimeUnix}}')">当前积分</div>
+			</div>
+		</div>
+	
+		<div class="box h100 bottom" onclick="href('/user/userinfo?aaa={{TimeUnix}}')">
+			<input type="text" class="left" value="信息修改" readonly style="background: url(/img/barrage_fill.png) no-repeat;background-size: 30px 30px;padding-left: 50px;"><img src="/img/go.png" class="go"/>
+		</div>
+		{{if IsPermissions1 .data.permissions}}
+		<div class="box h100 bottom" onclick="href('/frame/toadd?aaa={{TimeUnix}}')">
+			<input type="text" class="left" value="活动发布" readonly style="background: url(/img/addressbook_fill.png) no-repeat;background-size: 30px 30px;padding-left: 50px;"><img src="/img/go.png" class="go"/>
+		</div>
+		{{end}}
+		<div class="box h100 bottom" onclick="href('/frame/list?aaa={{TimeUnix}}')">
+			<input type="text" class="left" value="活动报名" readonly style="background: url(/img/dynamic_fill.png) no-repeat;background-size: 30px 30px;padding-left: 50px;"><img src="/img/go.png" class="go"/>
+		</div>
+		<div class="box h100 bottom" onclick="href('/dynamic/list?aaa={{TimeUnix}}')">
+			<input type="text" class="left" value="活动动态" readonly style="background: url(/img/picture_fill.png) no-repeat;background-size: 30px 30px;padding-left: 50px;"><img src="/img/go.png" class="go"/>
+		</div>
+		<div class="box h100 bottom" onclick="href('/course/list?aaa={{TimeUnix}}')">
+			<input type="text" class="left" value="益启课堂" readonly style="background: url(/img/study_fill.png) no-repeat;background-size: 30px 30px;padding-left: 50px;"><img src="/img/go.png" class="go"/>
+		</div>
+		<div class="box h100 bottom" onclick="href('/user/toshowteacherlist?aaa={{TimeUnix}}')">
+			<input type="text" class="left" value="讲师团队" readonly style="background: url(/img/group_fill.png) no-repeat;background-size: 30px 30px;padding-left: 50px;"><img src="/img/go.png" class="go"/>
+		</div>
+		<div class="box h100 bottom" onclick="href('/user/tj')">
+			<input type="text" class="left" value="荣誉墙" readonly style="background: url(/img/addressbook_fill.png) no-repeat;background-size: 30px 30px;padding-left: 50px;"><img src="/img/go.png" class="go"/>
+		</div>
+		<div class="box h100 bottom" onclick="href('/product/toshowlist?aaa={{TimeUnix}}')">
+			<input type="text" class="left" value="使用积分" readonly style="background: url(/img/jf_fill.png) no-repeat;background-size: 30px 30px;padding-left: 50px;"><img src="/img/go.png" class="go"/>
+		</div>
+		<div class="box h100 bottom" onclick="href('/user/tokblist?aaa={{TimeUnix}}')">
+			<input type="text" class="left" value="我的卡包" readonly style="background: url(/img/kb.png) no-repeat;background-size: 30px 30px;padding-left: 50px;"><img src="/img/go.png" class="go"/>
+		</div>
+		<div class="box h100 bottom" onclick="href('/pages/jfsm.html')">
+			<input type="text" class="left" value="积分使用说明" readonly style="background: url(/img/sm.png) no-repeat;background-size: 30px 30px;padding-left: 50px;"><img src="/img/go.png" class="go"/>
+		</div>
+		<div class="box h100" style="text-align: center;height: 40px;margin-top: 15px;background: #f7f7f7;">
+			<input class="inputbtn" type="button" value="退出" onclick="out()"/>
+		</div>
+	</div>	
+	<div id="foot">
+		<div class="footitem" id="ft1" onclick="footclick(this,1)" ><img id="ftapply" src="/img/apply1.png"/><div>活动</div></div>
+		<div class="footitem" id="ft2" onclick="footclick(this,2)" ><img id="ftactivity" src="/img/activity1.png"/><div>动态</div></div>
+		<div class="footitem" id="ft3" onclick="footclick(this,3)" ><img id="ftstudy" src="/img/study1.png"/><div>课堂</div></div>
+		<div class="footitem" id="ft4" onclick="footclick(this,4)" style="background:#fff;color:#000;"><img id="ftself" src="/img/self0.png"/><div>个人</div></div>
+	</div>
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script>
+		function href(url){
+			window.location.href=url;
+		}
+		function out(){
+			window.location.href="/frame/outlogin2?out=1";
+		}
+		$("#foot").load("/frame/foot?status=4&aaaxxx={{TimeUnix}}");
+	</script>
+</body>
+</html>

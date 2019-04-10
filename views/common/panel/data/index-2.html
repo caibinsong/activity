@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/test.css"/>
+	</head>
+	<body>
+		<h1 class="h" id="h" style="height: 120px;color: red;line-height: 120px;font-weight: 900;text-align: center;font-size: 30px;">请求完整页面并写入， 随后更改内容</h1>
+	</body>
+	<script>
+		window.setTimeout(function(){
+			if(document.getElementById('h')) document.getElementById('h').innerText = '内容被原页面JS修改';
+		},3000)
+	</script>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>table工具栏之跨页多选</title>
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/template.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/datepicker.css" />
+		<script src="../../../../js/common/jquery-1.9.1.min.js"></script>
+		<script src="../../js/datepicker.js"></script>
+		<script src="../../js/resize.js"></script>
+		<script src="../../js/tree.js"></script>
+		<script src="../../js/table.js"></script>
+	</head>
+
+	<body>
+		<div id="crossPagesToChecks"></div>
+	</body>
+	<script>
+		var crossPagesToChecksOpt = {
+			body: {
+				url: 'data/a.json',
+				mtype: 'get',
+				colModel: [{
+					name: 'id',
+					width: 55,
+					text: '序号'
+				}, {
+					name: 'devtype',
+					sort: true,
+					align: 'left',
+					text: '设备类型'
+				}, {
+					name: 'ip',
+					sort: true,
+					text: 'IP地址'
+				}, {
+					name: 'mac',
+					sort: true,
+					text: 'MAC地址'
+				}, {
+					name: 'online',
+					sort: true,
+					text: '在线状态'
+				}, {
+					name: 'block',
+					sort: true,
+					text: '阻断状态',
+				}],
+				pageSize: 10, 
+				orderType: 'ASC', 
+				orderBy: 'id',
+				rowList: [10, 20, 30],
+				sortable: true,
+				checkable: true,
+				tools: [{
+					text: '可自定义导出功能',
+					toolIcon: 't-btn-add-table',
+					title: '可导出哟',
+					toolEvent: {
+						type: 'click',
+						cb: function(e) {
+							var checkPagesData = $('.t-table').data('selectedRows');
+							alert("通过调用$('.t-table').data('selectedRows')来获取所有被选中行的数据[包括跨页的数据]\n比如："+JSON.stringify(checkPagesData))
+						}
+					}
+				}],
+				cruds: [{
+					text: 'cruds里存放对表格内容的基础操作',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '表格的基础操作step1',
+						crudEvent: {
+							type: 'click',
+							cb: function() {
+								alert('默认操作step1');
+							}
+						}
+					}]
+				}, {
+					text: '基础 基础  基础 操作(对表格内容的)',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '真的很基础',
+						crudEvent: {
+							type: 'click',
+							cb: function(e) {
+								alert('真的挺基础的！');
+							}
+						}
+					}]
+				}]
+			}
+		};
+		$('#crossPagesToChecks').table(crossPagesToChecksOpt);
+	</script>
+
+</html>

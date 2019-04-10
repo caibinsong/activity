@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS [introduce] (
+	[id] INTEGER  PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[introducename] NVARCHAR(128)  NULL,
+	[title] TEXT  NULL,
+	[content] TEXT  NULL,
+	[des] TEXT  NULL,
+	[time] NVARCHAR(100)  NULL
+)

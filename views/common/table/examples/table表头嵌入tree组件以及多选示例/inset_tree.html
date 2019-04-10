@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>table表头嵌入tree组件以及多选示例</title>
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/base.css" />
+		<link rel="stylesheet" type="text/css" href="../../../../css/common/template.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/datepicker.css" />
+		<script src="../../../../js/common/jquery-1.9.1.min.js"></script>
+		<script src="../../js/datepicker.js"></script>
+		<script src="../../js/resize.js"></script>
+		<script src="../../js/tree.js"></script>
+		<script src="../../js/table.js"></script>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<div id="inset_tree"></div>
+	</body>
+	<script>
+		var insetTreeOpt = {
+			header: [{
+				key: {
+					text: '输入您的大名吧！',
+					name: 'yourName',
+					width: '120px'
+				},
+				value: [{
+					marginLeft: '0px',
+					text: '请输入',
+					type: 'input',
+					width: '120px',
+					require: true,
+				}]
+			}, {
+				show: true,
+				column: 1,
+				key: {
+					text: 'select框的tree兄弟',
+					name: 'brother',
+					width: '126px'
+				},
+				value: [{
+					marginLeft: '0px',
+					text: '肚里有棵tree的select',
+					type: 'select',
+					width: '200px',
+					require: true,
+					options: [{			//tree组件作为类select的option部分，因此tree参数置于options中，作为其数组成员
+						otype: 'tree',	//表明嵌入tree组件
+						setting: {		//表明tree组件的配置项与ztree的setting一致
+							check: {
+								enable: true
+							},
+							data: {
+								simpleData: {
+									enable: true
+								}
+							}
+						},
+						zNodes: [				//预设节点与ztree的zNodes一致
+							{ id: 1, pId: 0, name: "父节点1 - 展开", open: true },
+							{ id: 11, pId: 1, name: "父节点11 - 折叠" },
+							{ id: 111, pId: 11, name: "叶子节点111" },
+							{ id: 112, pId: 11, name: "叶子节点112" },
+							{ id: 113, pId: 11, name: "叶子节点113" },
+							{ id: 114, pId: 11, name: "叶子节点114" },
+							{ id: 2, pId: 0, name: "父节点2 - 没有子节点", isParent: true },
+							{ id: 3, pId: 0, name: "父节点3 - 没有子节点", isParent: true },
+							{ id: 4, pId: 0, name: "父节点4 - 没有子节点", isParent: true },
+							{ id: 5, pId: 0, name: "父节点5 - 没有子节点", isParent: true }
+						],
+						isNewAdd: false,		//是否启用新增功能
+						yesCallBack: function() {		//点击确定的回调函数,返回参数必须严格按照以下返回参数的格式		4.22 添加若yesCallback为false时，就没有确定按钮
+							var ztreeObj = $.fn.zTree.getZTreeObj('_ztree'),
+								checkZnodes = ztreeObj.getCheckedNodes(),
+								checkValueArr=[],
+								checkTextArr=[];
+							$.each(checkZnodes,function(czi,czv){
+								checkValueArr.push(czv.id);
+								checkTextArr.push(czv.name);
+							})
+							return {
+								tvalue: checkValueArr.toString(), //返回的请求参数
+								text: checkTextArr.toString() //返回的文本内容
+							};
+						}
+					}]
+				}]
+			}],
+			body: {
+				url: 'data/a.json',
+				mtype: 'get',
+				colModel: [{
+					name: 'id',
+					width: 55,
+					text: '序号'
+				}, {
+					name: 'devtype',
+					sort: true,
+					align: 'left',
+					text: '设备类型'
+				}, {
+					name: 'ip',
+					sort: true,
+					text: 'IP地址'
+				}, {
+					name: 'mac',
+					sort: true,
+					text: 'MAC地址'
+				}, {
+					name: 'online',
+					sort: true,
+					text: '在线状态'
+				}, {
+					name: 'block',
+					sort: true,
+					text: '阻断状态',
+				}],
+				pageSize: 10,
+				orderType: 'ASC',
+				orderBy: 'id',
+				rowList: [10, 20, 30],
+				sortable: true,
+				resizeable: false,
+				tools: [{
+					text: '可自定义导出功能',
+					toolIcon: 't-btn-add-table',
+					title: '可导出哟',
+					toolEvent: {
+						type: 'click',
+						cb: function(e) {
+							alert('已导出文档 xoxoxo')
+						}
+					}
+				}],
+				cruds: [{
+					text: 'cruds里存放对表格内容的基础操作',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '表格的基础操作step1',
+						crudEvent: {
+							type: 'click',
+							cb: function() {
+								alert('默认操作step1');
+							}
+						}
+					}]
+				}, {
+					text: '基础 基础  基础 操作(对表格内容的)',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '真的很基础',
+						crudEvent: {
+							type: 'click',
+							cb: function(e) {
+								alert('真的挺基础的！');
+							}
+						}
+					}]
+				}]
+			}
+		};
+		$('#inset_tree').table(insetTreeOpt);
+	</script>
+
+</html>

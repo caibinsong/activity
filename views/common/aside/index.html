@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>配置项展示</title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+		<link rel="stylesheet" type="text/css" href="./css/custom.css" />
+		<style>
+			.leftMenu {
+				position: fixed;
+				top: 0;
+				left: 0;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body class="fn-clear">
+		<div class="leftMenu"></div>
+	</body>
+
+	<script src="../version/js/jquery-2.1.0.js"></script>
+	<script src="./js/aside.js"></script>
+	<script type="text/javascript">
+		var optMore = {
+			asideType: 0, //选择导航类型，0对应多导航，1对应少导航
+			asideHeader: {
+				btnIcon: 'dev', //导航头部选择按钮
+				text: '系统管理', //导航头的文字
+				noRightBtn: true,  //控制是否需要导航头右侧的按钮
+				callback: function(ele) {
+					//第一个参数为对应绑定dom对象,但dom对象返回的上下文不同，
+					//如果是展开的情况下，返回的是展开时候头按钮
+					//如果是缩小的情况下，返回的是缩小时候头按钮
+				}
+			},
+			toolBox: {
+				asideBtn: false, //是否需要侧边按钮
+			},
+			asideBody: [{
+				//				btnIcon: 'com',
+				text: '注册管理1',
+				id: 'zcgl1',
+				active: 1,
+				childList: [{
+					text: '注册管理1',
+					id: 'zcs11'
+				}, {
+					text: '注册管理1'
+				}, {
+					text: '注册管理1'
+				}, {
+					text: '注册管理1'
+				}]
+			}, {
+				text: '注册管理2',
+				id: 'zcgl2'
+			}, {
+				text: '注册管理3',
+				id: 'zcgl3',
+				childList: [{
+					id: 'zcs31',
+					text: '注册管理3'
+				}, {
+					text: '注册管理3'
+				}, {
+					text: '注册管理3'
+				}, {
+					text: '注册管理3'
+				}]
+			}, {
+				text: '注册管理4',
+				id: 'zcgl4'
+			}, {
+				text: '注册管理5',
+				id: 'zcgl5'
+			}]
+		}
+		var optLess = {
+			asideType: 1, //选择导航类型，0对应多导航，1对应少导航
+			asideHeader: {
+				btnIcon: 'dev', //导航头部选择按钮
+				text: '网站导航', //导航头的文字
+				//					noRightBtn: true  //控制是否需要导航头右侧的按钮
+				callback: function(ele) {
+					//第一个参数为对应绑定dom对象,但dom对象返回的上下文不同，
+					//如果是展开的情况下，返回的是展开时候头按钮
+					//如果是缩小的情况下，返回的是缩小时候头按钮
+				}
+			},
+			toolBox: {
+				asideBtn: false, //是否需要侧边按钮
+			},
+			asideBody: [{
+					btnIcon: 'com',
+					text: '系统管理',
+					active: 1, //给指定菜单项添加打开效果
+					id: 'com',
+					childList: [{
+						text: '注册管理',
+						callback: function() {
+							console.log('aa');
+						}
+					}, {
+						text: '注册审核'
+					}]
+				},
+				{
+					btnIcon: 'xtgl',
+					text: '接入管理',
+					id: 'srgl',
+					childList: [{
+						text: '注册管理',
+						childList: [{
+							text: '工作台',
+							callback: function() {
+								alert('l2')
+							}
+						}, {
+							text: '工作台',
+							callback: function() {
+								alert('l2')
+							}
+						}]
+					}, {
+						text: '注册审核',
+						callback: function() {
+							alert('a')
+						}
+					}, {
+						text: '注册管理',
+						childList: [{
+							text: '工作台',
+							id: 'gzt11',
+							callback: function() {
+								alert('l2')
+							}
+						}, {
+							text: '工作台',
+							id: 'gzt12',
+							callback: function() {
+								alert('l2')
+							}
+						}, {
+							text: '工作台',
+							callback: function() {
+								alert('l2')
+							}
+						}, {
+							text: '工作台',
+							callback: function() {
+								alert('l2')
+							}
+						}, {
+							text: '工作台',
+							callback: function() {
+								alert('l2')
+							}
+						}, {
+							text: '工作台',
+							callback: function() {
+								alert('l2')
+							}
+						}, {
+							text: '工作台',
+							callback: function() {
+								alert('l2')
+							}
+						}, {
+							text: '工作台',
+							callback: function() {
+								alert('l2')
+							}
+						}]
+					}, {
+						text: '注册审核',
+						callback: function() {
+							alert('a')
+						}
+					}]
+				}, {
+					btnIcon: 'xtgl trigger',
+					text: '安检管理',
+					id: 'ajgl',
+					callback: function() {
+						//						alert('x1')
+						console.log('aa')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					id: 'xtgl1',
+					callback: function() {
+						alert('x2')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					id: 'xtgl2',
+					callback: function() {
+						alert('x3')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					id: 'xtgl3',
+					callback: function() {
+						alert('x4')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					id: 'xtgl4',
+					callback: function() {
+						alert('x5')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					id: 'xtgl5',
+					callback: function() {
+						alert('x6')
+					}
+				}, {
+					btnIcon: 'xtgl',
+					text: '安检管理',
+					id: 'xtgl6',
+					callback: function() {
+						alert('x7')
+					}
+				}
+			]
+		}
+		$('.leftMenu').aside(optLess);
+	</script>
+
+</html>

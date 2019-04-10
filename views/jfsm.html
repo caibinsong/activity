@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"  name="viewport" />
+    
+	<title>志愿队积分使用说明</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 96%;position: absolute; height: 88%;top: 2%;left: 2%;overflow-y: auto;overflow-x: hidden;background: #fff;}
+		.box{width: 33%;margin-bottom: 20px;float:left;}
+
+		#foot{height:8%;width: 100%;position: absolute;bottom: 0px;background-color: #3a7fca;}
+		.footitem{width:25%;border:0;padding:0px;margin:0px;float:left;height: 100%;text-align: center;font-size:12px;color:#fff;}
+		.footitem img{height:50%;margin-top:4%;}
+
+		.boxtxt{font-size:14px;text-align: center;}
+		.text{font-size:14px;}
+		.jfimg{width: 60%;margin: 2% 20%;}
+	</style>
+</head>
+<body>		
+	<div id="bg">
+		<h1 style="width:100%;text-align: center;font-size:20px;">志愿者积分使用流程</h1>
+		<p class="text">
+			1、	打开“个人中心”，点击“使用积分”<br>（右上角绿圆中的数字为当前自己可用积分）
+			<img src="/imgs/1.png" class="jfimg"/>
+			2、	选择自己喜欢的宝贝
+			<img src="/imgs/2.png" class="jfimg"/>
+			3、	查看宝贝详情之后，拖动到最下方
+			<img src="/imgs/3.png" class="jfimg"/>
+			4、  点击兑换
+			<img src="/imgs/4.png" class="jfimg"/>
+			5、  并确认兑换。
+			<img src="/imgs/5.png" class="jfimg"/>
+			6、	回到个人中心，点击”我的卡包”<br>（右上角绿圆中数字已经减少12分）
+			<img src="/imgs/6.png" class="jfimg"/>
+			7、	向爱心商家出示这个二维码即可<br>（如果感觉二维码太小可点击放大）
+			<img src="/imgs/7.png" class="jfimg"/>
+			<img src="/imgs/8.png" class="jfimg"/>
+		</p>
+		<h1 style="width:100%;text-align: center;">爱心商家使用流程</h1>
+		<p class="text">
+			1、	打开微信或QQ的扫一扫功能
+			<img src="/imgs/9.png" class="jfimg"/>
+			2、	如果此二维码可用，会提示“扫码成功”
+			<img src="/imgs/10.png" class="jfimg"/>
+			3、  如果已经用过会提示在哪个时间点已经用过。
+			<img src="/imgs/11.png" class="jfimg"/>
+			4、	使用过后，志愿者刷新界面会提示已经使用
+			<img src="/imgs/12.png" class="jfimg"/>
+		</p>
+			
+	</div>
+	<div id="foot">
+		<div class="footitem" id="ft1" onclick="footclick(this,1)"><img id="ftapply" src="/img/apply1.png"/><div>活动</div></div>
+		<div class="footitem" id="ft2" onclick="footclick(this,2)" ><img id="ftactivity" src="/img/activity1.png"/><div>动态</div></div>
+		<div class="footitem" id="ft3" onclick="footclick(this,3)" ><img id="ftstudy" src="/img/study1.png"/><div>课堂</div></div>
+		<div class="footitem" id="ft4" onclick="footclick(this,4)" style="background:#fff;color:#000;"><img id="ftself" src="/img/self0.png"/><div>个人</div></div>
+	</div>
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script>
+		$("#foot").load("/frame/foot?status=4");
+	</script>
+</body>
+</html>

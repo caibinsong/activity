@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>提示框配置</title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+		<link rel="stylesheet" href="./css/dialog.css" />
+	</head>
+	<body>
+		<div class="dialog"></div>
+	</body>
+
+	<script src="../version/js/jquery-2.1.0.js"></script>
+	<script src="js/dialog.js"></script>
+	<script type="text/javascript">
+		/*
+		 dialog组件功能:可以实现弹出框和警示框两种，可以自定义弹出框的内容，比方弹出表单，表格，图片等等
+		 * */
+		//弹出框
+//		var optTipPop = {
+//			dialogType:1,
+//			confirmType:1,
+//			dialogHeader:{
+//				tipIcon:'warning',
+//			},
+//			dialogContent:{
+//				title:'警告',
+//				text:'您输入的密码有错，请核对以后重新输入或点击忘记密码！'
+//			},
+//			dialogYes:{
+//				callback:function(){
+//					alert('yes');
+//				}
+//			},
+//			dialogNo:{
+//				callback:function(){
+//					alert('no');
+//				}
+//			}
+//		}
+		var optTipPop = {
+			dialogType:'news',
+			content:{
+				title:'新闻',
+				text:'dladjadadadad'
+			}
+		}
+//		$('.dialog').dialog(optTipPop);
+		//5.9  接口调整
+		var str = 'dassssssssssssssssssssss'
+		cdialog.success(str,function(){
+				alert(1);
+		},function(){
+				alert(0);
+		},true,'center');
+	</script>
+	
+</html>

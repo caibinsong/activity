@@ -1,0 +1,380 @@
+/* ---------------全局参数配置Start---------------- */
+/* -----------------默认配置 --------------------*/
+/* ----------------- 默认配置END ----------------*/
+html {
+  min-height: 100%;
+}
+html body {
+  min-height: 100%;
+  min-width: 1280px;
+  font: normal 12px / 1rem "microsoft Yahei";
+  color: #505050;
+}
+.fn-clear:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.span {
+  width: 0;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* aside 左菜单  */
+.t-aside {
+  height: 100%;
+  border-right: 1px solid #d8d8d8;
+  background-color: #f1f1f3;
+  position: relative;
+}
+.t-aside .dvScrollBar::-webkit-scrollbar-thumb {
+  background: #b4e1ff;
+}
+.t-aside .dvScrollBar::-webkit-scrollbar-track {
+  display: none;
+}
+.t-aside .asideBtn {
+  width: 13px;
+  height: 35px;
+  -moz-cursor: pointer;
+  -webkit-cursor: pointer;
+  -o-cursor: pointer;
+  cursor: hand;
+  cursor: -ms-hand;
+  cursor: pointer;
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  margin-top: -18px;
+  background: url('../img/index-s.png') no-repeat -754px -584px;
+}
+.t-aside .asideBtn.active {
+  background: url('../img/index-s.png') no-repeat -835px -584px;
+}
+.t-aside .xtgl {
+  background: url('../img/index-s.png') no-repeat -512px -739px;
+}
+.t-aside .option-wrap {
+  position: relative;
+  overflow: hidden;
+  width: inherit;
+  height: auto;
+  display: block;
+}
+.t-aside .option-wrap:hover .aside-text {
+  color: #57a3f1;
+}
+.t-aside .option-wrap:hover .xtgl {
+  background: url('../img/index-s.png') no-repeat -512px -499px;
+}
+.t-aside .option-wrap.focus .aside-text {
+  color: #57a3f1;
+}
+.t-aside .option-wrap .t-aside-icon {
+  position: absolute;
+  top: 0px;
+  left: 21px;
+  width: 20px;
+  height: 100%;
+  display: block;
+}
+.t-aside .option-wrap .caption-text {
+  padding-left: 53px;
+  padding-right: 50px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: #505050;
+  font: normal 14px / 42px 'Microsoft YaHei';
+  font-weight: bold;
+}
+.t-aside .option-wrap .aside-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 53px;
+  padding-right: 50px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: #505050;
+  font: normal 12px / 42px 'Microsoft YaHei';
+}
+.t-aside .option-wrap .aside-btn {
+  -moz-cursor: pointer;
+  -webkit-cursor: pointer;
+  -o-cursor: pointer;
+  cursor: hand;
+  cursor: -ms-hand;
+  cursor: pointer;
+  top: 0px;
+  right: 10px;
+  position: absolute;
+  width: 33px;
+  height: 100%;
+  display: block;
+  background: url('../img/index-m.png') no-repeat -1134px -30px;
+}
+.t-aside .option-wrap .aside-btn:hover {
+  opacity: 0.8;
+  -moz-opacity: 0.8;
+  -webkit-opacity: 0.8;
+  -o-opacity: 0.8;
+  filter: alpha(opacity = 80);
+}
+.t-aside .option-wrap .aside-arrow {
+  top: 0px;
+  right: 0;
+  position: absolute;
+  width: 21px;
+  height: 100%;
+  display: block;
+  background: url('../img/index-s.png') no-repeat -1077px -819px;
+}
+.t-aside .t-caption-title {
+  border-left: 5px solid transparent;
+  border-bottom: 1px solid #d8d8d8;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  width: 100%;
+  height: 42px;
+  display: block;
+  background-color: #f1f1f3;
+}
+.t-aside .t-caption-title .option-wrap {
+  height: 100%;
+}
+.t-aside .t-aside-less {
+  width: 220px;
+  height: 100%;
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  position: relative;
+  background: #f1f1f3;
+  z-index: 999;
+}
+.t-aside .t-aside-less .caption-text {
+  font-weight: normal;
+}
+.t-aside .t-aside-less .aside-option .root-ul {
+  -moz-cursor: pointer;
+  -webkit-cursor: pointer;
+  -o-cursor: pointer;
+  cursor: hand;
+  cursor: -ms-hand;
+  cursor: pointer;
+}
+.t-aside .t-aside-less .aside-option .root-ul > li {
+  width: 210px;
+  padding-right: 5px;
+  border-left: 5px solid transparent;
+  background-color: #f1f1f3;
+  overflow: hidden;
+}
+.t-aside .t-aside-less .aside-option .root-ul > .active {
+  border-left: 5px solid #57a3f1;
+  background-color: #ffffff;
+}
+.t-aside .t-aside-less .aside-option .root-ul > .active > .option-wrap > .aside-text {
+  color: #505050;
+  font-weight: 600;
+}
+.t-aside .t-aside-less .aside-option .root-ul > .active .xtgl {
+  background: url('../img/index-s.png') no-repeat -512px -499px;
+}
+.t-aside .t-aside-less .aside-option .root-ul > .active > .option-wrap > .aside-arrow {
+  background: url('../img/index-s.png') no-repeat -195px -419px;
+}
+.t-aside .t-aside-less .aside-option .root-ul .aside-node {
+  width: inherit;
+  display: none;
+}
+.t-aside .t-aside-less .aside-option .root-ul .aside-node .active > .option-wrap > .aside-text {
+  color: #57a3f1;
+}
+.t-aside .t-aside-less .aside-option .root-ul .aside-node .active > .option-wrap > .aside-arrow {
+  background: url('../img/index-s.png') no-repeat -195px -419px;
+}
+.t-aside .t-aside-less .aside-option .root-ul .aside-node .childList {
+  padding-left: 12px;
+}
+.t-aside .t-aside-less .aside-option .root-ul .dvScrollBar.active > .aside-node {
+  display: block;
+}
+.t-aside .t-aside-more {
+  width: 220px;
+  height: auto;
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  background-color: #f1f1f3;
+}
+.t-aside .t-aside-more .aside-option {
+  overflow: hidden;
+}
+.t-aside .t-aside-more .aside-option .root-ul {
+  -moz-cursor: pointer;
+  -webkit-cursor: pointer;
+  -o-cursor: pointer;
+  cursor: hand;
+  cursor: -ms-hand;
+  cursor: pointer;
+}
+.t-aside .t-aside-more .aside-option .root-ul .moreChildList > li {
+  width: 210px;
+  padding-right: 5px;
+  border-left: 5px solid transparent;
+  background-color: #f1f1f3;
+  transition: height .2s;
+}
+.t-aside .t-aside-more .aside-option .root-ul .moreChildList > .active {
+  border-left: 5px solid #57a3f1;
+  background-color: #ffffff;
+}
+.t-aside .t-aside-more .aside-option .root-ul .moreChildList > .active > .option-wrap > .aside-text {
+  color: #505050;
+  font-weight: 600;
+}
+.t-aside .t-aside-more .aside-option .root-ul .moreChildList > .active .xtgl {
+  background: url('../img/index-s.png') no-repeat -512px -499px;
+}
+.t-aside .t-aside-more .aside-option .root-ul .moreChildList > .active > .option-wrap > .aside-arrow {
+  background: url('../img/index-s.png') no-repeat -195px -419px;
+}
+.t-aside .t-aside-more .aside-option .root-ul .aside-node {
+  width: inherit;
+  display: none;
+}
+.t-aside .t-aside-more .aside-option .root-ul .aside-node .active > .option-wrap > .aside-text {
+  color: #57a3f1;
+}
+.t-aside .t-aside-more .aside-option .root-ul .aside-node .active > .option-wrap > .aside-arrow {
+  background: url('../img/index-s.png') no-repeat -195px -580px;
+}
+.t-aside .t-aside-more .aside-option .root-ul .aside-node .childList {
+  padding-left: 12px;
+}
+.t-aside .t-aside-more .aside-option .root-ul .dvScrollBar.active > .aside-node {
+  display: block;
+}
+.t-aside .t-aside-mini {
+  width: 50px;
+  height: auto;
+  display: block;
+  display: none;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li {
+  position: relative;
+  -moz-cursor: pointer;
+  -webkit-cursor: pointer;
+  -o-cursor: pointer;
+  cursor: hand;
+  cursor: -ms-hand;
+  cursor: pointer;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  width: 100%;
+  height: 40px;
+  display: block;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li:hover {
+  border-top: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+  background-color: #eaeaea;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li:hover .xtgl {
+  background: url('../img/index-s.png') no-repeat -512px -499px;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li:hover .mini-option-wrap {
+  display: block;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .t-aside-icon {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 20px;
+  height: 100%;
+  display: block;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .mini-option-wrap {
+  position: absolute;
+  left: 50px;
+  top: -1px;
+  width: 180px;
+  height: auto;
+  display: none;
+  border: 1px solid #d8d8d8;
+  z-index: 999;
+  background-color: #ffffff;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .mini-option-wrap .title-option {
+  text-indent: 15px;
+  position: relative;
+  left: -1px;
+  padding-right: 1px;
+  cursor: initial;
+  width: 100%;
+  height: 40px;
+  display: block;
+  color: #505050;
+  font: normal 12px / 42px 'Microsoft YaHei';
+  background-color: #eaeaea;
+  font-weight: bold;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .mini-option-wrap .title-option:hover {
+  color: #505050;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .mini-option-wrap > .aside-node {
+  overflow: auto;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .mini-option-wrap > .aside-node .active > .option-wrap > .aside-text {
+  color: #57a3f1;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .mini-option-wrap > .aside-node .active > .option-wrap > .aside-arrow {
+  background: url('../img/index-s.png') no-repeat -195px -419px;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .mini-option-wrap li {
+  text-indent: 15px;
+  -moz-cursor: pointer;
+  -webkit-cursor: pointer;
+  -o-cursor: pointer;
+  cursor: hand;
+  cursor: -ms-hand;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #505050;
+  font: normal 12px / 36px 'Microsoft YaHei';
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .mini-option-wrap li:hover {
+  color: #57a3f1;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .mini-option-wrap li .aside-text {
+  padding-left: 0;
+}
+.t-aside .t-aside-mini .aside-option .root-ul > li .mini-option-wrap .childList {
+  display: none;
+  padding-left: 10px;
+}

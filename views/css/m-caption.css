@@ -1,0 +1,77 @@
+@charset "utf-8";
+.m-caption-wrap {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  width: auto;
+  height: 41px;
+  display: block;
+  background-color: #f1f1f3;
+}
+.m-caption-left {
+  float: left;
+  width: auto;
+  height: 100%;
+  display: block;
+}
+.m-caption-left .caption-left-text {
+  float: left;
+  padding: 0 11px 0 22px;
+  width: auto;
+  height: 100%;
+  display: block;
+  color: #505050;
+  font: normal 14px / 42px "Microsoft YaHei";
+}
+.m-caption-left .t-question {
+  float: left;
+}
+.m-caption-right {
+  float: right;
+  width: auto;
+  height: 100%;
+  display: block;
+}
+.m-caption-right ul {
+  width: auto;
+  height: 100%;
+  display: block;
+}
+.m-caption-right ul li {
+  position: relative;
+  cursor: pointer;
+  -moz-cursor: pointer;
+  -webkit-cursor: pointer;
+  -o-cursor: pointer;
+  cursor: hand;
+  cursor: -ms-hand;
+  width: auto;
+  height: 100%;
+  display: block;
+}
+.m-caption-right ul li .caption-right-icon {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 20px;
+  height: 100%;
+  display: block;
+}
+.m-caption-right ul li .caption-right-icon.download-icon {
+  background: url('../../version/img/index-s.png') no-repeat -511px -98px;
+}
+.m-caption-right ul li .caption-right-text {
+  padding: 0 23px 0 43px;
+  color: #505050;
+  font: normal 12px / 42px "Microsoft YaHei";
+  width: auto;
+  height: 100%;
+  display: block;
+}
+.m-caption-right ul li:hover .download-icon {
+  background: url('../../version/img/index-s.png') no-repeat -511px -18px;
+}
+.m-caption-right ul li:hover .caption-right-text {
+  color: #58a2ff;
+}

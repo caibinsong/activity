@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+		<style type="text/css">
+			input{
+				width:100px;
+				border:1px solid red;
+				height: 30px;
+			}
+			body{
+				height: 1000px;
+			}
+			.a{
+				width:500px;
+				height: 250px;
+				position: fixed;
+				top: 200px;
+				left: 100px;
+				background: black;
+			}
+			.b{
+				width: 200px;
+				height: 150px;
+				position: fixed;
+				top: 200px;
+				left: 200px;
+				background: red;
+			}
+			.c{
+				width:50px;
+				height: 50px;
+				background: white;
+				position: absolute;
+				top: 50px;
+				left: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="text" class="box1" />
+		<!--<div class="box"></div>-->
+		<!--<div class="box"></div>-->
+		<!--<input type="text" class="box2" />-->
+		<!--<input type="" name="" id="" value="0131313132132" class="box"/>-->
+	</body>
+	<script src="../version/js/jquery-2.1.0.js"></script>
+	<script src="js/customScrollBar.js"></script>
+	<script src="js/datepicker.js"></script>
+	<script type="text/javascript">
+		var opt1 = {
+			dateType: 'fromToOnlyDate', //日历选择器的类型   onlyDate只有日期  onlyTime只有时间  dateAndTime日期+时间   fromToOnlyDate起止日期-结束日期   fromToDateAndTime起止日期+时间-结束日期+时间[默认onlyDate]
+			defaultShowDate:0,			//是否启用默认展示框[可选]     0 表示不启用，1表示启用	
+			//initValue:'14:00',	 			//初始值选项[可选]	格式必须与dateFormate一致	
+			readonly:true,				//禁止日历选择器的调用元素可输入内容[可选]   true 禁止输入(默认)  false 不禁止	[readonly是一个单词]
+			//dateFormate:'hh:mm',	//日期在展示框中展示的格式[可选]  'yyyy/MM/dd'(默认)  'yyyy-MM-dd'	'yyyy-MM-dd hh:mm:ss'
+			position:'fixed'
+		};
+		var opt2 = {
+			dateType: 'fromToOnlyDate', //日历选择器的类型   onlyDate只有日期  onlyTime只有时间  dateAndTime日期+时间   fromToOnlyDate起止日期-结束日期   fromToDateAndTime起止日期+时间-结束日期+时间[默认onlyDate]
+			defaultShowDate:0,			//是否启用默认展示框[可选]     0 表示不启用，1表示启用	
+			initValue:'',				//初始值选项[可选]	格式必须与dateFormate一致	
+			readonly:true,				//禁止日历选择器的调用元素可输入内容[可选]   true 禁止输入(默认)  false 不禁止	[readonly是一个单词]
+//			dateFormate:'yyyy-MM-dd'	//日期在展示框中展示的格式[可选]  'yyyy/mm/dd'(默认)  'yyyy-MM-dd'
+		};
+		$('.box1').datepicker(opt1);
+//		$('.box2').datepicker(opt2);
+		
+//		var opti = {
+//			defaultShowDate:0,			//是否启用默认展示框[可选]     0 表示不启用，1表示启用	
+//			initValue:'2016-08-03',		//初始值选项[可选]	格式必须与dateFormate一致	
+//			readonly:false,				//禁止日历选择器的调用元素可输入内容[可选]   true 禁止输入(默认)  false 不禁止	[readonly是一个单词]
+//			dateFormate:'yyyy-mm-dd'	//日期在展示框中展示的格式[可选]  'yyyy/mm/dd'  'yyyy-mm-dd'(默认)
+//		};
+//		$('.box1').datepicker(opti);
+	</script>
+
+</html>

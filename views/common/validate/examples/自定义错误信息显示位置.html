@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>多表单相同错误验证信息的情况</title>
+		<style type="text/css">
+			#multiForm {
+				width: 670px;
+			}
+			
+			#multiForm label.error {
+				margin-left: 10px;
+				width: auto;
+				display: inline;
+			}
+			
+			#newsletter_topics label.error {
+				display: none;
+				margin-left: 103px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form class="cmxform" id="customPosFrom" method="get" action="">
+			<div style="height: 100px;">
+				<span class="error"></span>
+			</div>
+			<div class="error" style="height: 20px;border:1px solid blue;"></div>
+			<fieldset>
+				<legend>Validating a complete form</legend>
+				<p>
+					<label for="firstname">Firstname</label>
+					<input id="firstname" name="firstname" type="text">
+					<!--<span class="error" style="display: inline-block;width:100px;height: 20px;border: 1px solid red;"></span>-->
+				</p>
+				<p>
+					<label for="lastname">Lastname</label>
+					<input id="lastname" name="lastname" type="text">
+				</p>
+				<p>
+					<label for="username">Username</label>
+					<input id="username" name="username" type="text">
+				</p>
+				<p>
+					<label for="password">Password</label>
+					<input id="password" name="password" type="password">
+				</p>
+				<p>
+					<label for="confirm_password">Confirm password</label>
+					<input id="confirm_password" name="confirm_password" type="password">
+				</p>
+				<p>
+					<label for="email">Email</label>
+					<input id="email" name="email" type="email">
+				</p>
+				<fieldset id="checks">
+					<legend>Checks (select at least two) - note: would be hidden when newsletter isn't selected, but is visible here for the demo</legend>
+					<label for="c1">
+					<input type="checkbox" id="c1" value="c1" name="checkDemo">c1
+				</label>
+					<label for="c2">
+					<input type="checkbox" id="c2" value="c2" name="checkDemo">c2
+				</label>
+					<label for="c3">
+					<input type="checkbox" id="c3" value="c3" name="checkDemo">c3
+				</label>
+					<label for="checks" class="error">Please select only 2</label>
+				</fieldset>
+				<fieldset id="radios">
+					<legend>radios (select at least two) - note: would be hidden when newsletter isn't selected, but is visible here for the demo</legend>
+					<label for="r1">
+					<input type="radio" id="r1" value="r1" name="radioDemo">r1
+				</label>
+					<label for="r2">
+					<input type="radio" id="r2" value="r2" name="radioDemo">r2
+				</label>
+					<label for="r3">
+					<input type="radio" id="r3" value="r3" name="radioDemo">r3
+				</label>
+					<label for="radios" class="error">Please select only one</label>
+				</fieldset>
+				<p>
+					<input class="submit" type="submit" value="Submit">&nbsp;&nbsp;&nbsp;&nbsp;
+				</p>
+			</fieldset>
+		</form>
+	</body>
+	<script src="../js/jquery-1.9.1.js"></script>
+	<script src="../js/validate.js"></script>
+	<script type="text/javascript">
+		//自定义错误信息显示位置,示例如下
+		$('#customPosFrom').validate({
+			rules: {
+				firstname: "required",
+				lastname: "required",
+				username: {
+					required: true,
+					minlength: 2
+				},
+				password: {
+					required: true,
+					minlength: 5
+				},
+				confirm_password: {
+					required: true,
+					minlength: 5,
+					equalTo: "#password"
+				},
+				email: {
+					required: true,
+					email: true
+				},
+				radioDemo:'required',
+				checkDemo: {
+					required: true,
+					minlength: 2
+				}
+			},
+			//自定义错误信息的显示位置
+			errorPlacement: function(error, element) {
+				console.log(error,element);			//error错误信息元素  element验证元素
+				if(element.is(":radio"))
+					error.appendTo(element.closest('fieldset'));
+				else if(element.is(":checkbox"))
+					error.appendTo(element.closest('fieldset'));
+				else
+					element.after(error);
+			},
+			//错误信息集中显示的容器，若设置errorLabelContainer,则errorPlacement无效
+			errorLabelContainer: $("#customPosFrom span.error")
+		})
+	</script>
+
+</html>

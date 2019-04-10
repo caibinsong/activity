@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>table组件的完全配置</title>
+		<link rel="stylesheet" href="../version/css/template.css" />
+		<style type="text/css">
+			#fullConfig {
+				margin-left: 100px;
+				margin-top: 200px;
+			}
+			
+			aside {
+				position: fixed;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				width: 220px;
+				background: red;
+			}
+			
+			.rightCont {
+				margin-left: 220px;
+				margin-right: 100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<aside></aside>
+		<div class="rightCont">
+			<div id="fullConfig"></div>
+		</div>
+		<div class="bar"></div>
+	</body>
+	<script src="../version/js/jquery-2.1.0.js"></script>
+	<script src="js/customScrollBar.js"></script>
+	<script src="js/datepicker.js"></script>
+	<script src="js/resize.js"></script>
+	<script src="js/tree.js"></script>
+	<script src="js/table.js"></script>
+	<script>
+		function clickPPG(curValue, curData) {
+			alert('第一个参数为对应单元格的原始值(如这里的curValue):' + curValue + '\n第二个参数为对应行完整的数据(如这里的curData):' + JSON.stringify(curData));
+		}
+		var fullConfig = {
+			headerQuery: { //查询头样式 
+				text: '检索', //表头查询按钮文本内容,默认查询
+				btnIcon: true, //表头查询按钮是否需要图标，默认为true
+				initQuery: { //页面刷新时初始查询条件
+					init1: 'init1',
+					init2: 'init2',
+					init3: 'init3'
+				},
+				callback: function() {
+					return {
+						'else': 'else'
+					}
+				},
+				initSyncCallback: function() { //5.26 用于表格首次刷新的时候自定义异步的同步执行函数
+					console.log('init');
+				}
+			},
+			header: [{
+					key: {
+						column: 2,
+						text: '111',
+						name: 'one',
+					},
+					value: [{
+						width: '180px',
+						text: '请输入1-1',
+						type: 'input',
+						require: true,
+						initValue: '1-1'
+					}, {
+						width: '180px',
+						text: '请输入1-2',
+						type: 'input',
+						require: true,
+						initValue: '1-2'
+					}, ]
+				}, {
+					key: {
+						text: '222',
+						name: 'two',
+					},
+					value: [{
+						text: '选择开始日期',
+						type: 'input',
+						width: '180px',
+						require: true,
+						datepicker: { //datepicker组件的配置项
+							dateType: 'onlyDate',
+							defaultShowDate: 0, //由于是input调用datepicker组件，表示不启用默认展示框
+							initValue: '2016/02/03', //datepicker的初始值
+							dateFormate: 'yyyy-MM-dd'
+						}
+					}, {
+						text: '选择截止日期',
+						type: 'input',
+						width: '180px',
+						require: true,
+						datepicker: { //datepicker组件的配置项
+							dateType: 'onlyDate',
+							defaultShowDate: 0, //由于是input调用datepicker组件，表示不启用默认展示框
+							initValue: '2017/02/03', //datepicker的初始值
+							dateFormate: 'yyyy-MM-dd'
+						}
+					}]
+				}, {
+					key: {
+						text: '333',
+						name: 'three',
+					},
+					value: [{
+						text: '请选择',
+						type: 'select',
+						require: true,
+						initValue: '7',
+						options: [{
+								value: '0',
+								text: '000'
+							},
+							{
+								value: '1',
+								text: '111'
+							},
+							{
+								value: '2',
+								text: '222'
+							},
+							{
+								value: '3',
+								text: '333'
+							},
+							{
+								value: '4',
+								text: '444'
+							},
+							{
+								value: '5',
+								text: '555'
+							},
+							{
+								value: '6',
+								text: '666'
+							},
+							{
+								value: '7',
+								text: '777'
+							}
+						]
+					}]
+				}
+				,
+				{
+					key: {
+						text: '444',
+						name: 'four',
+					},
+					value: [{
+						text: 'tree-select',
+						type: 'select',
+						require: true,
+						options: [{ //tree组件作为类select的option部分，因此tree参数置于options中，作为其数组成员
+							otype: 'tree', //表明嵌入tree组件
+							setting: { //表明tree组件的配置项与ztree的setting一致
+								check: {
+									enable: true
+								},
+								data: {
+									simpleData: {
+										enable: true
+									}
+								}
+							},
+							zNodes: [ //预设节点与ztree的zNodes一致
+								{
+									id: 1,
+									pId: 0,
+									name: "父节点1 - 展开",
+									open: true
+								},
+								{
+									id: 11,
+									pId: 1,
+									name: "父节点11 - 折叠"
+								},
+								{
+									id: 112,
+									pId: 11,
+									name: "叶子节点112"
+								},
+								{
+									id: 1121,
+									pId: 112,
+									name: "叶子节点1121"
+								},
+								{
+									id: 11211,
+									pId: 1121,
+									name: "叶子节点11211"
+								},
+								{
+									id: 112111,
+									pId: 11211,
+									name: "叶子节点112111"
+								},
+								{
+									id: 1122,
+									pId: 112,
+									name: "叶子节点1122"
+								},
+								{
+									id: 1123,
+									pId: 112,
+									name: "叶子节点1123"
+								},
+								{
+									id: 112,
+									pId: 11,
+									name: "叶子节点112"
+								},
+								{
+									id: 113,
+									pId: 11,
+									name: "叶子节点113"
+								},
+								{
+									id: 114,
+									pId: 11,
+									name: "叶子节点114"
+								},
+								{
+									id: 2,
+									pId: 0,
+									name: "父节点2 - 没有子节点",
+									isParent: true
+								},
+								{
+									id: 3,
+									pId: 0,
+									name: "父节点3 - 没有子节点",
+									isParent: true
+								},
+								{
+									id: 4,
+									pId: 0,
+									name: "父节点4 - 没有子节点",
+									isParent: true
+								},
+								{
+									id: 5,
+									pId: 0,
+									name: "父节点4 - 没有子节点",
+									isParent: true
+								},
+								{
+									id: 6,
+									pId: 0,
+									name: "父节点4 - 没有子节点",
+									isParent: true
+								},
+								{
+									id: 7,
+									pId: 0,
+									name: "父节点4 - 没有子节点",
+									isParent: true
+								},
+								{
+									id: 8,
+									pId: 0,
+									name: "父节点4 - 没有子节点",
+									isParent: true
+								},
+								{
+									id: 9,
+									pId: 0,
+									name: "父节点4 - 没有子节点",
+									isParent: true
+								},
+							],
+							isNewAdd: false, //是否启用新增功能
+							yesCallBack: function() { //点击确定的回调函数,返回参数必须严格按照以下返回参数的格式
+								var ztreeObj = $.fn.zTree.getZTreeObj('_tt_0'),
+									checkZnodes = ztreeObj.getCheckedNodes(),
+									checkValueArr = [],
+									checkTextArr = [];
+								$.each(checkZnodes, function(czi, czv) {
+									checkValueArr.push(czv.id);
+									checkTextArr.push(czv.name);
+								})
+								return {
+									tvalue: checkValueArr.toString(), //返回的请求参数
+									text: checkTextArr.toString() //返回的文本内容
+								};
+							}
+						}]
+					}]
+				},
+				//隐藏内容配置展示
+				{
+					'show': false,
+					'key': {
+						'name': 'time4'
+					},
+					'value': [{}]
+				},
+				{
+					'show': false,
+					'key': {
+						'name': 'time5'
+					},
+					'value': [{}]
+				}
+			],
+			body: {
+				url: 'data/a.json', //获取数据的主url
+				mtype: 'get', //对应主url的ajax请求类型
+				update: { //开启editable后方可使用
+					url: 'data/update.json', //用于更新的url
+					utype: 'get' //对应更新url的ajax请求类型
+				},
+				colModel: [{ //表格展示内容，成员为对象形式，参数:name,width,align,text,sort
+					name: 'id',
+					width: 55,
+					text: '序号'
+				}, {
+					name: 'devtype', //name对应数据接口的键值
+					width: 150, //width控制此列的宽度
+					sort: true, //sort表示此列是否排序
+					align: 'center', //align控制此列表格内容的文本对齐方式
+					text: '设备类型', //text控制此列th的文本内容
+					callback: function(curValue, curData) { //callback控制自定义表格内容展示
+						$('#fullConfig').on('click', '.ppg-' + curData.id + '', clickPPG.bind(null, curValue, curData));
+						return '<span class="ppg-' + curData.id + '" style="cursor:pointer;border:1px solid red;">自定义标签</span>'
+					}
+				}, {
+					name: 'ip',
+					sort: true,
+					text: 'IP地址'
+				}, {
+					name: 'mac',
+					sort: true,
+					text: 'MAC地址'
+				}, {
+					name: 'online',
+					sort: true,
+					text: '在线状态'
+				}, {
+					name: 'block',
+					sort: true,
+					text: '阻断状态',
+				}],
+				//新版本的接口
+				pageSize: 10, //初始时请求的每页条数
+				orderType: 'ASC', //初始时排序类型
+				orderBy: 'id', //初始时排序字段
+				rowList: [10, 20, 30], //可选的每页条数，对应页脚的左侧多选框内容
+				sortable: true, //是否排序，必须开启之后colModel中sort才会起作用
+				unScrollBar:true,	//表格内容主体部分是否需要滚动条，默认为false[需要]，
+				pageable: true, //是否需要分页功能	
+				resizeable: true, //是否可以列移动
+				checkable: true, //是否出现多选框
+				tools: [{
+					text: '可自定义导出功能',
+					toolIcon: 't-btn-save',
+					title: '可导出哟',
+					toolEvent: {
+						type: 'click',
+						cb: function(e) {
+							var checkPagesData = $('.t-table').data('selectedRows');
+							alert("通过调用$('.t-table').data('selectedRows')来获取所有被选中行的数据[包括跨页的数据]\n比如：" + JSON.stringify(checkPagesData))
+						}
+					}
+				}],
+				cruds: [{ //这里cruds是为了方便对表格内容进行操作，提供了便利的接口，
+					text: 'cruds里存放对表格内容的基础操作', //当然如果您想自定义操作部分可利用colModel中callback
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '表格的基础操作step1',
+						crudEvent: {
+							type: 'click',
+							cb: function(curRowData, e) {
+								alert('可通过第一个参数拿到对应行的数据,比如这里的curRowData:' + JSON.stringify(curRowData));
+							}
+						}
+					}]
+				}, {
+					text: '基础 基础  基础 操作(对表格内容的)',
+					data: [{
+						crudIcon: 't-btn-save-nb',
+						title: '真的很基础',
+						crudEvent: {
+							type: 'click',
+							cb: function(e) {
+								alert('真的挺基础的！');
+							}
+						}
+					}]
+				}],
+				//冷门的配置项
+				noBorder: false, //去除表格内的边框		可选值row/column,表示去除行/列的边框
+				editable: false, //是否开启表格默认的编辑功能=>开启后update参数才有效
+				isWrapRow: false, //是否开启换行背景的样式
+				filterByColumn: true, //是否开启默认筛选列的功能
+
+				//5.25 添加配置项
+				//用于处理后台错误信息的自定义函数
+				errorCallback: function(errorRes) { //errorRes表示返回来的错误信息，格式应为对象，且
+					/*代码区*/ //{status:'error'}    一定要带有status:'error'的标识
+					//函数返回值为true 表示存在错误，不渲染表格内容
+					return true; //若返回值为false表示不存在错误，仍渲染表格内容
+				},
+				// 7.10 添加是否开启选择数目区域的选项
+				isSelectedNumArea: true,
+				success: function(res) { //7.20 添加请求成功之后的回调函数
+					//				    console.log('success:', res);
+				}
+			}
+		}
+
+		$('#fullConfig').table(fullConfig);
+		//$('#second').table(fullConfig);
+	</script>
+
+</html>

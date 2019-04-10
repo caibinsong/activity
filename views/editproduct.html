@@ -1,0 +1,219 @@
+<div class="page-3">
+	<div class="t-cols-wrap" style="max-height: 600px;overflow: auto;">
+		<div class="t-pop m-pop-column1 bgwhite widthb100">
+								
+       <div class="pop-column fn-clear">
+          <div class="column-cols" style="float: none;margin: 20px auto 20px 30px;width: 450px;">
+
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">类型：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="type" placeholder="类型"  style="width: 300px;" value="{{.data.type}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">名称：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="title" placeholder="名称" style="width: 300px;" value="{{.data.title}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">赞助商：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="sponsors" placeholder="赞助商" style="width: 300px;" value="{{.data.sponsors}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">地址：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="place" placeholder="地址" style="width: 300px;" value="{{.data.place}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">每月库存：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="num" placeholder="每月库存数" style="width: 300px;" value="{{.data.num}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">本月库存：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="inventory" placeholder="本月库存数" style="width: 300px;" value="{{.data.inventory}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap">
+              	 <label class="t-label width80">积分：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input class="text-input" type="text" id="integral" placeholder="积分" style="width: 300px;" value="{{.data.integral}}">
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+              <div class="t-form-wrap" style="width: 90%;max-width: 90%;min-width: 90%">
+                 <label class="t-label width80">使用规则：</label>
+                    <div  style="padding: 0px;width: 400px;">
+                        <textarea placeholder="使用规则" style="margin: 0px;min-width:277px;max-width:277px;width: 277px;height: 80px;min-height: 80px;max-height: 80px;border: 1px solid #d8d8d8;padding:10px" id="rules" value="{{.data.rules}}">{{.data.rules}}</textarea>
+                    </div>
+              </div>
+               <div class="t-form-wrap">
+                  <label class="t-label width80">图片：</label>
+                  <div class="t-upload" style="width: 300px;">
+                    <div class="t-browse-btn">
+                      <span class="t-browse-text">
+                        <i></i>
+                      </span>
+                      <input type="file" class="t-browse-file" id="files1" name="files1" onchange="document.getElementById('upload-path1').value = this.value"  accept="image/x-png, image/jpg, image/jpeg, image/gif"/>
+                    </div>
+                    <div class="t-upload-confirm">
+                      <a href="javascript:void(0)" class="t-confirm-btn" onclick="uploadfile(1)"></a>
+                    </div>
+                    <div class="t-ipt-wrap">
+                      <input class="t-upload-path" id="upload-path1" readonly="true" value="请上传文件" />
+                    </div>
+                  </div>
+                </div>
+                <div class="t-form-wrap" id="showfile1" {{if or (isEqual .data.img "") (isEqual .data.img nil)}}style="display:none"{{else}}style="_{{.data.img}}_"{{end}}>
+                 <label class="t-label width80">&nbsp;</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                      <p><a href="{{.data.img}}" id ="files1a" target="_blank" style="color:blue">{{.data.img}}</a></p>
+                    </div>
+                 </div>
+               </div>
+              <div class="t-form-wrap" style="width: 90%;max-width: 90%;min-width: 90%">
+                 <label class="t-label width80">描述：</label>
+                    <div  style="padding: 0px;width: 400px;">
+                        <textarea placeholder="描述" style="margin: 0px;min-width:277px;max-width:277px;width: 277px;height: 80px;min-height: 80px;max-height: 80px;border: 1px solid #d8d8d8;padding:10px" id="des" value="{{.data.des}}">{{.data.des}}</textarea>
+                    </div>
+              </div>
+              <div class="t-form-wrap">
+                  <label class="t-label width80">图片描述：</label>
+                  <div class="t-upload" style="width: 200px;">
+                    <div class="t-browse-btn">
+                      <span class="t-browse-text">
+                        <i></i>
+                      </span>
+                      <input type="file" class="t-browse-file" id="files2" name="files2" onchange="document.getElementById('upload-path2').value = this.value"  accept="image/x-png, image/jpg, image/jpeg, image/gif"/>
+                    </div>
+                    <div class="t-upload-confirm">
+                      <a href="javascript:void(0)" class="t-confirm-btn" onclick="uploadfile(2)"></a>
+                    </div>
+                    <div class="t-ipt-wrap">
+                      <input class="t-upload-path" id="upload-path2" readonly="true" value="请上传文件" />
+                    </div>
+                  </div>
+                </div>
+             	<div class="t-form-wrap" id="showfile2" {{if or (isEqual .data.imgdes "")  (isEqual .data.imgdes nil)}}style="display:none"{{end}}>
+                 <label class="t-label width80">&nbsp;</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                      <p><a href="{{.data.imgdes}}" id ="files2a" target="_blank" style="color:blue">{{.data.imgdes}}</a></p>
+                    </div>
+                 </div>
+              </div>
+                 <div class="t-form-wrap">
+              	 <label class="t-label width80">状态：</label>
+                 <div class="t-input ">
+                    <div class="input-wrap">
+                       <input type="radio" value="1" name="status" {{if isEqual .data.status "1"}}checked="checked"{{end}}/>上架&nbsp;&nbsp;<input type="radio" value="0" name="status" {{if isEqual .data.status "0"}}checked="checked"{{end}}/>下架
+                       <i class="text-icon"></i>
+                    </div>
+                 </div>
+              </div>
+               <!-- user,name,sex,tel,idcard,political,specialty,place,addr,qq,wx,email,integral,permissions-->
+              <div class="t-form-wrap">
+                 <label class="t-label width80"></label>
+                 <div class="t-input icon active">
+                      <a class="t-button" href="javascript:void(0)">
+                        <label class="t-btn-text" onclick="update()">保存</label>
+                      </a>
+
+                 </div>
+              </div>
+          </div>
+       </div>
+
+    </div>		
+  </div>
+</div>
+
+<script src="/js/ajaxfileupload.js" type="text/javascript"></script>
+  <script>
+    function update(){
+        $.ajax({
+            type: "POST",
+            url: "/product/save?" + new Date(),
+            async:false,
+            data:{
+              "id":"{{.data.id}}",
+              "types":$('#type').val(),
+              "title":$('#title').val(),
+              "place":$('#place').val(),
+              "sponsors":$('#sponsors').val(),
+              "num":$('#num').val(),
+              "inventory":$('#inventory').val(),
+              "integral":$('#integral').val(),
+              "rules":$('#rules').val(),
+              "img":$('#files1a').html(),
+              "des":$('#des').val(),
+              "imgdes":$('#files2a').html(),
+              "status":$('input[name="status"]:checked').val()
+            },
+            success: function(data){
+              eval("var jsondata="+data);
+              if(jsondata.status==1){
+                cdialog.success("保存成功",null,null,true,'center');
+                $(".inputTargetCode").find("input").val($(".current").html());
+                $(".targetCode").click();
+                $(".t-pop-close").click();
+              }else{
+                cdialog.error(jsondata.msg,null,null,true,'center');
+              }
+            }
+        });
+      return false;
+    }
+    function uploadfile(index){
+      if($("#files"+index).val() == ""){
+        alert("请选择一张图片");
+        return false;
+      }
+      $.ajaxFileUpload({
+          url:'/frame/uploadfile?fileid=files'+ index,
+          secureuri:false,
+          fileElementId:"files"+index,
+          dataType: 'json',
+          success: function (data,status){
+             if(data.status==1){
+                $("#showfile"+index).attr("style","");
+                $("#files"+index+"a").html(data.datalist);
+                $("#files"+index+"a").attr("href",data.datalist);
+             }else{
+                alert("上传失败");
+             }
+          }
+      });
+    }
+  </script>

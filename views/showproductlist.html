@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>志愿队积分兑换</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 96%;position: absolute; height: 88%;top: 2%;left: 2%;overflow-y: auto;overflow-x: hidden;background: #fff;}
+		.box{width: 33%;margin-bottom: 20px;float:left;}
+
+		.morebox{height:120px;width: 94%;margin-bottom: 20px;background: #fff;padding: 0px 30px;}
+		.more{width: 100%;height: 100px;text-align: center;line-height: 100px;font-size: 36px;}
+
+		#foot{height:8%;width: 100%;position: absolute;bottom: 0px;background-color: #3a7fca;}
+		.footitem{width:25%;border:0;padding:0px;margin:0px;float:left;height: 100%;text-align: center;font-size:36px;color:#fff;}
+		.footitem img{height:50%;margin-top:4%;}
+		.boxtxt{font-size:33px;text-align: center;}
+	</style>
+</head>
+<body>		
+	<div id="bg">
+		
+	</div>
+	<div id="foot">
+		<div class="footitem" id="ft1" onclick="footclick(this,1)"><img id="ftapply" src="/img/apply1.png"/><div>活动</div></div>
+		<div class="footitem" id="ft2" onclick="footclick(this,2)" ><img id="ftactivity" src="/img/activity1.png"/><div>动态</div></div>
+		<div class="footitem" id="ft3" onclick="footclick(this,3)" ><img id="ftstudy" src="/img/study1.png"/><div>课堂</div></div>
+		<div class="footitem" id="ft4" onclick="footclick(this,4)" style="background:#fff;color:#000;"><img id="ftself" src="/img/self0.png"/><div>个人</div></div>
+	</div>
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script>
+		$("#foot").load("/frame/foot?status=4");
+		var html_head='';
+		var html_body="";
+		var html_more='<div style="clear: both;"></div><div class="morebox"><div class="more" onclick="loadmore()">更多</div></div>';
+		var pageindex=1;
+		function loadmore(){
+			console.log(pageindex);
+			$.ajax({
+				type : "post",  
+				url : "/product/list?pageSize=36&status=1",
+				data:{
+					"pageIndex":pageindex
+				},
+				sync : false,
+				success : function(data){
+				    eval("var dataJson="+data);
+				    var datalist=dataJson.data;
+				    for(var i=0;i<datalist.length;i++){
+				    	var tmp_data=datalist[i].cell;
+				    	html_body+='<div class="box" onclick="toinfo('+tmp_data.id+')">\
+										<div style="background:url('+tmp_data.img+') no-repeat center center;background-size: 70% 70%;">\
+											<img src="/img/productbg.png"/>\
+										</div>\
+										<div class="boxtxt" style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">'+tmp_data.title+'</div>\
+										<div class="boxtxt" style="font-size: 28px;color: #ff6c00;padding: 5px;">积分：'+tmp_data.integral+'</div>\
+										<div class="boxtxt" style="font-size: 28px;color: #9a9896">库存：'+tmp_data.inventory+'</div>\
+									</div>';
+				    }
+				    $("#bg").html(html_head+html_body+html_more);
+				    if(pageindex!=1&&datalist.length==0){
+				    	alert("已经到底");
+				    }
+				    pageindex=pageindex+1;
+				}  
+			});
+			
+		}
+		function toinfo(id){
+			window.location.href="/product/toshowinfo?id="+id
+		}
+		loadmore();
+	</script>
+</body>
+</html>

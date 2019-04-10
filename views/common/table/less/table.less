@@ -1,0 +1,601 @@
+@charset "utf-8";
+/* ---------------全局参数配置Start---------------- */
+@bodyBgColor: #fff; // 主背景色调
+@bodyMinWidth: 1280px; // 页面最小宽度
+@disableBgColor: #eee; // 禁用颜色
+@bgColorLight: #f1f1f3; // 浅色背景
+@borderColor: #d8d8d8; // 通用边框颜色
+@borderHoverColor: #b2d4ff; //边框交互颜色
+@fontColor: #505050; // 通用字体颜色
+@fontHoverColor: #58a2ff; // 字体交互颜色
+@fontSize: 12px; // 通用字号
+@borderRadius: 3px; // 圆角度数
+@lessBackgroundUrl: '../img/index.png'; // 雪碧图配置
+@lessBackgroundUrl-s: '../../../img/common/index-s.png'; // 雪碧图配置
+@lessBackgroundUrl-m: '../../../img/common/index-m.png'; // 雪碧图配置
+@lessBackgroundUrl-l: '../../../img/common/index-l.png'; // 雪碧图配置
+@import 'lessLibrary';
+/* ---------------全局参数配置END------------------ */
+
+.t-table {
+    @tableFont: @fontSize;
+    @tableFontColor: @fontColor;
+    @tableBorderColor: @borderColor;
+    @tableThHeight: 40px;
+    @tableThFontColor: #2e2e2e;
+    @tableThBgColor: #f5f5f5;
+    @tableTdHeight: 32px;
+    @tableTdFontColor: @tableFontColor;
+    @tableTdBgColor: #fff;
+    @trHoverBg: #f5f5f5;
+    @tableThFontWeight: 700;
+    @tableTdFontWeight: normal;
+    //5.9 调整滚动条样式
+    & .dvScrollBar::-webkit-scrollbar-track{
+        background:transparent;
+    }
+    .t-table-header {
+        position: relative;
+        margin-bottom: 15px;
+        padding: 6px 130px 17px 20px;
+        border: 1px solid @borderColor;
+        .border-radius(@borderRadius);
+        .header-condition {
+            vertical-align: top;
+            & > * {
+                margin-top: 9px;
+                margin-left: 10px;
+                vertical-align: top;
+            }
+        }
+        .t-btn-search {
+            position: absolute;
+            right: 30px;
+            top: 15px;
+        }
+        .release-btn {
+            position: absolute;
+            left: 50%;
+            margin-left: -16px;
+            bottom: -12px;
+            .setting(32px,12px);
+            .setBackground-s(-664px -433px);
+            .cursor(pointer);
+            &.active {
+                .setBackground-s(-744px -433px);
+            }
+            &:hover {
+                .opacity(.8);
+            }
+        }
+        //4.17 为表头调用tree组件添加样式
+        .t-select-tree.active {
+            @blueScrollbar:#4491e1;
+            @templateBorderColor:#B2D4FF;
+            & .dvScrollBar::-webkit-scrollbar{
+                height: .4em;
+            }
+            & .dvScrollBar::-webkit-scrollbar-thumb{
+                background-color: @blueScrollbar;
+            }
+            .t-templateWrap{
+                border:1px solid  @templateBorderColor;
+            }
+            .t-select-option {
+                z-index: 9;
+                max-width:260px;
+                max-height: 300px;
+                overflow: auto;
+                padding-top:5px;
+            }
+            .t-select-option>ul>li {
+                max-width: 1000px;
+                overflow: visible;
+                &.t-tree{
+                    li{
+                        overflow: visible;
+                    }
+                }
+            }
+            .t-treeLi {
+                padding:0;
+            }
+        }
+        .t-table-treeYesP {
+            text-align: center;
+            padding: 6px 0 10px;
+            position: absolute;
+            background: #fff;
+            .t-table-treeYesBtn {
+                width: 44px;
+                line-height: 20px;
+                color: white;
+                background: #4491e1;
+                .border-radius(@borderRadius);
+            }
+        }
+    }
+    .t-table-content {
+        border: 1px solid @borderColor;
+        .border-radius(@borderRadius);
+        .table-tools {
+            //调整这部分的样式
+            position: relative;
+            padding: 14px 0;
+            & > * {
+                margin-left: 15px;
+            }
+            .custom-wrap {
+                position: absolute;
+                right: 10px;
+                top: 14px;
+                height: 27px;
+                & > * {
+                    margin-right: 10px;
+                }
+                .choic-columns {
+                    display: none;
+                    position: absolute;
+                    top: 27px;
+                    right: 0;
+                    z-index: 10;
+                    border: 1px solid @borderHoverColor;
+                    .border-radius(3px);
+                    .setBackground(#fff);
+                    padding: 22px 0 15px 24px;
+                    line-height: 40px;
+                    ul {
+                        float: left;
+                        width: 150px;
+                    }
+                    .t-checkbox {
+                        margin-right: 10px;
+                        position: relative;
+                        top: 3px;
+                    }
+                    p {
+                        .t-btn-search {
+                            float: right;
+                            margin-right: 16px;
+                            padding: 0;
+                            text-align: center;
+                            width: 89px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+        .table-selectedNumArea{
+            @selHeight:40px;
+            @selBgColor:#e5f1fd;
+            @selBorderColor:@borderColor;
+            @selNumColor:@fontHoverColor;
+            line-height: @selHeight;
+            background-color: @selBgColor;
+            padding-left:20px;
+            border-top:1px solid @selBorderColor;
+            .icon-colon{
+                .setting(18px,18px,inline-block);
+                .setBackground-s(-190px -1390px);
+                margin-right:8px;
+                position:relative;
+                top:3px;
+            }
+            .selectedNum{
+                padding:0 5px;
+                font-weight:600;
+                color:@selNumColor;
+            }
+        }
+        .table-container {
+            position: relative;
+            border-top: 1px solid @tableBorderColor;
+            .loading{
+                display: none;
+                position:absolute;
+                z-index:999;
+                width:100%;
+                top:0;
+                bottom:0;
+                text-align: center;
+                .loading-bg{
+                    display: block;
+                    width:54px;
+                    height:54px;
+                    position: absolute;
+                    top:0;
+                    right:0;
+                    bottom:0;
+                    left:0;
+                    margin:auto;
+                    background-image: url(../../../img/common/loading.gif);
+                }
+            }
+            .liner {
+                position: absolute;
+                width: 2px;
+                top: 0;
+                background-color: #999;
+                display: none;
+                z-index: 99;
+                cursor: col-resize;
+            }
+            .scrollBox{
+                //幕布颜色
+                @loadingBgColor: #fff;
+                @loadingFontColor: #bebebe;
+                @loadingBorderColor: @fontHoverColor;
+                .noData {
+                    position: absolute;
+                    z-index: 4;
+                    width: 280px;
+                    line-height: 50px;
+                    left: 50%;
+                    top: 50%;
+                    margin-top: -80px;
+                    margin-left: -140px;
+                    color: @loadingFontColor;
+                    i{
+                        .setting(160px,145px,inline-block);
+                        background:url('../../../img/common/index-xl.png') no-repeat -80px -80px;
+                    }
+                    h4{
+                        display: inline-block;
+                        font: normal 20px / 105px 'Microsoft YaHei';
+                        position: relative;
+                        top: -65px;
+                    }
+                }
+            }
+            table {
+                .setBackground(#fff);
+                border-collapse: separate\0; //4.27 针对IE不出现边框问题
+                tr {
+                    &:hover {
+                        .setBackground(@trHoverBg);
+                    }
+                    .setFontAlign(@height, @fontColor, @fontWeight) {
+                        .setFont(@tableFont,1rem,@fontColor);
+                        .ellipsis;
+                        height: @height;
+                        font-weight: @fontWeight;
+                        text-align: center;
+                    }
+                    .setBackground(@tableTdBgColor);
+                    .setFontAlign(@tableThHeight,@tableThFontColor, 700);
+                    // 不换行
+                    th{
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    td,
+                    th {
+                        .box-sizing(border-box);
+                        border-right: 1px solid @tableBorderColor;
+                        border-bottom: 1px solid @tableBorderColor;
+                        &:last-child {
+                            border-right: none;
+                        }
+                    }
+                    td:not(.checkbox),
+                    th:not(.checkbox) {
+                        padding: 0 5px;
+                    }
+                    & > td.checkbox,
+                    & > th.checkbox {
+                        width: 44px;
+                    }
+                    td {
+                        position: relative;
+                        .setFontAlign(@tableTdHeight,@tableTdFontColor,700);
+                        input {
+                            width: 100%;
+                            text-align: inherit;
+                            background-color: transparent;
+                            overflow: hidden;
+                            .ellipsis;
+                        }
+                        .ynList {
+                            position: absolute;
+                            top: 1px;
+                            right: -5px;
+                            width: 40px;
+                            line-height: 22px;
+                            z-index: 1000;
+                            li {
+                                .cursor(pointer);
+                                text-align: center;
+                                border: 1px solid @borderColor;
+                                margin-bottom: 5px;
+                                background-color: white;
+                            }
+                        }
+                    }
+                }
+                &.t-table-th {
+                    tr {
+                        .setBackground(@tableThBgColor);
+                    }
+                    th {
+                        font-weight: @tableThFontWeight;
+                        position: relative;
+                        .col-resize {
+                            position: absolute;
+                            width: 8px;
+                            height: 25px;
+                            right: 0;
+                            top: 0;
+                            cursor: col-resize;
+                            z-index: 99;
+                        }
+                        .cursor(pointer);
+                        & > .sort-span {
+                            position: relative;
+                            &.sort-up {
+                                &:after {
+                                    .setBackground-s(-112px -1070px);
+                                }
+                            }
+                            &.sort-down {
+                                &:after {
+                                    .setBackground-s(-191px -1070px);
+                                }
+                            }
+                            &:after {
+                                top: -1px;
+                                right: -28px;
+                                content: '';
+                                position: absolute;
+                                .cursor(pointer);
+                                .setBackground-s(-33px -1070px);
+                                .setting(20px,20px);
+                            }
+                        }
+                    }
+                }
+                &.t-table-td {
+                    tr {
+                        height: 35px;
+                    }
+                    td {
+                        font-weight: @tableTdFontWeight;
+                    }
+                    tr:last-child {
+                        td {
+                            border-bottom: none;
+                        }
+                    }
+                }
+            }
+            &.column {
+                td,
+                th {
+                    border-right-color: transparent;
+                }
+            }
+            &.row {
+                td,
+                th {
+                    border-bottom-color: transparent;
+                }
+            }
+        }
+    }
+    .t-table-page {
+        @pageFontColor: @fontColor;
+        @pageBorderRadius: @borderRadius;
+        @pageBorderColor: @borderColor;
+        @pageBorderHoverColor: @borderHoverColor;
+        @pageFontHoverColor: @fontHoverColor;
+        @pageBgHoverColor: #eee;
+        margin-top: 10px;
+        .selectRecords {
+            float: left;
+            color: @pageFontColor;
+            line-height: 32px;
+            position: relative;
+            .cursor(pointer);
+            .recordsNum {
+                display: block;
+                box-sizing: border-box;
+                width: 60px;
+                height: 34px;
+                padding: 0 10px;
+                border: 1px solid @pageBorderColor;
+                .border-radius(@pageBorderRadius);
+                .p-icon {
+                    position: relative;
+                    top: 1px;
+                    left: 13px;
+                    .setting(10px,18px,inline-block);
+                    .setBackground-s(-754px -268px);
+                }
+                &:hover {
+                    border-color: @pageBorderHoverColor;
+                    color: @pageFontHoverColor;
+                    .p-icon {
+                        .setBackground-s(-833px -268px);
+                    }
+                }
+            }
+            .recordsList {
+                display: none;
+                .border-radius(@pageBorderRadius);
+                position: absolute;
+                bottom: 36px;
+                left: 0;
+                box-sizing: border-box;
+                width: 100%;
+                padding: 0 10px;
+                border: 1px solid @pageBorderColor;
+                z-index: 200;
+                background: white;
+                &:hover {
+                    border-color: @pageBorderHoverColor;
+                }
+                a {
+                    display: inline-block;
+                    height: 100%;
+                    &:hover {
+                        color: @pageFontHoverColor;
+                    }
+                }
+            }
+        }
+        .pageCode {
+            text-align: left;
+            color: @pageFontColor;
+            float: right;
+            background: #fff;
+            a,
+            span {
+                display: inline-block;
+                box-sizing: border-box;
+                height: 34px;
+                line-height: 34px;
+                padding: 0 13px;
+                border: 1px solid @pageBorderColor;
+                border-right: 1px solid transparent;
+                vertical-align: middle;
+                &:last-child {
+                    border-right: 1px solid @pageBorderColor;
+                }
+                &:hover {
+                    background-color: @pageBgHoverColor;
+                }
+            }
+            span {
+                &.ellipsis:hover {
+                    background: #fff;
+                }
+                &.current {
+                    @currentBgColor: #58a2ff;
+                    @currentBorderColor: #428bca;
+                    @currentBgHoverColor: #79b5f4;
+                    cursor: pointer;
+                    color: #fff;
+                    background-color: @currentBgColor;
+                    border: 1px solid @currentBorderColor;
+                    vertical-align: middle;
+                    &:hover {
+                        background-color: @currentBgHoverColor;
+                    }
+                }
+                &.disabled {
+                    color: #bfbfbf;
+                    background: @disableBgColor;
+                    vertical-align: middle;
+                    border: 1px solid #ccc;
+                    .cursor(not-allowed);
+                }
+            }
+            .dataCount {
+                text-align: center;
+                background: #f2f2f2;
+                cursor: default;
+                &:hover {
+                    background-color: white;
+                }
+            }
+            .inputTargetCode {
+                width: 64px;
+                &:hover {
+                    background-color: white;
+                }
+                input {
+                    width: 100%;
+                    color: @pageFontColor;
+                    text-align: center;
+                }
+            }
+            .targetCode {
+                .p-icon {
+                    .setting(10px,12px,inline-block);
+                    .setBackground-s(-355px -515px);
+                }
+            }
+        }
+    }
+}
+
+/* button table */
+.setBtnTable(@height) {
+    @btnHeight: @height;
+    @btnFontSize: @fontSize;
+    @btnFontColor: #fff;
+    @btnBorderRadius: @borderRadius;
+    .setBtn-table(@bgColor, @position, @disablePosition) {
+        padding-left: 31px;
+        padding-right: 9px;
+        position: relative;
+        border: 1px solid transparent;
+        vertical-align: top;
+        .box-sizing(border-box);
+        .setting(auto,@btnHeight,inline-block);
+        .setBackground(@bgColor);
+        .setFont(@btnFontSize,@btnHeight - 2,@fontColor);
+        .btn-icon {
+            position: absolute;
+            top: -1px;
+            left: 2px;
+            .setting(24px,100%);
+            .setBackground-s(@position);
+        }
+        &:hover {
+            color: #fff;
+            border-radius: @borderRadius;
+            .setBackground(#58a2ff);
+            .btn-icon {
+                .setBackground-s(@disablePosition);
+            }
+        }
+    }
+    .t-btn-save-table {
+        .setBtn-table(#fff,-345px -28px,-345px -187px);
+    }
+    .t-btn-search-table {
+        .setBtn-table(#fff,-1066px -28px,-1066px -188px);
+    }
+    .t-btn-delete-table {
+        .setBtn-table(#fff,-186px -28px,-186px -188px);
+    }
+    .t-btn-output-table {
+        .setBtn-table(#fff,-427px -28px,-427px -188px);
+    }
+    .t-btn-input-table {
+        .setBtn-table(#fff,-507px -28px,-507px -188px);
+    }
+    .t-btn-add-table {
+        .setBtn-table(#fff,-26px -28px,-26px -188px);
+    }
+    .setWidHeight-table(@bgColor, @bgPosition) {
+        padding-left: 30px;
+        padding-right: 12px;
+        position: relative;
+        border: 1px solid transparent;
+        vertical-align: top;
+        border: 1px solid @borderColor;
+        .box-sizing(border-box);
+        .border-radius(@btnBorderRadius);
+        .setFont(@btnFontSize,@btnHeight - 2,@fontColor);
+        .setting(auto,@btnHeight,inline-block);
+        &:hover {
+            .opacity(.8);
+            border: 1px solid #b2d4ff;
+            .setBackground(@bgColor);
+        }
+        .btn-icon {
+            top: 1px;
+            left: 8px;
+            position: absolute;
+            .setting(20px,100%);
+            .setBackground-s(@bgPosition);
+        }
+    }
+    .t-btn-custom-table {
+        .setWidHeight-table(#e1eeff,-670px -590px);
+    }
+}
+.setBtnTable(24px);

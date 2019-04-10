@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>志愿队积分兑换</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 96%;position: absolute; height: 88%;top: 2%;left: 2%;overflow-y: auto;overflow-x: hidden;background: #fff;}
+		.box{width: 100%;margin-bottom: 20px;float:left;}
+
+		.morebox{height:120px;width: 94%;margin-bottom: 20px;background: #fff;padding: 0px 30px;}
+		.more{width: 100%;height: 100px;text-align: center;line-height: 100px;font-size: 36px;}
+
+		#foot{height:8%;width: 100%;position: absolute;bottom: 0px;background-color: #3a7fca;}
+		.footitem{width:25%;border:0;padding:0px;margin:0px;float:left;height: 100%;text-align: center;font-size:36px;color:#fff;}
+		.footitem img{height:50%;margin-top:4%;}
+		.boxtxt{font-size:33px;text-align: center;}
+		.inputbtn{width: 90%;height: 100px;font-size: 36px;background: #f95307;border: 0px;color: #fff;}
+	</style>
+</head>
+<body>		
+	<div id="bg">
+
+		{{if isNotEqual .data.title ""}}
+		<div class="box">
+			<div style="font-size: 36px;padding: 30px 30px 0px 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{.data.title}}{{if isNotEqual .data.type ""}}【{{.data.type}}】{{end}}</div>
+		</div>
+		{{end}}
+
+		{{if isNotEqual .data.sponsors ""}}
+		<div class="box">
+			<div style="font-size: 36px;padding: 0px 30px 0px 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">爱心商家：{{.data.sponsors}}</div>
+		</div>
+		{{end}}
+
+		{{if isNotEqual .data.place ""}}
+		<div class="box">
+			<div style="font-size: 36px;padding: 0px 30px 0px 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">地点：{{.data.place}}</div>
+		</div>
+		{{end}}
+
+		{{if isNotEqual .data.integral ""}}
+		<div class="box">
+			<div style="font-size: 36px;padding: 0px 30px 0px 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">积分：{{.data.integral}}</div>
+		</div>
+		{{end}}
+
+		{{if isNotEqual .data.inventory ""}}
+		<div class="box">
+			<div style="font-size: 36px;padding: 0px 30px 0px 30px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">库存：{{.data.inventory}}</div>
+		</div>
+		{{end}}
+
+		{{if isNotEqual .data.des ""}}
+		<div class="box">
+			<div style="height: 50px;font-size: 36px;padding: 60px 30px 30px 30px;">描述</div>
+			<div style="font-size: 30px;padding: 0px 30px;">{{str2html (RN .data.des)}}</div>
+		</div>
+		{{end}}
+
+		{{if isNotEqual .data.rules ""}}
+		<div class="box">
+			<div style="height: 50px;font-size: 36px;text-align: center;padding: 60px 30px 30px 30px;">使用规则</div>
+			<div style="font-size: 30px;padding: 0px 30px;">{{str2html (RN .data.rules)}}</div>
+		</div>
+		{{end}}
+		{{if isNotEqual .data.imgdes ""}}
+		<img src="{{.data.imgdes}}" style="width:100%;"/>
+		{{end}}
+		<div class="box h100" style="text-align: center;padding: 60px 0px 20px 0px; ">
+			<input class="inputbtn" type="button" value="兑换" onclick="sub()"/>
+		</div>
+	</div>
+	<div id="foot">
+		<div class="footitem" id="ft1" onclick="footclick(this,1)"><img id="ftapply" src="/img/apply1.png"/><div>活动</div></div>
+		<div class="footitem" id="ft2" onclick="footclick(this,2)" ><img id="ftactivity" src="/img/activity1.png"/><div>动态</div></div>
+		<div class="footitem" id="ft3" onclick="footclick(this,3)" ><img id="ftstudy" src="/img/study1.png"/><div>课堂</div></div>
+		<div class="footitem" id="ft4" onclick="footclick(this,4)" style="background:#fff;color:#000;"><img id="ftself" src="/img/self0.png"/><div>个人</div></div>
+	</div>
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script>
+		$("#foot").load("/frame/foot?status=4");
+		function sub(){
+			if(confirm("确认要兑换吗？")){
+				$.ajax({
+					type : "post",  
+					url : "/product/exchange",
+					data:{
+						"id":{{.data.id}}
+					},
+					sync : false,
+					success : function(data){
+					    eval("var dataJson="+data);
+					    if(dataJson.status==1){
+					    	alert("兑换成功");
+					    	window.location.href="/product/toshowinfo?id={{.data.id}}";
+					    }else{
+					    	alert(dataJson.msg);
+					    }
+					}  
+				});
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.tip-content-down,
+.tip-content-right {
+	display: none!important;
+}
+
+
+/*table*/
+
+.t-table .t-table-header .t-button {
+	position: absolute;
+	top: 10px;
+	right: 16px;
+}
+
+.t-table .t-table-content .t-table-wrap{
+	border-top: none;
+}
+
+.show-inline {
+	display: inline-block!important;
+}
+.hide {
+	display: none!important;
+}
+
+.t-table .t-table-content .table-tools .custom-wrap .choic-columns h1 .t-button{
+	float: right;
+    margin-right: 16px;
+    padding: 0;
+    text-align: center;
+    width: 89px;
+    cursor: pointer;
+}

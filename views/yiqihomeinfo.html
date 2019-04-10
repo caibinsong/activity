@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>志愿队活动报名</title>
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+	<style>
+		html,body,div{padding: 0;margin:0;}
+		body{background-color: #f7f7f7;width: 100%;padding: 0px;margin: 0px;height: 100%;}
+		#bg{width: 100%;position: absolute; height: 96%;top: 2%;overflow: auto;}
+		.box{width: 94%;background: #fff;margin-bottom: 20px;padding: 20px 30px;font-size: 36px;}
+		.box .line{font-size: 36px;margin-bottom: 10px;}
+		.box .del{color:red;text-align: right}
+		.delbtn{width: 50px;}
+		.h100{height:100px;}
+		.h300{height:300px;}
+		.inputtext{width: 100%;height: 100px;font-size: 36px;border: 0px;}
+		.textarea{width: 100%;font-size: 36px;height: 300px;border: 0px;}
+		.inputbtn{width: 90%;height: 100px;font-size: 26px; background: #f95307;border: 0px;color: #fff;}
+		.txtshow{font-size: 36px;}
+		#symptomTxt{width: 100%;border: 0px;font-size: 36px; outline:none;}
+		#symptomTxt:focus{ outline:none; }
+	</style>
+</head>
+<body>		
+	<div id="bg">
+		<div class="box txtshow" style="font-size:36px;text-align: center;">{{.data.title}}</div>
+		<div class="box">
+			 <textarea  v-model="cureInfo.Symptom" id="symptomTxt" readonly oninput="autoTextAreaHeight(this)"  value="{{.data.content}}">{{.data.content}}</textarea>
+		</div>
+	</div>
+	<script src="/js/jquery-2.1.0.js"></script>
+	<script>
+		function autoTextAreaHeight(o) {
+        o.style.height = o.scrollTop + o.scrollHeight + "px";
+    }
+    $(function () {
+        var ele = document.getElementById("symptomTxt");
+        autoTextAreaHeight(ele);
+    })
+	</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+	<link rel="stylesheet" href="/css/template.css" />
+
+	<div id="fullConfig"></div>
+	<div class="bar"></div>
+	<script>
+		var fullConfig = {
+			headerQuery: { //查询头样式 
+				text: '检索', //表头查询按钮文本内容,默认查询
+				btnIcon: true //表头查询按钮是否需要图标，默认为true
+			},
+			header: [{
+					key: {
+						column: 2,
+						text: '姓名',
+						name: 'name',
+					},
+					value: [{
+						width: '100px',
+						text: '',
+						type: 'input',
+						initValue: ''
+					}, ]
+				}, {
+					key: {
+						text: '职称',
+						name: 'technical',
+					},
+					value: [{
+						width: '100px',
+						text: '',
+						type: 'input',
+						initValue: ''
+					},]
+				}
+			],
+			body: {
+				url: '/user/teacherlist', //获取数据的主url
+				mtype: 'get', //对应主url的ajax请求类型
+				update: { //开启editable后方可使用
+					url: '/user/teacherlist', //用于更新的url
+					utype: 'get' //对应更新url的ajax请求类型
+				},//name sex tel idcard political specialty place qq wx email 
+				colModel: [{ //表格展示内容，成员为对象形式，参数:name,width,align,text,sort
+					name: 'xhid',
+					width: 10,
+					text: '序号'
+				},{
+					name: 'name',
+					width: 20,
+					align: 'center',
+					text: '姓名'
+				}, {
+					name: 'technical',
+					width: 20,
+					align: 'center',
+					text: '职称'
+				}, {
+					name: 'specialty',
+					width: 60,
+					align: 'left',
+					text: '特长'
+				}, {
+					name: 'des',
+					width: 80,
+					align: 'left',
+					text: '简介'
+				},{
+					name: 'KID',
+					width: 20,
+					text: '操作',
+					callback: function(curValue, curData) { //callback控制自定义表格内容展示
+						//alert(JSON.stringify(curData));
+						//$('#fullConfig').on('click', '.ppg-' + curData.id + '', clickPPG.bind(null, curValue, curData));
+					return  '<img class="tableIcon" src="/img/mx.png" title="明细" onclick="edit('+curData.cell.id+','+curData.cell.uid+')"/><img class="tableIcon" width="18px" height="18px" src="/img/del.png" title="删除" onclick="del('+curData.cell.id+')"/>';
+
+					}
+				}],
+				//新版本的接口
+				pageSize: 10, //初始时请求的每页条数
+				orderType: 'ASC', //初始时排序类型
+				orderBy: 'id', //初始时排序字段
+				rowList: [10, 20, 30], //可选的每页条数，对应页脚的左侧多选框内容
+				sortable: false, //是否排序，必须开启之后colModel中sort才会起作用
+				unScrollBar:true,	//表格内容主体部分是否需要滚动条，默认为false[需要]，
+				pageable: true, //是否需要分页功能	
+				resizeable: true, //是否可以列移动
+				checkable: false, //是否出现多选框
+				tools: [{
+					text: '导出讲师',
+					toolIcon: 't-btn-save',
+					title: '导出讲师',
+					toolEvent: {
+						type: 'click',
+						cb: function(e) {
+							var name="";
+							var technical="";
+							$(".t-label").each(function(){
+								if($(this).attr("data-tkey")=="name"){
+									name=$(this).next("div").find("input").val();
+								}
+								if($(this).attr("data-tkey")=="technical"){
+									technical=$(this).next("div").find("input").val();
+								}
+							});
+							window.open("/user/exportteacherlist?name="+name+"&technical="+technical);
+						}
+					}
+				}],
+				//冷门的配置项
+				noBorder: false, //去除表格内的边框		可选值row/column,表示去除行/列的边框
+				editable: false, //是否开启表格默认的编辑功能=>开启后update参数才有效
+				isWrapRow: false, //是否开启换行背景的样式
+				filterByColumn: false, //是否开启默认筛选列的功能
+
+				//5.25 添加配置项
+				//用于处理后台错误信息的自定义函数
+				errorCallback: function(errorRes) { //errorRes表示返回来的错误信息，格式应为对象，且
+					/*代码区*/ //{status:'error'}    一定要带有status:'error'的标识
+					//函数返回值为true 表示存在错误，不渲染表格内容
+					return true; //若返回值为false表示不存在错误，仍渲染表格内容
+				},
+				// 7.10 添加是否开启选择数目区域的选项
+				success: function(res) { //7.20 添加请求成功之后的回调函数
+					//				    console.log('success:', res);
+				}
+			}
+		}
+		$('#fullConfig').table(fullConfig);
+		//$('#second').table(fullConfig);
+
+		function edit(id,val){
+			cdialog.pop('/user/toeditteacher?id='+id+'&usertableid='+val,'编辑讲师',600,400,'center',function(){},true,3);
+		}
+		
+		function del(val){
+			cdialog.info('确认删除吗？',function(){
+				$.ajax({
+		            type: "POST",
+		            url:"/user/delteacher?"+new Date(),
+		            data:{
+		            	"teacherid":val
+		            },// 你的formid
+		            async: false,
+		            success: function(data) {
+		              eval("var jsondata="+data);
+		                if(jsondata.status==1){
+			                cdialog.success("删除成功",null,null,true,'center');
+			                $(".inputTargetCode").find("input").val($(".current").html());
+			                $(".targetCode").click();
+			            }else{
+			                cdialog.error("删除失败",null,null,true,'center');
+			            }
+		            }
+		        });
+			},function(){},true,'center');
+			
+		}
+	</script>

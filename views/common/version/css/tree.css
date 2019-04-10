@@ -1,0 +1,435 @@
+@charset "utf-8";
+/* ---------------全局参数配置Start---------------- */
+/* -----------------默认配置 --------------------*/
+/* ----------------- 默认配置END ----------------*/
+html {
+  min-height: 100%;
+}
+html body {
+  min-height: 100%;
+  min-width: 1280px;
+  font: normal 12px / 1rem "microsoft Yahei";
+  color: #505050;
+}
+.fn-clear:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.span {
+  width: 0;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* ---------------全局参数配置END------------------ */
+.t-tree li {
+  list-style: none;
+  line-height: 30px;
+  text-align: left;
+  white-space: nowrap;
+  outline: 0;
+}
+.t-tree li ul {
+  padding-left: 20px;
+}
+.t-tree li a {
+  position: relative;
+  top: 2px;
+  -moz-cursor: pointer;
+  -webkit-cursor: pointer;
+  -o-cursor: pointer;
+  cursor: hand;
+  cursor: -ms-hand;
+  cursor: pointer;
+  padding: 1px 3px 0 0;
+  font-size: 13px;
+  color: #505050;
+}
+.t-tree li a:hover {
+  color: #58a2ff;
+}
+.t-tree li a.curSelectedNode {
+  color: #58a2ff;
+}
+.t-tree li a.tmpTargetNode_inner {
+  padding-top: 0px;
+  background-color: #316AC5;
+  color: white;
+  height: 16px;
+  border: 1px #316AC5 solid;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.t-tree li a input.rename {
+  height: 14px;
+  width: 100px;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  border: 1px #7EC4CC solid;
+  *border: 0px;
+}
+.t-tree li span {
+  line-height: 16px;
+  margin-right: 2px;
+}
+.t-tree li span.button {
+  width: 17px;
+  height: 18px;
+  display: inline-block;
+  -moz-cursor: pointer;
+  -webkit-cursor: pointer;
+  -o-cursor: pointer;
+  cursor: hand;
+  cursor: -ms-hand;
+  cursor: pointer;
+  background: url('../img/index-s.png') no-repeat 0 0;
+  vertical-align: middle;
+}
+.t-tree li span.button.chk {
+  position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #cbc9ca;
+  margin-right: 7px;
+}
+.t-tree li span.button.chk:hover {
+  border-color: #58a2ff;
+}
+.t-tree li span.button.chk:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -4px 0 0 -5px;
+  overflow: hidden;
+  width: 10px;
+  height: 8px;
+  display: block;
+}
+.t-tree li span.button.chk.checkbox_false_disable {
+  cursor: not-allowed;
+  -moz-cursor: not-allowed;
+  -webkit-cursor: not-allowed;
+  -o-cursor: not-allowed;
+  background-color: #eeeeee;
+}
+.t-tree li span.button.chk.checkbox_false_disable:hover {
+  border-color: #cbc9ca;
+}
+.t-tree li span.button.chk.checkbox_true_full:after {
+  background: url('../img/index-s.png') no-repeat -355px -277px;
+}
+.t-tree li span.button.chk.checkbox_true_full_focus:after {
+  background: url('../img/index-s.png') no-repeat -435px -277px;
+}
+.t-tree li span.button.chk.checkbox_true_part {
+  background-color: #cde3ff;
+}
+.t-tree li span.button.chk.checkbox_true_part:after {
+  background: url('../img/index-s.png') no-repeat -355px -277px;
+}
+.t-tree li span.button.chk.checkbox_true_part_focus {
+  background-color: #cde3ff;
+  border: 1px solid #58a2ff;
+}
+.t-tree li span.button.chk.checkbox_true_part_focus:after {
+  background: url('../img/index-s.png') no-repeat -355px -277px;
+}
+.t-tree li span.button.chk.checkbox_true_disable {
+  cursor: not-allowed;
+  -moz-cursor: not-allowed;
+  -webkit-cursor: not-allowed;
+  -o-cursor: not-allowed;
+  background-color: #eeeeee;
+}
+.t-tree li span.button.chk.checkbox_true_disable:hover {
+  border-color: #cbc9ca;
+}
+.t-tree li span.button.chk.checkbox_true_disable:after {
+  background: url('../img/index-s.png') no-repeat -355px -277px;
+}
+.t-tree li span.button.chk.radio_false_full {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #cbc9ca;
+}
+.t-tree li span.button.chk.radio_false_full_focus {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #58a2ff;
+}
+.t-tree li span.button.chk.radio_false_part {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #cbc9ca;
+  background-color: #cde3ff;
+}
+.t-tree li span.button.chk.radio_false_part_focus {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #58a2ff;
+  background-color: #cde3ff;
+}
+.t-tree li span.button.chk.radio_false_disable {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #58a2ff;
+  cursor: not-allowed;
+  -moz-cursor: not-allowed;
+  -webkit-cursor: not-allowed;
+  -o-cursor: not-allowed;
+  background-color: #eeeeee;
+}
+.t-tree li span.button.chk.radio_true_full {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #cbc9ca;
+}
+.t-tree li span.button.chk.radio_true_full:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -3px 0 0 -3px;
+  overflow: hidden;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  display: block;
+  background-color: #687a8e;
+}
+.t-tree li span.button.chk.radio_true_full_focus {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #58a2ff;
+}
+.t-tree li span.button.chk.radio_true_full_focus:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -3px 0 0 -3px;
+  overflow: hidden;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  display: block;
+  background-color: #60a8f2;
+}
+.t-tree li span.button.chk.radio_true_part {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #cbc9ca;
+}
+.t-tree li span.button.chk.radio_true_part:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -3px 0 0 -3px;
+  overflow: hidden;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  display: block;
+  background-color: #687a8e;
+}
+.t-tree li span.button.chk.radio_true_part_focus {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #58a2ff;
+}
+.t-tree li span.button.chk.radio_true_part_focus:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -3px 0 0 -3px;
+  overflow: hidden;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  display: block;
+  background-color: #60a8f2;
+}
+.t-tree li span.button.chk.radio_true_disable {
+  width: 16px;
+  height: 16px;
+  background-color: #eeeeee;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  border: 1px solid #cbc9ca;
+  cursor: not-allowed;
+  -moz-cursor: not-allowed;
+  -webkit-cursor: not-allowed;
+  -o-cursor: not-allowed;
+}
+.t-tree li span.button.chk.radio_true_disable:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -3px 0 0 -3px;
+  overflow: hidden;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -o-border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  display: block;
+  background-color: #687a8e;
+}
+.t-tree li span.button.switch {
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+}
+.t-tree li span.button.root_open {
+  background-position: -191px -432px;
+}
+.t-tree li span.button.root_close {
+  background-position: -272px -432px;
+}
+.t-tree li span.button.roots_open {
+  background-position: -191px -432px;
+}
+.t-tree li span.button.roots_close {
+  background-position: -272px -432px;
+}
+.t-tree li span.button.center_open {
+  background-position: -191px -432px;
+}
+.t-tree li span.button.center_close {
+  background-position: -272px -432px;
+}
+.t-tree li span.button.bottom_open {
+  background-position: -191px -432px;
+}
+.t-tree li span.button.bottom_close {
+  background-position: -272px -432px;
+}
+.t-tree li span.button.noline_open {
+  background-position: -191px -432px;
+}
+.t-tree li span.button.noline_close {
+  background-position: -272px -432px;
+}
+.t-tree li .node_name {
+  position: relative;
+  top: 1px;
+  margin-right: 8px;
+}
+.t-tree li .level0 > span.button.ico_open {
+  background-position: -353px -433px;
+}
+.t-tree li .level0 > span.button.ico_close {
+  background-position: -353px -433px;
+}
+.t-tree li span.button.ico_open {
+  margin-right: 5px;
+  background-position: -432px -433px;
+}
+.t-tree li span.button.ico_close {
+  margin-right: 5px;
+  background-position: -432px -433px;
+}
+.t-tree li span.button.ico_docu {
+  margin-right: 5px;
+  background-position: -513px -432px;
+}
+.t-tree li span.button.ico_docu:hover {
+  background-position: -593px -432px;
+}
+.t-tree li span.button.edit {
+  margin-right: 4px;
+  background-position: -912px -432px;
+}
+.t-tree li span.button.remove {
+  margin-right: 4px;
+  background-position: -993px -432px;
+}
+.t-tree li span.button.add {
+  margin-right: 4px;
+  background-position: -833px -432px;
+}
+.t-tree-newAdd {
+  display: inline-block;
+  -moz-cursor: pointer;
+  -webkit-cursor: pointer;
+  -o-cursor: pointer;
+  cursor: hand;
+  cursor: -ms-hand;
+  cursor: pointer;
+  padding: 3px 4px;
+}
+.t-tree-newAdd i {
+  width: 17px;
+  height: 18px;
+  display: inline-block;
+  background: url('../img/index-s.png') no-repeat -833px -433px;
+  vertical-align: middle;
+  margin-right: 3px;
+}
+.t-tree-newAdd:hover {
+  color: #58a2ff;
+}

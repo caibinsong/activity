@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>志愿队后台管理</title>
+
+	<link rel="shortcut icon" href="/img/favicon.ico" />
+	<link rel="bookmark"href="/img/favicon.ico" />
+		<link rel="stylesheet" href="/css/template.css" />
+		<link rel="stylesheet" href="/pages/common/aside/css/aside.css" />
+		<link rel="stylesheet" href="/css/index.css" />
+		<link rel="stylesheet" href="/css/dialog.css" />
+		<link rel="stylesheet" href="/css/progress.css" />
+
+		<script src="/js/jquery-2.1.0.js"></script>
+		<script src="/js/customScrollBar.js"></script>
+		<script src="/js/datepicker.js"></script>
+		<script src="/js/resize.js"></script>
+		<script src="/js/tree.js"></script>
+		<script src="/js/table.js"></script>
+		<script src="/js/aside.js"></script>
+		<script src="/js/dialog.js"></script>
+
+		<style>
+			.width80{width:80px;}
+			.width120{width:120px;}
+			.widthb100{width:100%;}
+			.bgwhite{background-color: #fff;}
+			#fullConfig {margin: 10px;}
+			.red{color:red;}
+			.tableIcon{margin: 0px 3px;cursor: pointer;}
+
+		#orderinfomask{
+			position: fixed;
+			width: 100%;height: 100%;
+			top: 0;left: 0;
+			background-color: rgba(0,0,0,.6);
+			z-index: 99999;
+		}
+		#orderinfo{
+			position: absolute;
+			top: 50%;left: 50%;
+			transform: translate(-50%,-50%);
+			background-color: #f6f6f6;
+			overflow: hidden;
+		}
+		#cccontent{
+			padding-top: 0;border: padding-bottom:0;
+			height: 91%;
+			background-color: #fff;
+		}
+		</style>
+	</head>
+
+	<body>
+		<!--header-->
+		<div class="header">
+			<div class="m-header-60">
+				<span class="span"></span>
+				<div class="logo">
+					<div class="logo-icon"></div>
+					<div class="logo-text">志愿队后台管理</div>
+				</div>
+				<div class="headerNav">
+					<ul class="header-option">
+						<li>
+							<div class="header-option-icon"></div>
+							<div class="hide-option">
+								<ul>
+									<li>
+										<div class="hide-option-icon"></div>
+										<div class="hide-option-text" onclick="outlogin()">返回首页</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--body内容区-->
+		<div class="main">
+			<!--左侧菜单-->
+			<div class="aside">
+				<div class="aside-container dvScrollBar"></div>
+			</div>
+			<!--右侧内容-->
+			<div class="content">
+				<!--Title fixed区域-->
+				<div class="title-wrap">
+					<div class="title">
+						<div class="m-caption">
+							<div class="m-caption-wrap fn-clear">
+								<div class="m-caption-left">
+									<div class="caption-left-text"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--内容展示区域-->
+				<div class="container">
+					
+				</div>
+			</div>
+		</div>
+
+	<div id="orderinfomask" style="display: none;">
+		<div id="orderinfo" class="t-pop m-pop-column5">
+			<i class="t-pop-close"></i>
+			<div class="t-pop-header">订单详情</div>
+			<div class="t-pop-content dvScrollBar" id="cccontent">
+				
+
+			</div>
+			<!-- <div class="t-rows" style="display: none;">
+				<div class="t-form-btn">
+
+					<a class="t-button" href="javascript:void(0)">
+						<label class="t-btn-text">保存</label>
+					</a>
+				</div>
+			</div> -->
+		</div>
+	</div>
+
+
+
+	</body>
+	<script type="text/javascript">
+		//菜单
+		var optLess = {
+			asideType: 1, //选择导航类型，0对应多导航，1对应少导航
+			asideHeader: {
+				btnIcon: 'dev', //导航头部选择按钮
+				text: '网站导航', //导航头的文字
+				//					noRightBtn: true  //控制是否需要导航头右侧的按钮
+				callback: function(ele) {
+					//第一个参数为对应绑定dom对象,但dom对象返回的上下文不同，
+					//如果是展开的情况下，返回的是展开时候头按钮
+					//如果是缩小的情况下，返回的是缩小时候头按钮
+					var wid = parseInt($('.aside').css('width')) === 51 ? 221 : 51;
+					$('.content').css({'margin-left': wid});
+					$('.title').css({left: wid});
+					$('.aside').css({width: wid});
+				}
+			},
+			toolBox: {
+				asideBtn: false, //是否需要侧边按钮
+			},
+			asideBody: [/*{
+					btnIcon: 'xtgl',
+					text: '益启之家',
+					active: 1, //给指定菜单项添加打开效果
+					id: 'yqzj',
+					childList: [{
+						text: '益启之家简介',
+						callback: function() {
+							menuClick('益启之家简介','/frame/toedityiqihomeinfo?introducename=益启之家简介');
+						},
+					},{
+						text: '公益课堂',
+						callback: function() {
+							menuClick('公益课堂','/frame/tochangepwd');
+						},
+					}]
+				},*/{
+					btnIcon: 'xtgl',
+					text: '火速公益',
+					active: 1, //给指定菜单项添加打开效果
+					id: 'hsgy',
+					childList: [/*{
+						text: '火速简介',
+						callback: function() {
+							menuClick('火速简介','/frame/toedityiqihomeinfo?introducename=火速简介');
+						}
+					},{
+						text: '火速动态',
+						callback: function() {
+							menuClick('火速动态','/frame/tochangepwd');
+						}
+					},*/{
+						text: '活动管理',
+						callback: function() {
+							menuClick('活动管理','/frame/tolistpage');
+						}
+					}
+					]
+				},{
+					btnIcon: 'xtgl',
+					text: '积分管理',
+					id: 'spgl',
+					childList: [{
+						text: '积分管理',
+						callback: function() {
+							menuClick('积分管理','/product/tolist?status=1');
+						}
+					},{
+						text: '已兑换',
+						callback: function() {
+							menuClick('已兑换','/product/torecordlist');
+						}
+					}
+					]
+				},{
+					btnIcon: 'xtgl',
+					text: '人员管理',
+					id: 'rygl',
+					childList: [{
+						text: '人员查询',
+						callback: function() {
+							menuClick('人员查询','/user/tolist');
+						}
+					},{
+						text: '讲师查询',
+						callback: function() {
+							menuClick('讲师查询','/user/toteacherlist');
+						}
+					}
+					]
+				},{
+					btnIcon: 'xtgl',
+					text: '系统管理',
+					id: 'xtgl',
+					childList: [{
+						text: '修改密码',
+						callback: function() {
+							menuClick('修改密码','/frame/tochangepwd');
+						}
+					}]
+				}
+			]
+		}
+		$('.aside-container').aside(optLess);
+		$('.t-aside').css({ 'border-right': 'none' });
+		//菜单点击
+		function menuClick(text,url){
+			$('.caption-left-text').html(text);
+			$('.container').load(url);
+		}
+		//退出
+		function outlogin(){
+			window.top.location.href="/frame/outlogin";
+		}
+		//注：主页刚刚打开时打开索引列表,后面内外网分开后这里要修改
+		menuClick('活动管理','/frame/tolistpage');
+		//表格选中项返回的内容中提取选中的id，多个和,分隔
+		function getIdList(checkPagesData){
+			var result=""
+			for(var k in checkPagesData){
+				for(var i=0;i<checkPagesData[k].length;i++){
+					if(result==""){
+						result=checkPagesData[k][i]["cell"]["id"];
+					}else{
+						result=result+","+checkPagesData[k][i]["cell"]["id"];
+					}
+				}
+			}
+			return result;
+		}
+
+		function loadindiv(jiekou,paraneme,paraval,remark,widthval,heightval){
+
+			var url = jiekou +"?"+paraneme + "=" + paraval;
+			if(remark != ""){
+				url = url + "&" + remark;
+			}
+			$.ajaxSetup({cache : false});
+			if(widthval != ""){
+				url = url + "&width=" + escape(widthval);
+			}
+			if(heightval != ""){
+				url = url + "&height=" + escape(heightval);
+			}
+			$('body div#orderinfomask div#cccontent').load(url,function(){
+				$('body div#orderinfomask').fadeIn("slow", function(){});
+			});
+		}
+
+		$('body div#orderinfomask i.t-pop-close').click(function(){
+			$('body div#orderinfomask').fadeOut("slow",function(){
+				$('body div#orderinfomask div#cccontent').empty();
+			})
+		})
+	</script>
+</html>

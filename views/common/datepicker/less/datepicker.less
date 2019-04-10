@@ -1,0 +1,423 @@
+@charset "utf-8";
+/* ---------------全局参数配置Start---------------- */
+@bodyBgColor: #fff; // 主背景色调
+@bodyMinWidth: 1280px; // 页面最小宽度
+@disableBgColor: #eee; // 禁用颜色
+@bgColorLight: #f1f1f3; // 浅色背景
+@borderColor: #d8d8d8; // 通用边框颜色
+@borderHoverColor: #b2d4ff; //边框交互颜色
+@fontColor: #505050; // 通用字体颜色
+@fontHoverColor: #58a2ff; // 字体交互颜色
+@fontSize: 12px; // 通用字号
+@borderRadius: 3px; // 圆角度数
+@lessBackgroundUrl: '../img/index.png'; // 雪碧图配置
+@lessBackgroundUrl-s: '../../../img/common/index-s.png'; // 雪碧图配置
+@lessBackgroundUrl-m: '../../../img/common/index-m.png'; // 雪碧图配置
+@lessBackgroundUrl-l: '../../../img/common/index-l.png'; // 雪碧图配置
+@import 'lessLibrary';
+/* ---------------全局参数配置END------------------ */
+
+//datepicker自定义样式
+.t-datepicker-showDate {
+    @showFontColor: #999;
+    @showBorderColor: @borderColor;
+    @showFocusFontColor: @fontColor;
+    @showFocusBorderColor: @borderHoverColor;
+    @showBorderRadius: @borderRadius;
+    position: relative;
+    .border-radius(@showBorderRadius);
+    .cursor(pointer);
+    .setting(140px,26px,inline-block);
+    line-height: 26px;
+    text-align: center;
+    color: @showFontColor;
+    border: 1px solid @showBorderColor;
+    &:hover {
+        color: @showFocusFontColor;
+        border-color: @showFocusBorderColor;
+        .showDate-arrowIcon {
+            .setBackground-s(-835px -267px);
+        }
+    }
+    &.focus {
+        color: @showFocusFontColor;
+        border-color: @showFocusBorderColor;
+        .showDate-arrowIcon {
+            .setBackground-s(-835px -267px);
+        }
+    }
+    .t-datepicker-input {
+        .setting(100%,100%);
+        .box-sizing(border-box);
+        padding-left: 35px;
+    }
+    .calendarIcon {
+        position: absolute;
+        .setting(20px,100%);
+        .setBackground-s(-271px -668px);
+        left: 10px;
+    }
+    .showDate-arrowIcon {
+        position: absolute;
+        .setting(10px,100%);
+        top: 0;
+        right: 10px;
+        .setBackground-s(-756px -267px);
+    }
+}
+//4.18 补充只有时间的样式
+.t-datepicker-showTime {
+    @showFontColor: #999;
+    @showBorderColor: @borderColor;
+    @showFocusFontColor: @fontColor;
+    @showFocusBorderColor: @borderHoverColor;
+    @showBorderRadius: @borderRadius;
+    .setting(144px,26px,inline-block);
+    .box-sizing(border-box);
+    line-height: 23px;
+    padding-left: 7px;
+    color: @showFontColor;
+    cursor: default;
+    border: 1px solid @showBorderColor;
+    .border-radius(@showBorderRadius);
+    &:hover {
+        border-color: @borderHoverColor;
+    }
+    &.focus {
+        border-color: @borderHoverColor;
+        b {
+            border-color: @borderHoverColor;
+            color: @showFocusFontColor;
+        }
+    }
+    b {
+        font-weight: normal;
+        padding: 0 10px 1px;
+        border: 1px solid @showBorderColor;
+        .border-radius(@showBorderRadius);
+        &:hover {
+            border-color: @borderHoverColor;
+            color: @showFocusFontColor;
+        }
+    }
+    i {
+        display: inline-block;
+        width: 10px;
+        text-align: center;
+    }
+}
+//4.18 只有时间的样式
+.t-datepicker-onlyTime {
+    @hmsBorderColor: @borderHoverColor;
+    @seletedBgColor: #d7e9fc;
+    margin: 15px 13px 9px;
+    .onlyTime-showHMS {
+        margin-bottom: 10px;
+        & > div {
+            float: left;
+            span {
+                padding-bottom: 9px;
+                .setting(100%,auto,block);
+                text-align: center;
+            }
+            .t-datepicker-wrap {
+                .setting(74px,154px);
+                .border-radius(@borderRadius);
+                position: relative;
+                overflow: hidden;
+                border: 1px solid @hmsBorderColor;
+                li {
+                    line-height: 24px;
+                    text-align: center;
+                    border-top: 1px solid transparent;
+                    border-bottom: 1px solid transparent;
+                    cursor: pointer;
+                    &.selected {
+                        background-color: @seletedBgColor;
+                        border-color: @hmsBorderColor;
+                    }
+                    &:hover {
+                        background-color: @seletedBgColor;
+                        border-color: @hmsBorderColor;
+                    }
+                }
+            }
+            &.showMinute {
+                margin: 0 8px;
+            }
+        }
+    }
+    p {
+        text-align: center;
+        .onlyTime-btn {
+            @onlyTimeBtnBgColor: #4491e1;
+            width: 44px;
+            line-height: 20px;
+            color: white;
+            background: @onlyTimeBtnBgColor;
+            .border-radius(@borderRadius);
+            &:hover {
+                .opacity(.8);
+            }
+        }
+    }
+}
+//4.18 补充单个日期和时间的页脚样式
+.t-datepicker-datFooter {
+    @showFontColor: #999;
+    @showBorderColor: @borderColor;
+    @showFocusFontColor: @fontColor;
+    @showFocusBorderColor: @borderHoverColor;
+    @showBorderRadius: @borderRadius;
+    @footerBgColor: #d7e9fc;
+    @btnBgColor: #4491e1;
+    .setting(100%,28px,inline-block);
+    .box-sizing(border-box);
+    line-height: 27px;
+    background-color: @footerBgColor;
+    padding-left: 11px;
+    color: @showFontColor;
+    cursor: default;
+    border-top: 1px solid @borderHoverColor;
+    &.focus {
+        b {
+            border-color: @btnBgColor;
+            color: @showFocusFontColor;
+        }
+    }
+    b {
+        font-weight: normal;
+        padding: 0 10px 1px;
+        border: 1px solid @borderHoverColor;
+        background: #fff;
+        .border-radius(@showBorderRadius);
+        &:hover {
+            border-color: @btnBgColor;
+            color: @showFocusFontColor;
+        }
+    }
+    i {
+        display: inline-block;
+        width: 10px;
+        text-align: center;
+    }
+    button {
+        width: 44px;
+        line-height: 20px;
+        color: white;
+        background: @btnBgColor;
+        position: relative;
+        top: 1px;
+        .border-radius(@borderRadius);
+        &:hover {
+            .opacity(.8);
+        }
+        &.t-datepicker-empty {
+            margin: 0 5px 0 25px;
+        }
+    }
+    //4.19 补充双日期+时间样式
+    &.t-dbDatFooter{
+        text-align: center;    
+    }
+}
+//4.18 补充单个日期和时间的时间展示框样式
+.t-datepicker-datShowTime {
+    position: absolute;
+    width: 100%;
+    top: 26px;
+    left: 0;
+    background: #fff;
+    z-index: 9;
+    p {
+        text-align: center;
+        background: #f1f1f3;
+        line-height: 27px;
+    }
+    .t-datShowTime-close {
+        float: right;
+        cursor: pointer;
+        .setting(10px,14px);
+        margin: 8px 8px 0 0;
+        .setBackground-s(-356px -675px);
+        &:hover {
+            .setBackground-s(-436px -675px);
+        }
+    }
+}
+.t-datepicker-box {
+    @boxBorderColor: @borderHoverColor;
+    @boxFontColor: @fontColor;
+    @boxRadius: @borderRadius;
+    @boxBgColor: #fff;
+    @headerBgColor: #d7e9fc;
+    @headerSpanHoverColor: #58a2ff;
+    @headerSpanBgColor: #fff;
+    //  display: none;
+    position: absolute;
+    z-index: 9999;
+    width: 270px;
+    border: 1px solid @boxBorderColor;
+    .box-sizing(border-box);
+    .border-radius(@boxRadius);
+    .setBackground(@boxBgColor);
+    & .t-datepicker-boxHeader{
+        position: relative;
+        padding: 4px 9px 4px 6px;
+        background-color: @headerBgColor;
+        .border-radius(@borderRadius);
+        & > span {
+            display: inline-block;
+            width: 73px;
+            line-height: 20px;
+            margin-right: 6px;
+            padding: 0 8px;
+            color: @boxFontColor;
+            border: 1px solid @boxBorderColor;
+            .box-sizing(border-box);
+            .border-radius(@borderRadius);
+            .setBackground(@headerSpanBgColor);
+            .cursor(pointer);
+            &:hover {
+                border-color: @headerSpanHoverColor;
+            }
+            &.focus {
+                border-color: @headerSpanHoverColor;
+            }
+        }
+        .header-arrow {
+            float: right;
+            .setting(10px,20px,inline-block);
+            .setBackground-s(-835px -270px);
+        }
+        .t-datepicker-empty {
+            float: right;
+            .cursor(pointer);
+            position: relative;
+            top: 2px;
+            .setting(31px,20px,inline-block);
+            color: @headerSpanHoverColor;
+            &:hover {
+                .opacity(.8);
+            }
+        }
+        & > div {
+            .setting(71px,200px);
+            visibility: hidden;
+            position: absolute;
+            top: 27px;
+            left: 6px;
+            z-index: 1000;
+            overflow: hidden;
+            border: 1px solid @boxBorderColor;
+            .border-radius(@boxRadius);
+            .setBackground(@boxBgColor);
+            &.t-monthBox {
+                left: 85px;
+            }
+        }
+        ul {
+            @dvScollBarBgColor: #b4e1ff;
+            .setting(100%,100%);
+            overflow: hidden;
+            overflow-y: scroll;
+            &.dvScrollBar::-webkit-scrollbar-thumb {
+                background: @dvScollBarBgColor;
+            }
+            &.dvScrollBar::-webkit-scrollbar-track {
+                display: none;
+            }
+        }
+        li {
+            @liHoverColor: #fff;
+            @liBgHoverColor: @headerSpanHoverColor;
+            width: 80px;
+            line-height: 20px;
+            padding-left: 8px;
+            .cursor(pointer);
+            &:hover {
+                .setBackground(@liBgHoverColor);
+                color: @liHoverColor;
+            }
+            &.selected {
+                .setBackground(@liBgHoverColor);
+                color: @liHoverColor;
+            }
+        }
+    }
+    //4.19 补充双日期样式
+    .t-doubleDate {
+        float: left;
+        width: 270px;
+        border: 1px solid @borderHoverColor;
+        position:relative;
+        &.t-to {
+            margin-left: 6px;
+        }
+    }
+    .t-datepicker-dbFooter {
+        line-height: 42px;
+        text-align: right;
+        button {
+            @btnBgColor: #4491e1;
+            width: 44px;
+            line-height: 20px;
+            color: white;
+            background: @btnBgColor;
+            position: relative;
+            top: 1px;
+            .border-radius(@borderRadius);
+            &:hover {
+                .opacity(.8);
+            }
+            &.t-datepicker-empty {
+                margin: 0 10px 0 25px;
+            }
+        }
+    }
+}
+.t-datepicker-table {
+    @weekColor: #58a2ff;
+    @invalidColor: #999;
+    @tdSpanBgColor: @weekColor;
+    @tdSpanColor: #fff;
+    @tdSpanRadius: 3px;
+    padding: 10px 6px;
+    text-align: center;
+    .week {
+        color: @weekColor;
+    }
+    .invalid {
+        color: @invalidColor;
+    }
+    td,
+    th {
+        height: 30px;
+    }
+    td:not(.invalid) {
+        span {
+            .setting(22px,22px,inline-block);
+            line-height: 22px;
+            .border-radius(@tdSpanRadius);
+            .cursor(pointer);
+            &:hover {
+                .setBackground(@tdSpanBgColor);
+                color: @tdSpanColor;
+            }
+        }
+    }
+    td.selected {
+        span {
+            .setBackground(@tdSpanBgColor);
+            color: @tdSpanColor;
+            &:hover {
+                .opacity(.8);
+            }
+        }
+    }
+    td.curDate {
+        span {
+            border: 1px solid @tdSpanBgColor;
+        }
+    }
+}
